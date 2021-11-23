@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner
@@ -16,6 +17,8 @@ namespace Tasks_Planner
             
             dateTimePicker1.CustomFormat = "dd MMMM yyyy, HH:mm:ss";
             tasksList = new List<UserTask>();
+
+            Notifier.GetNotify += Notify;
         }
 
         private void NotifyIcon1_MouseDoubleClick(object? sender, MouseEventArgs e)
@@ -30,7 +33,7 @@ namespace Tasks_Planner
                 notifyIcon1.Visible = true;
                 this.Hide();
                 Thread.Sleep(2000);
-                //notifyIcon1.ShowBalloonTip(10000, "Аттентион", "Вадим", ToolTipIcon.Warning);
+                
             }
         }
         public void TaskToItem(UserTask t)
@@ -42,16 +45,16 @@ namespace Tasks_Planner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UserTask t = new UserTask
+            UserTask t = new PeriodicTask(60000)
             {
                 Id = IdCounter++,
-                Name = "Попить воды",
-                Description = "Не забыть попить воды в 19:30",
+                Name = "Напоминание",
+                Description = "Не забыть, что Вадим пидор",
                 TaskDate = new DateTime(2021, 11, 23, 19, 30, 0)
             };
             tasksList.Add(t);
             TaskToItem(t);
-        }
+            }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -64,6 +67,13 @@ namespace Tasks_Planner
             } else
             {
                 tasksView.SelectedIndices.Add(0);
+            }
+        }
+        public void Notify(object periodicTask)
+        {
+            if (periodicTask is PeriodicTask t)
+            {
+                notifyIcon1.ShowBalloonTip(10000, t.Name, t.Description, ToolTipIcon.Warning);
             }
         }
     }

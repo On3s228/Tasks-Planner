@@ -7,14 +7,10 @@ using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Repos
 {
-    public class Notifier
+    public static class Notifier
     {
-        public delegate void NotifierDelegate();
-        public static event NotifierDelegate Notify;
-        public Notifier()
-        {
-
-        }
+        public delegate void Notify(object task);
+        public static Notify GetNotify;
 
     }
 }
