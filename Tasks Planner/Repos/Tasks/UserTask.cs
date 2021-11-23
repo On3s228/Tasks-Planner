@@ -12,8 +12,11 @@ namespace Tasks_Planner.Repos.Tasks
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime TaskDate { get; set; }
-        public delegate void TimeHandler();
-        event TimeHandler Notify;
-        
+        //private System.Threading.Timer _timer;
+        //public void SetNotifyInterval(int seconds)
+        //{
+        //    _timer = new System.Threading.Timer();
+        //}
+       
     }
 }
