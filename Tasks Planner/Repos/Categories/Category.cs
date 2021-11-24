@@ -9,6 +9,7 @@ namespace Tasks_Planner.Repos.Categories
 {
     public class Category : IEquatable<Category?>
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<UserTask> Tasks { get; set; }

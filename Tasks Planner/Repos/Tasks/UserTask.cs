@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tasks_Planner.Repos.Tasks
 {
-    public class UserTask
+    public class UserTask : IEquatable<UserTask?>
     {
         private int period;
 
@@ -37,20 +37,34 @@ namespace Tasks_Planner.Repos.Tasks
         public string Description { get; set; }
         public DateTime TaskDate { get; set; }
 
+        public UserTask() { }
+
         public override bool Equals(object? obj)
         {
-            return obj is UserTask task &&
-                   Id == task.Id &&
-                   Name == task.Name &&
-                   Description == task.Description &&
-                   TaskDate == task.TaskDate;
+            return Equals(obj as UserTask);
+        }
+
+        public bool Equals(UserTask? other)
+        {
+            return other != null &&
+                   Name == other.Name &&
+                   Description == other.Description &&
+                   TaskDate == other.TaskDate;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Name, Description, TaskDate);
+            return HashCode.Combine(Name, Description, TaskDate);
         }
-        public UserTask() { }
 
+        public static bool operator ==(UserTask? left, UserTask? right)
+        {
+            return EqualityComparer<UserTask>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(UserTask? left, UserTask? right)
+        {
+            return !(left == right);
+        }
     }
 }

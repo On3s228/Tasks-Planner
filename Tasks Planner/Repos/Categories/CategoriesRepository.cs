@@ -84,14 +84,16 @@ namespace Tasks_Planner.Repos.Categories
             JSerializer<List<Category>>.Serialize(_categories, _filePath);
         }
 
-        public void UpdateCategory(Category item)
+        public void UpdateCategory(int id, Category item)
         {
-            throw new NotImplementedException();
+            _categories[id] = item;
+            Save();
         }
 
-        public void UpdateTask(int categoryId, UserTask task)
+        public void UpdateTask(int categoryId, int taskId, UserTask task)
         {
-            throw new NotImplementedException();
+            _categories[categoryId].Tasks[taskId] = task;
+            Save();
         }
     }
 }

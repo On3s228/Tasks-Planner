@@ -12,13 +12,13 @@ namespace Tasks_Planner.Repos.Categories
         IEnumerable<Category> GetCategoriesList();
         Category GetCategory(int id);
         void CreateCategory(Category item);
-        void UpdateCategory(Category item);
+        void UpdateCategory(int id, Category item);
         void DeleteCategory(int id);
 
         IEnumerable<UserTask> GetTasksList(int categoryId);
         UserTask GetTask(int categoryId, int taskId);
         void CreateTask(int categoryId, UserTask task);
-        void UpdateTask(int categoryId, UserTask task);
+        void UpdateTask(int categoryId, int taskId, UserTask task);
         void DeleteTask(int categoryId, int taskId);
         void Save();
     }
