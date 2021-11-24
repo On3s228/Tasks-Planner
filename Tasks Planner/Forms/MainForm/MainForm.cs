@@ -13,9 +13,6 @@ namespace Tasks_Planner
 {
     public partial class MainForm : Form, IMainView
     {
-        private static int IdCounter = 1;
-        private List<UserTask> tasksList;
-
         public int SelectedTask 
         { 
             get
@@ -61,13 +58,10 @@ namespace Tasks_Planner
         {
             InitializeComponent();
 
-            //ShowInTaskbar = false;
             notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
             
             dateTimePicker1.CustomFormat = "dd MMMM yyyy, HH:mm:ss";
-            tasksList = new List<UserTask>();
 
-            //Notifier.GetNotify += Notify;
         }
 
         private void NotifyIcon1_MouseDoubleClick(object? sender, MouseEventArgs e)
