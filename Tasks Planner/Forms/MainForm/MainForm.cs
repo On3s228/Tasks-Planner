@@ -55,6 +55,7 @@ namespace Tasks_Planner
         }
 
         public MainPresenter Presenter { private get; set; }
+        public bool IsVisible { get => Visible; set => Visible = value; }
 
         public MainForm()
         {
@@ -66,7 +67,7 @@ namespace Tasks_Planner
             dateTimePicker1.CustomFormat = "dd MMMM yyyy, HH:mm:ss";
             tasksList = new List<UserTask>();
 
-            Notifier.GetNotify += Notify;
+            //Notifier.GetNotify += Notify;
         }
 
         private void NotifyIcon1_MouseDoubleClick(object? sender, MouseEventArgs e)
@@ -94,21 +95,7 @@ namespace Tasks_Planner
         {
             Presenter.UpdateTaskView();
         }
-        public void Notify(object userTask)
-        {
-            if (userTask is UserTask t)
-            {
-                if (Visible)
-                {
-                    SystemSounds.Hand.Play();
-                    MessageBox.Show(t.Description, t.Name, MessageBoxButtons.OK);
-                } else
-                {
-                    SystemSounds.Hand.Play();
-                    notifyIcon1.ShowBalloonTip(10000, t.Name, t.Description, ToolTipIcon.Warning);
-                }
-            }
-        }
+        
     }
 
 }

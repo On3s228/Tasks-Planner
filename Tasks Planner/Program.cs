@@ -23,7 +23,8 @@ namespace Tasks_Planner
             };
             ApplicationConfiguration.Initialize();
             MainForm mainForm = new MainForm();
-            Notifier.GetNotify += mainForm.Notify;
+            MainViewHelper mainViewHelper = new MainViewHelper(mainForm);
+            Notifier.GetNotify += mainViewHelper.Notify;
             var categoriesRepo = new CategoriesRepository(Application.StartupPath);
             var tasksRepo = new TasksRepository(Application.StartupPath, categoriesRepo);
             var presenter = new MainPresenter(mainForm, categoriesRepo, tasksRepo);

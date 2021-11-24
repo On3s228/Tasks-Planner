@@ -15,6 +15,7 @@ namespace Tasks_Planner.Forms.MainForm
         string NameField { get; set; }
         string DescriptionField { get; set; }
         DateTime Date { get; set; }
+        bool IsVisible { get; set; }
         MainPresenter Presenter { set; }
     }
 }

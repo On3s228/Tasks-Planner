@@ -65,17 +65,17 @@
             // 
             // nameBox
             // 
-            this.nameBox.Enabled = false;
             this.nameBox.Location = new System.Drawing.Point(493, 212);
             this.nameBox.Name = "nameBox";
+            this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(250, 27);
             this.nameBox.TabIndex = 5;
             // 
             // descriptionRichBox
             // 
-            this.descriptionRichBox.Enabled = false;
             this.descriptionRichBox.Location = new System.Drawing.Point(493, 245);
             this.descriptionRichBox.Name = "descriptionRichBox";
+            this.descriptionRichBox.ReadOnly = true;
             this.descriptionRichBox.Size = new System.Drawing.Size(250, 79);
             this.descriptionRichBox.TabIndex = 6;
             this.descriptionRichBox.Text = "";
