@@ -13,7 +13,6 @@ namespace Tasks_Planner.Repos.Categories
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<UserTask> Tasks { get; set; }
         public Category() { }
 
         public override bool Equals(object? obj)

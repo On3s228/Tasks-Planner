@@ -1,5 +1,6 @@
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
+using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner
 {
@@ -23,6 +24,7 @@ namespace Tasks_Planner
             MainForm mainForm = new MainForm();
             Notifier.GetNotify += mainForm.Notify;
             var categoriesRepo = new CategoriesRepository(Application.StartupPath);
+            var tasksRepo = new TasksRepository(Application.StartupPath, categoriesRepo);
             Application.Run(mainForm);
         }
     }

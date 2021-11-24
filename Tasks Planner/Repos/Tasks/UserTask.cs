@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Tasks_Planner.Repos.Categories;
 
 namespace Tasks_Planner.Repos.Tasks
 {
@@ -38,6 +39,7 @@ namespace Tasks_Planner.Repos.Tasks
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime TaskDate { get; set; }
+        public List<Category> Categories { get; set; }
 
         public UserTask() { }
 

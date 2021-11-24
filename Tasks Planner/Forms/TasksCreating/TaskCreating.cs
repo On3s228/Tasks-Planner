@@ -16,5 +16,10 @@ namespace Tasks_Planner.Forms.TasksCreating
         {
             InitializeComponent();
         }
+
+        private void TaskCreating_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
