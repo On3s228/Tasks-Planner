@@ -7,7 +7,7 @@ using Tasks_Planner.Repos.Categories;
 
 namespace Tasks_Planner.Repos.Tasks
 {
-    internal class TasksRepository : IRepository<UserTask>
+    public class TasksRepository : IRepository<UserTask>
     {
         private readonly string _filePath;
         private readonly List<UserTask>? _tasks;

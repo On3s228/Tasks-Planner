@@ -37,6 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -73,6 +76,7 @@
             // 
             // periodicityCombo
             // 
+            this.periodicityCombo.Enabled = false;
             this.periodicityCombo.FormattingEnabled = true;
             this.periodicityCombo.Location = new System.Drawing.Point(154, 259);
             this.periodicityCombo.Name = "periodicityCombo";
@@ -115,11 +119,40 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Периодичность";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(29, 298);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Категории";
+            // 
+            // categoriesChecks
+            // 
+            this.categoriesChecks.FormattingEnabled = true;
+            this.categoriesChecks.Location = new System.Drawing.Point(154, 298);
+            this.categoriesChecks.Name = "categoriesChecks";
+            this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
+            this.categoriesChecks.TabIndex = 11;
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(154, 431);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(94, 29);
+            this.saveButton.TabIndex = 12;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            // 
             // TaskCreating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 364);
+            this.ClientSize = new System.Drawing.Size(402, 485);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.categoriesChecks);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -148,5 +181,8 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Label label5;
+        private CheckedListBox categoriesChecks;
+        private Button saveButton;
     }
 }

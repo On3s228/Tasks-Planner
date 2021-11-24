@@ -38,6 +38,7 @@
             this.tasksView = new System.Windows.Forms.ListView();
             this.idColumn = new System.Windows.Forms.ColumnHeader();
             this.nameColumn = new System.Windows.Forms.ColumnHeader();
+            this.taskAddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -104,11 +105,21 @@
             this.nameColumn.Text = "Название";
             this.nameColumn.Width = 145;
             // 
+            // taskAddButton
+            // 
+            this.taskAddButton.Location = new System.Drawing.Point(242, 409);
+            this.taskAddButton.Name = "taskAddButton";
+            this.taskAddButton.Size = new System.Drawing.Size(170, 29);
+            this.taskAddButton.TabIndex = 8;
+            this.taskAddButton.Text = "Новое напоминание";
+            this.taskAddButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.taskAddButton);
             this.Controls.Add(this.tasksView);
             this.Controls.Add(this.descriptionRichBox);
             this.Controls.Add(this.nameBox);
@@ -134,5 +145,6 @@
         private ListView tasksView;
         private ColumnHeader idColumn;
         private ColumnHeader nameColumn;
+        private Button taskAddButton;
     }
 }

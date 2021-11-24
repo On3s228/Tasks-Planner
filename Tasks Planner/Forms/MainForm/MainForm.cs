@@ -4,15 +4,58 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Windows.Forms;
+using Tasks_Planner.Forms.MainForm;
+using Tasks_Planner.Presenters;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMainView
     {
         private static int IdCounter = 1;
         private List<UserTask> tasksList;
+
+        public int SelectedTask 
+        { 
+            get
+            {
+                if (tasksView.SelectedIndices.Count > 0)
+                {
+                    return tasksView.SelectedIndices[tasksView.SelectedIndices.Count - 1];
+                }
+                else return 0;
+            }
+            set
+            {
+                if (tasksView.SelectedIndices.Count > 0)
+                {
+                    tasksView.SelectedIndices.Clear();
+                    tasksView.SelectedIndices.Add(value);
+                }
+            }
+        }
+        NotifyIcon IMainView.Icon { get => notifyIcon1; set => notifyIcon1 = value; }
+        public ListView TasksView { get => tasksView; set => tasksView = value; }
+        public string NameField { get => nameBox.Text; set => nameBox.Text = value; }
+        public string DescriptionField { get => descriptionRichBox.Text; set => descriptionRichBox.Text = value; }
+        public DateTime Date 
+        { 
+            get => dateTimePicker1.Value;
+            set
+            {
+                if (value > dateTimePicker1.MinDate && value < dateTimePicker1.MaxDate)
+                {
+                    dateTimePicker1.Value = value;
+                } else
+                {
+                    dateTimePicker1.Value = dateTimePicker1.MinDate;
+                }
+            }
+        }
+
+        public MainPresenter Presenter { private get; set; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,12 +84,6 @@ namespace Tasks_Planner
                 
             }
         }
-        public void TaskToItem(UserTask t)
-        {
-            ListViewItem i = new ListViewItem(t.Id.ToString());
-            i.SubItems.Add(t.Name);
-            tasksView.Items.Add(i);
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -55,18 +92,7 @@ namespace Tasks_Planner
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tasksView.SelectedIndices.Count > 0)
-            {
-                int SelectedIndex = tasksView.SelectedIndices[tasksView.SelectedIndices.Count - 1];
-                nameBox.Text = tasksList[SelectedIndex].Name;
-                descriptionRichBox.Text = tasksList[SelectedIndex].Description;
-                dateTimePicker1.Value = tasksList[SelectedIndex].TaskDate;
-            } else
-            {
-                nameBox.Text = "";
-                descriptionRichBox.Text = "";
-                dateTimePicker1.Value = dateTimePicker1.MinDate;
-            }
+            Presenter.UpdateTaskView();
         }
         public void Notify(object userTask)
         {

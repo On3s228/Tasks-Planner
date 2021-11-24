@@ -1,3 +1,4 @@
+using Tasks_Planner.Presenters;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
@@ -25,6 +26,7 @@ namespace Tasks_Planner
             Notifier.GetNotify += mainForm.Notify;
             var categoriesRepo = new CategoriesRepository(Application.StartupPath);
             var tasksRepo = new TasksRepository(Application.StartupPath, categoriesRepo);
+            var presenter = new MainPresenter(mainForm, categoriesRepo, tasksRepo);
             Application.Run(mainForm);
         }
     }
