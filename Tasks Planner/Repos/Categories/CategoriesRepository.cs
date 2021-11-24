@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Repos.Categories
 {
-    public class CategoriesRepository : IRepository<Category>
+    public class CategoriesRepository : ICategoriesRepository
     {
         private readonly string _filePath;
         private readonly List<Category> _categories;
@@ -30,31 +31,52 @@ namespace Tasks_Planner.Repos.Categories
             }
         }
 
-        public void Create(Category item)
+        public void CreateCategory(Category item)
         {
             _categories.Add(item);
             Save();
         }
 
-        public void Delete(int id)
+        public void CreateTask(int categoryId, UserTask task)
         {
-            _categories.RemoveAt(id);
+            _categories[categoryId].Tasks.Add(task);
             Save();
         }
 
-        public void Dispose()
+        public void DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            if (!_categories[id].Tasks.Any())
+            {
+                _categories.RemoveAt(id);
+                Save();
+            }
+            else Notifier.StringNotify("В категории есть напоминания. Сначала очистите категорию.");
         }
 
-        public Category GetByID(int id)
+        public void DeleteTask(int categoryId, int taskId)
+        {
+            _categories[categoryId].Tasks.RemoveAt(taskId);
+            Save();
+        }
+
+        public IEnumerable<Category> GetCategoriesList()
+        {
+            return _categories;
+        }
+
+        public Category GetCategory(int id)
         {
             return _categories[id];
         }
 
-        public IEnumerable<Category> GetList()
+        public UserTask GetTask(int categoryId, int taskId)
         {
-            return _categories;
+            return _categories[categoryId].Tasks[taskId];
+        }
+
+        public IEnumerable<UserTask> GetTasksList(int categoryId)
+        {
+            return _categories[categoryId].Tasks;
         }
 
         public void Save()
@@ -62,7 +84,12 @@ namespace Tasks_Planner.Repos.Categories
             JSerializer<List<Category>>.Serialize(_categories, _filePath);
         }
 
-        public void Update(Category item)
+        public void UpdateCategory(Category item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTask(int categoryId, UserTask task)
         {
             throw new NotImplementedException();
         }

@@ -68,19 +68,7 @@ namespace Tasks_Planner
                 TaskDate = new DateTime(2022, 11, 24)
             };
             tasksList.Add(t1);
-            TaskToItem(t1);
-            //string test = JsonSerializer.Serialize(tasksList, new JsonSerializerOptions 
-            //{
-            //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-            //    WriteIndented = true
-            //});
-            Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\User\Desktop\test.json"))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, tasksList);
-            }
+            TaskToItem(t1)
         }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)

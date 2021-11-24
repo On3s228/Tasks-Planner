@@ -1,3 +1,5 @@
+using Tasks_Planner.Repos;
+
 namespace Tasks_Planner
 {
     internal static class Program
@@ -8,6 +10,13 @@ namespace Tasks_Planner
         [STAThread]
         static void Main()
         {
+            Notifier.StringNotify += delegate (object ex)
+            {
+                if (ex is string s)
+                {
+                    MessageBox.Show(s, "Предупреждение!", MessageBoxButtons.OK);
+                }
+            };
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
         }

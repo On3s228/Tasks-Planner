@@ -11,6 +11,7 @@ namespace Tasks_Planner.Repos
     {
         public delegate void Notify(object task);
         public static Notify GetNotify;
+        public static Notify StringNotify;
 
     }
 }
