@@ -87,6 +87,7 @@
             this.tasksView.FullRowSelect = true;
             this.tasksView.GridLines = true;
             this.tasksView.Location = new System.Drawing.Point(222, 190);
+            this.tasksView.MultiSelect = false;
             this.tasksView.Name = "tasksView";
             this.tasksView.Size = new System.Drawing.Size(213, 207);
             this.tasksView.TabIndex = 7;

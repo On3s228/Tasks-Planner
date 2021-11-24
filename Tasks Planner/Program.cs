@@ -1,4 +1,5 @@
 using Tasks_Planner.Repos;
+using Tasks_Planner.Repos.Categories;
 
 namespace Tasks_Planner
 {
@@ -10,6 +11,7 @@ namespace Tasks_Planner
         [STAThread]
         static void Main()
         {
+            
             Notifier.StringNotify += delegate (object ex)
             {
                 if (ex is string s)
@@ -18,7 +20,10 @@ namespace Tasks_Planner
                 }
             };
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            MainForm mainForm = new MainForm();
+            Notifier.GetNotify += mainForm.Notify;
+            var categoriesRepo = new CategoriesRepository(Application.StartupPath);
+            Application.Run(mainForm);
         }
     }
 }

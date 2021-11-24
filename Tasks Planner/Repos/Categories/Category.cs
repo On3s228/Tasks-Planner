@@ -9,6 +9,7 @@ namespace Tasks_Planner.Repos.Categories
 {
     public class Category : IEquatable<Category?>
     {
+        public static int IdCounter = 1;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

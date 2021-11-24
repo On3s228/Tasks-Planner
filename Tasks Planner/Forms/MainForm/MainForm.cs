@@ -50,38 +50,22 @@ namespace Tasks_Planner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UserTask t = new UserTask
-            {
-                Id = IdCounter++,
-                Name = "Напоминание",
-                Description = "Не забыть, что Вадим пидор",
-                TaskDate = new DateTime(2021, 11, 23, 19, 30, 0)
-            };
-            t.Period = 30000;
-            tasksList.Add(t);
-            TaskToItem(t);
-            UserTask t1 = new UserTask
-            {
-                Id = IdCounter++,
-                Name = "Напоминание",
-                Description = "Тестовое напоминание",
-                TaskDate = new DateTime(2022, 11, 24)
-            };
-            tasksList.Add(t1);
-            TaskToItem(t1)
+            
         }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tasksView.SelectedIndices.Count > 0)
             {
-                int SelectedIndex = tasksView.SelectedIndices[0];
+                int SelectedIndex = tasksView.SelectedIndices[tasksView.SelectedIndices.Count - 1];
                 nameBox.Text = tasksList[SelectedIndex].Name;
                 descriptionRichBox.Text = tasksList[SelectedIndex].Description;
                 dateTimePicker1.Value = tasksList[SelectedIndex].TaskDate;
             } else
             {
-                tasksView.SelectedIndices.Add(0);
+                nameBox.Text = "";
+                descriptionRichBox.Text = "";
+                dateTimePicker1.Value = dateTimePicker1.MinDate;
             }
         }
         public void Notify(object userTask)

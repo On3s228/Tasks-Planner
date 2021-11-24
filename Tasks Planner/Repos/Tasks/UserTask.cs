@@ -9,6 +9,8 @@ namespace Tasks_Planner.Repos.Tasks
 {
     public class UserTask : IEquatable<UserTask?>
     {
+        public static int IdCounter = 1;
+        
         private int period;
 
         public int Period

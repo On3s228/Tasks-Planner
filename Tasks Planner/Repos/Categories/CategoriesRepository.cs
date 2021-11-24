@@ -11,7 +11,7 @@ namespace Tasks_Planner.Repos.Categories
     public class CategoriesRepository : ICategoriesRepository
     {
         private readonly string _filePath;
-        private readonly List<Category> _categories;
+        private readonly List<Category>? _categories;
 
         public CategoriesRepository(string programPath)
         {
@@ -24,39 +24,71 @@ namespace Tasks_Planner.Repos.Categories
                 _categories = new List<Category>();
                 Category c = new Category
                 {
+                    Id = Category.IdCounter++,
                     Name = "Задания",
                     Description = "",
-                    Tasks = new List<Tasks.UserTask>()
+                    Tasks = new List<UserTask>()
                 };
+                UserTask t = new UserTask
+                {
+                    Id = UserTask.IdCounter++,
+                    Name = "Напоминание",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum porta aliquam. Nam vel dolor at augue ornare euismod egestas ut enim. Fusce a maximus velit. Nulla ante augue, iaculis vel elit quis, eleifend dignissim ex. Sed a porttitor nulla, vitae volutpat nulla. Mauris felis massa, aliquam ut blandit at, dictum nec risus. Proin vel rutrum ante. Integer rutrum, quam ac tempus malesuada, turpis ex commodo tellus, in aliquet massa velit non dui. Donec vitae elementum lacus, in fermentum enim. Cras auctor, massa eu aliquet fringilla, eros massa laoreet quam, at efficitur metus est non nisi. Duis pellentesque erat in elit egestas, vel porttitor ipsum blandit. Nulla dui orci, accumsan vitae erat sed, rhoncus viverra eros. Praesent ut euismod ipsum. Donec sagittis diam at placerat pharetra. Vivamus eget quam nulla. Fusce tincidunt ultricies sapien.",
+                    TaskDate = new DateTime(2021, 11, 23, 19, 30, 0)
+                };
+                t.Period = 30000;
+                c.Tasks.Add(t);
+                UserTask t1 = new UserTask
+                {
+                    Id = UserTask.IdCounter++,
+                    Name = "Напоминание",
+                    Description = "Тестовое напоминание",
+                    TaskDate = new DateTime(2022, 11, 24)
+                };
+                c.Tasks.Add(t1);
+                _categories.Add(c);
+                Save();
             }
         }
 
         public void CreateCategory(Category item)
         {
-            _categories.Add(item);
-            Save();
+            if (_categories != null)
+            {
+                _categories.Add(item);
+                Save(); 
+            }
         }
 
         public void CreateTask(int categoryId, UserTask task)
         {
-            _categories[categoryId].Tasks.Add(task);
-            Save();
+            if(_categories != null)
+            {
+                _categories[categoryId].Tasks.Add(task);
+                Save();
+            }  
         }
 
         public void DeleteCategory(int id)
         {
-            if (!_categories[id].Tasks.Any())
+            if (_categories != null)
             {
-                _categories.RemoveAt(id);
-                Save();
+                if (!_categories[id].Tasks.Any())
+                {
+                    _categories.RemoveAt(id);
+                    Save();
+                }
+                else Notifier.StringNotify("В категории есть напоминания. Сначала очистите категорию."); 
             }
-            else Notifier.StringNotify("В категории есть напоминания. Сначала очистите категорию.");
         }
 
         public void DeleteTask(int categoryId, int taskId)
         {
-            _categories[categoryId].Tasks.RemoveAt(taskId);
-            Save();
+            if (_categories != null)
+            {
+                _categories[categoryId].Tasks.RemoveAt(taskId);
+                Save(); 
+            }
         }
 
         public IEnumerable<Category> GetCategoriesList()
@@ -86,14 +118,20 @@ namespace Tasks_Planner.Repos.Categories
 
         public void UpdateCategory(int id, Category item)
         {
-            _categories[id] = item;
-            Save();
+            if (_categories != null)
+            {
+                _categories[id] = item;
+                Save(); 
+            }
         }
 
         public void UpdateTask(int categoryId, int taskId, UserTask task)
         {
-            _categories[categoryId].Tasks[taskId] = task;
-            Save();
+            if (_categories != null)
+            {
+                _categories[categoryId].Tasks[taskId] = task;
+                Save(); 
+            }
         }
     }
 }
