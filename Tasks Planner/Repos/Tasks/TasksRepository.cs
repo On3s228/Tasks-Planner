@@ -9,6 +9,10 @@ namespace Tasks_Planner.Repos.Tasks
     public class TasksRepository : IRepository<UserTask>
     {
         private readonly List<UserTask> _tasks;
+        public TasksRepository()
+        {
+
+        }
         public void Create(UserTask item)
         {
             throw new NotImplementedException();

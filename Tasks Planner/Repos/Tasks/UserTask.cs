@@ -23,7 +23,10 @@ namespace Tasks_Planner.Repos.Tasks
                     Timer = new System.Threading.Timer(tc, this, value, value);
                 } else
                 {
-                    Timer.Dispose();
+                    if (Timer != null)
+                    {
+                        Timer.Dispose();
+                    }
                 }
             }
         }

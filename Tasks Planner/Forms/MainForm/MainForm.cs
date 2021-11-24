@@ -81,12 +81,6 @@ namespace Tasks_Planner
             {
                 serializer.Serialize(writer, tasksList);
             }
-            List<UserTask> test;
-            using (StreamReader sr = new StreamReader(@"C:\Users\User\Desktop\test.json"))
-            using (JsonReader reader = new JsonTextReader(sr))
-            {
-                test = serializer.Deserialize<List<UserTask>>(reader);
-            }
         }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)

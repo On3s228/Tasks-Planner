@@ -15,7 +15,19 @@ namespace Tasks_Planner.Repos.Categories
         public CategoriesRepository(string programPath)
         {
             _filePath = programPath + @"\userdata.json";
-            
+            if (File.Exists(_filePath))
+            {
+                _categories = JSerializer<List<Category>>.Deserialize(_filePath);
+            } else
+            {
+                _categories = new List<Category>();
+                Category c = new Category
+                {
+                    Name = "Задания",
+                    Description = "",
+                    Tasks = new List<Tasks.UserTask>()
+                };
+            }
         }
 
         public void Create(Category item)
@@ -47,7 +59,7 @@ namespace Tasks_Planner.Repos.Categories
 
         public void Save()
         {
-            
+            JSerializer<List<Category>>.Serialize(_categories, _filePath);
         }
 
         public void Update(Category item)
