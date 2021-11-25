@@ -4,7 +4,9 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
+using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
 
@@ -13,10 +15,10 @@ namespace Tasks_Planner.Presenters
     public class MainPresenter
     {
         private readonly IMainView _view;
-        private readonly CategoriesRepository _categories;
-        private readonly TasksRepository _tasks;
+        private readonly IRepository<Category> _categories;
+        private readonly IRepository<UserTask> _tasks;
 
-        public MainPresenter(IMainView view, CategoriesRepository categories, TasksRepository tasks)
+        public MainPresenter(IMainView view, IRepository<Category> categories, IRepository<UserTask> tasks)
         {
             _view = view;
             _view.Presenter = this;
@@ -24,6 +26,21 @@ namespace Tasks_Planner.Presenters
             _tasks = tasks;
 
             UpdateTasksList();
+        }
+
+        //public IRepository<Category> GetCategoriesRepository()
+        //{
+        //    return _categories;
+        //}
+        //public IRepository<UserTask> GetTasksRepository()
+        //{
+        //    return _tasks;
+        //}
+        public void NewCategoryAdding()
+        {
+            var form = new CategoryAdding();
+            var presenter = new CategoriesAddingPresenter(form, _categories);
+            form.ShowDialog();
         }
         public void UpdateTasksList()
         {

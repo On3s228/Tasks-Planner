@@ -4,6 +4,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Windows.Forms;
+using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
 using Tasks_Planner.Presenters;
 using Tasks_Planner.Repos;
@@ -89,7 +90,11 @@ namespace Tasks_Planner
         {
             Presenter.UpdateTaskView();
         }
-        
+
+        private void categoriesAddingButton_Click(object sender, EventArgs e)
+        {
+            Presenter.NewCategoryAdding();
+        }
     }
 
 }

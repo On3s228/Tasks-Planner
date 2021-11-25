@@ -39,6 +39,7 @@
             this.idColumn = new System.Windows.Forms.ColumnHeader();
             this.nameColumn = new System.Windows.Forms.ColumnHeader();
             this.taskAddButton = new System.Windows.Forms.Button();
+            this.categoriesAddingButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -114,11 +115,22 @@
             this.taskAddButton.Text = "Новое напоминание";
             this.taskAddButton.UseVisualStyleBackColor = true;
             // 
+            // categoriesAddingButton
+            // 
+            this.categoriesAddingButton.Location = new System.Drawing.Point(498, 107);
+            this.categoriesAddingButton.Name = "categoriesAddingButton";
+            this.categoriesAddingButton.Size = new System.Drawing.Size(121, 29);
+            this.categoriesAddingButton.TabIndex = 9;
+            this.categoriesAddingButton.Text = "доб. категории";
+            this.categoriesAddingButton.UseVisualStyleBackColor = true;
+            this.categoriesAddingButton.Click += new System.EventHandler(this.categoriesAddingButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.categoriesAddingButton);
             this.Controls.Add(this.taskAddButton);
             this.Controls.Add(this.tasksView);
             this.Controls.Add(this.descriptionRichBox);
@@ -146,5 +158,6 @@
         private ColumnHeader idColumn;
         private ColumnHeader nameColumn;
         private Button taskAddButton;
+        private Button categoriesAddingButton;
     }
 }
