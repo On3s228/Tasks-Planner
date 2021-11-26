@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.repeatableCheck = new System.Windows.Forms.CheckBox();
@@ -40,14 +39,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.myTextBox1 = new Tasks_Planner.MyTextBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(154, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 27);
-            this.textBox1.TabIndex = 0;
             // 
             // richTextBox1
             // 
@@ -147,11 +140,20 @@
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
+            // myTextBox1
+            // 
+            this.myTextBox1.BorderColor = System.Drawing.Color.Transparent;
+            this.myTextBox1.Location = new System.Drawing.Point(154, 33);
+            this.myTextBox1.Name = "myTextBox1";
+            this.myTextBox1.Size = new System.Drawing.Size(236, 27);
+            this.myTextBox1.TabIndex = 13;
+            // 
             // TaskCreating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 485);
+            this.Controls.Add(this.myTextBox1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.categoriesChecks);
             this.Controls.Add(this.label5);
@@ -163,7 +165,6 @@
             this.Controls.Add(this.repeatableCheck);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
             this.Name = "TaskCreating";
             this.Text = "TaskCreating";
             this.Load += new System.EventHandler(this.TaskCreating_Load);
@@ -173,8 +174,6 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
         private RichTextBox richTextBox1;
         private DateTimePicker dateTimePicker1;
         private CheckBox repeatableCheck;
@@ -186,5 +185,6 @@
         private Label label5;
         private CheckedListBox categoriesChecks;
         private Button saveButton;
+        private MyTextBox myTextBox1;
     }
 }

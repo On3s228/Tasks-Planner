@@ -20,6 +20,10 @@ namespace Tasks_Planner.Forms.TasksCreating
 
         public CheckedListBox CheckedCategories { get => categoriesChecks; set => categoriesChecks = value; }
         public TasksAddingPresenter Presenter { private get; set; }
+        public MyTextBox NameField { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public RichTextBox DescriptionField { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime Date { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<string> Periodicity { get => (List<string>)periodicityCombo.DataSource; set => periodicityCombo.DataSource = value; }
 
         private void TaskCreating_Load(object sender, EventArgs e)
         {

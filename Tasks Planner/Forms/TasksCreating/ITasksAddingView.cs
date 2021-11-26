@@ -9,6 +9,10 @@ namespace Tasks_Planner.Forms.TasksCreating
 {
     public interface ITasksAddingView
     {
+        MyTextBox NameField { get; set; }
+        RichTextBox DescriptionField { get; set; }
+        DateTime Date { get; set; }
+        List<string> Periodicity { get; set; }
         CheckedListBox CheckedCategories { get; set; }
         TasksAddingPresenter Presenter { set; }
     }
