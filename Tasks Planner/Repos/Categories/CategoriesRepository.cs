@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Repos.Categories
@@ -22,14 +23,7 @@ namespace Tasks_Planner.Repos.Categories
             } 
             else
             {
-                _categories = new List<Category>();
-                Category c = new Category
-                {
-                    Id = Category.IdCounter++,
-                    Name = "Задания",
-                    Description = "",
-                };
-                _categories.Add(c);
+                _categories = DefaultRepositories.GetDefaultCategories();
                 Save();
             }
         }
@@ -41,7 +35,7 @@ namespace Tasks_Planner.Repos.Categories
                 _categories.Add(item);
                 Save();
             }
-            else throw new ArgumentException("Непредвиденная ошибка!");
+            else throw new ArgumentException(Messages.Error);
         }
 
         public void Delete(int id)
@@ -51,7 +45,7 @@ namespace Tasks_Planner.Repos.Categories
                 _categories.RemoveAt(id);
                 Save();
             }
-            else throw new ArgumentException("Непредвиденная ошибка!");
+            else throw new ArgumentException(Messages.Error);
         }
 
         public void Dispose()
@@ -65,7 +59,7 @@ namespace Tasks_Planner.Repos.Categories
             {
                 return _categories[id];
             }
-            else throw new ArgumentException("Непредвиденная ошибка!");
+            else throw new ArgumentException(Messages.Error);
         }
 
         public IEnumerable<Category> GetList()
@@ -74,7 +68,7 @@ namespace Tasks_Planner.Repos.Categories
             {
                 return _categories;
             }
-            else throw new ArgumentException("Непредвиденная ошибка!");
+            else throw new ArgumentException(Messages.Error);
         }
 
         public void Save()
@@ -89,7 +83,7 @@ namespace Tasks_Planner.Repos.Categories
                 _categories[id] = item;
                 Save();
             }
-            else throw new ArgumentException("Непредвиденная ошибка!");
+            else throw new ArgumentException(Messages.Error);
         }
     }
 }

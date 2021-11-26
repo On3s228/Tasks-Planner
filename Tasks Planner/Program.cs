@@ -1,4 +1,5 @@
 using Tasks_Planner.Presenters;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
@@ -14,6 +15,7 @@ namespace Tasks_Planner
         static void Main()
         {
             
+            MessageBox.Show(Messages.Test);
             Notifier.StringNotify += delegate (object ex)
             {
                 if (ex is string s)
