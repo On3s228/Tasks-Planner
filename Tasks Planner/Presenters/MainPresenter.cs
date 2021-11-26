@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
+using Tasks_Planner.Forms.TasksCreating;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
@@ -36,6 +37,12 @@ namespace Tasks_Planner.Presenters
         //{
         //    return _tasks;
         //}
+        public void NewTasksAdding()
+        {
+            var form = new TaskCreating();
+            var presenter = new TasksAddingPresenter(form, _tasks, _categories);
+            form.ShowDialog();
+        }
         public void NewCategoryAdding()
         {
             var form = new CategoryAdding();

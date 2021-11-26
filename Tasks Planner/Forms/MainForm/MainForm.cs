@@ -95,6 +95,11 @@ namespace Tasks_Planner
         {
             Presenter.NewCategoryAdding();
         }
+
+        private void taskAddButton_Click(object sender, EventArgs e)
+        {
+            Presenter.NewTasksAdding();
+        }
     }
 
 }

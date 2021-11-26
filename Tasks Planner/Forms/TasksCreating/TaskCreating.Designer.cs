@@ -73,9 +73,11 @@
             this.repeatableCheck.TabIndex = 3;
             this.repeatableCheck.Text = "Повторяемый";
             this.repeatableCheck.UseVisualStyleBackColor = true;
+            this.repeatableCheck.CheckedChanged += new System.EventHandler(this.repeatableCheck_CheckedChanged);
             // 
             // periodicityCombo
             // 
+            this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.periodicityCombo.Enabled = false;
             this.periodicityCombo.FormattingEnabled = true;
             this.periodicityCombo.Location = new System.Drawing.Point(154, 259);

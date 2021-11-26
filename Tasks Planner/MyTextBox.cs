@@ -17,7 +17,7 @@ namespace Tasks_Planner
         static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
         [DllImport("user32.dll")]
         static extern bool RedrawWindow(IntPtr hWnd, IntPtr lprc, IntPtr hrgn, uint flags);
-        Color borderColor = Color.Blue;
+        Color borderColor = Color.Black;
         public Color BorderColor
         {
             get { return borderColor; }

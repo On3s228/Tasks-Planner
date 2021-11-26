@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nameBox = new MyTextBox();/*System.Windows.Forms.TextBox();*/
+            this.nameBox = new Tasks_Planner.MyTextBox();
             this.descriptionRich = new System.Windows.Forms.RichTextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
             // 
             // nameBox
             // 
+            this.nameBox.BorderColor = System.Drawing.Color.Transparent;
             this.nameBox.Location = new System.Drawing.Point(106, 39);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(294, 27);

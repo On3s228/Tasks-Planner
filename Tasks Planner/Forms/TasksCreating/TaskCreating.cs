@@ -7,19 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tasks_Planner.Presenters;
 
 namespace Tasks_Planner.Forms.TasksCreating
 {
-    public partial class TaskCreating : Form
+    public partial class TaskCreating : Form, ITasksAddingView
     {
         public TaskCreating()
         {
             InitializeComponent();
         }
 
+        public CheckedListBox CheckedCategories { get => categoriesChecks; set => categoriesChecks = value; }
+        public TasksAddingPresenter Presenter { private get; set; }
+
         private void TaskCreating_Load(object sender, EventArgs e)
         {
+            periodicityCombo.Items.Add("раз в 30 минут");
+            periodicityCombo.Items.Add("раз в 24 часа");
+        }
 
+        private void repeatableCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (repeatableCheck.Checked)
+            {
+                periodicityCombo.Enabled = true;
+            }
+            else
+            {
+                if (periodicityCombo.SelectedIndex != -1)
+                {
+                    periodicityCombo.SelectedIndex = -1;
+                }
+                periodicityCombo.Enabled = false;
+            }
         }
     }
 }

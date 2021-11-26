@@ -40,6 +40,12 @@
             this.nameColumn = new System.Windows.Forms.ColumnHeader();
             this.taskAddButton = new System.Windows.Forms.Button();
             this.categoriesAddingButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tasksPage = new System.Windows.Forms.TabPage();
+            this.categoriesPage = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
+            this.tasksPage.SuspendLayout();
+            this.categoriesPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -53,20 +59,20 @@
             // 
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(493, 330);
+            this.dateTimePicker1.Location = new System.Drawing.Point(516, 267);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(18, 190);
+            this.monthCalendar1.Location = new System.Drawing.Point(9, 124);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 3;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(493, 212);
+            this.nameBox.Location = new System.Drawing.Point(516, 149);
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(250, 27);
@@ -74,7 +80,7 @@
             // 
             // descriptionRichBox
             // 
-            this.descriptionRichBox.Location = new System.Drawing.Point(493, 245);
+            this.descriptionRichBox.Location = new System.Drawing.Point(516, 182);
             this.descriptionRichBox.Name = "descriptionRichBox";
             this.descriptionRichBox.ReadOnly = true;
             this.descriptionRichBox.Size = new System.Drawing.Size(250, 79);
@@ -88,7 +94,7 @@
             this.nameColumn});
             this.tasksView.FullRowSelect = true;
             this.tasksView.GridLines = true;
-            this.tasksView.Location = new System.Drawing.Point(222, 190);
+            this.tasksView.Location = new System.Drawing.Point(204, 124);
             this.tasksView.MultiSelect = false;
             this.tasksView.Name = "tasksView";
             this.tasksView.Size = new System.Drawing.Size(213, 207);
@@ -108,16 +114,17 @@
             // 
             // taskAddButton
             // 
-            this.taskAddButton.Location = new System.Drawing.Point(242, 409);
+            this.taskAddButton.Location = new System.Drawing.Point(227, 335);
             this.taskAddButton.Name = "taskAddButton";
             this.taskAddButton.Size = new System.Drawing.Size(170, 29);
             this.taskAddButton.TabIndex = 8;
             this.taskAddButton.Text = "Новое напоминание";
             this.taskAddButton.UseVisualStyleBackColor = true;
+            this.taskAddButton.Click += new System.EventHandler(this.taskAddButton_Click);
             // 
             // categoriesAddingButton
             // 
-            this.categoriesAddingButton.Location = new System.Drawing.Point(498, 107);
+            this.categoriesAddingButton.Location = new System.Drawing.Point(433, 332);
             this.categoriesAddingButton.Name = "categoriesAddingButton";
             this.categoriesAddingButton.Size = new System.Drawing.Size(121, 29);
             this.categoriesAddingButton.TabIndex = 9;
@@ -125,25 +132,59 @@
             this.categoriesAddingButton.UseVisualStyleBackColor = true;
             this.categoriesAddingButton.Click += new System.EventHandler(this.categoriesAddingButton_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tasksPage);
+            this.tabControl1.Controls.Add(this.categoriesPage);
+            this.tabControl1.Location = new System.Drawing.Point(2, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(795, 447);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // tasksPage
+            // 
+            this.tasksPage.Controls.Add(this.monthCalendar1);
+            this.tasksPage.Controls.Add(this.taskAddButton);
+            this.tasksPage.Controls.Add(this.tasksView);
+            this.tasksPage.Controls.Add(this.nameBox);
+            this.tasksPage.Controls.Add(this.descriptionRichBox);
+            this.tasksPage.Controls.Add(this.dateTimePicker1);
+            this.tasksPage.Location = new System.Drawing.Point(4, 29);
+            this.tasksPage.Name = "tasksPage";
+            this.tasksPage.Padding = new System.Windows.Forms.Padding(3);
+            this.tasksPage.Size = new System.Drawing.Size(787, 414);
+            this.tasksPage.TabIndex = 0;
+            this.tasksPage.Text = "Напоминания";
+            this.tasksPage.UseVisualStyleBackColor = true;
+            // 
+            // categoriesPage
+            // 
+            this.categoriesPage.Controls.Add(this.categoriesAddingButton);
+            this.categoriesPage.Location = new System.Drawing.Point(4, 29);
+            this.categoriesPage.Name = "categoriesPage";
+            this.categoriesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.categoriesPage.Size = new System.Drawing.Size(787, 414);
+            this.categoriesPage.TabIndex = 1;
+            this.categoriesPage.Text = "Категории";
+            this.categoriesPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.categoriesAddingButton);
-            this.Controls.Add(this.taskAddButton);
-            this.Controls.Add(this.tasksView);
-            this.Controls.Add(this.descriptionRichBox);
-            this.Controls.Add(this.nameBox);
-            this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Планировщик";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.tabControl1.ResumeLayout(false);
+            this.tasksPage.ResumeLayout(false);
+            this.tasksPage.PerformLayout();
+            this.categoriesPage.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -159,5 +200,8 @@
         private ColumnHeader nameColumn;
         private Button taskAddButton;
         private Button categoriesAddingButton;
+        private TabControl tabControl1;
+        private TabPage tasksPage;
+        private TabPage categoriesPage;
     }
 }
