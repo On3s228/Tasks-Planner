@@ -12,9 +12,9 @@ namespace Tasks_Planner.Repos.Tasks
     {
         private readonly string _filePath;
         private readonly List<UserTask>? _tasks;
-        private readonly CategoriesRepository _categories;
+        private readonly IRepository<Category> _categories;
 
-        public TasksRepository(string programPath, CategoriesRepository categoriesRepository)
+        public TasksRepository(string programPath, IRepository<Category> categoriesRepository)
         {
             _filePath = programPath + @"\Tasks.json";
             _categories = categoriesRepository;

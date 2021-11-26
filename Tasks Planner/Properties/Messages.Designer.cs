@@ -122,5 +122,14 @@ namespace Tasks_Planner.Properties {
                 return ResourceManager.GetString("Test", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
     }
 }

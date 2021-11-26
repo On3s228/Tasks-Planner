@@ -14,22 +14,19 @@ namespace Tasks_Planner
         [STAThread]
         static void Main()
         {
-            
-            MessageBox.Show(Messages.Test);
             Notifier.StringNotify += delegate (object ex)
             {
                 if (ex is string s)
                 {
-                    MessageBox.Show(s, "Предупреждение!", MessageBoxButtons.OK);
+                    MessageBox.Show(s, Messages.Warning, MessageBoxButtons.OK);
                 }
             };
             ApplicationConfiguration.Initialize();
             MainForm mainForm = new MainForm();
             MainViewHelper mainViewHelper = new MainViewHelper(mainForm);
             Notifier.GetNotify += mainViewHelper.Notify;
-            var categoriesRepo = new CategoriesRepository(Application.StartupPath);
-            var tasksRepo = new TasksRepository(Application.StartupPath, categoriesRepo);
-            var presenter = new MainPresenter(mainForm, categoriesRepo, tasksRepo);
+            Repositories repos = new Repositories(Application.StartupPath);
+            var presenter = new MainPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
             Application.Run(mainForm);
         }
     }
