@@ -3,6 +3,7 @@ using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner
 {
@@ -18,7 +19,7 @@ namespace Tasks_Planner
             {
                 if (ex is string s)
                 {
-                    MessageBox.Show(s, Messages.Warning, MessageBoxButtons.OK);
+                    MessageBox.Show(s, Messages.Attention, MessageBoxButtons.OK);
                 }
             };
             ApplicationConfiguration.Initialize();
@@ -28,6 +29,8 @@ namespace Tasks_Planner
             Repositories repos = new Repositories(Application.StartupPath);
             var presenter = new MainPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
             var categoriesPresenter = new CategoriesPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
+            Events.MainPresenter = presenter;
+            Events.CategoriesPresenter = categoriesPresenter;
             Application.Run(mainForm);
         }
     }

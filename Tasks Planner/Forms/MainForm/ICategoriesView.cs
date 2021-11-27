@@ -11,8 +11,9 @@ namespace Tasks_Planner.Forms.MainForm
     {
         int SelectedCategory { get; set; }
         ListView CategoriesList { get; set; }
-        MyTextBox CategoryName { get; set; }
+        TextBox CategoryName { get; set; }
         RichTextBox Description { get; set; }
+        Button EditButton { get; set; }
         CategoriesPresenter CategoriesPresenter { set; }
     }
 }

@@ -66,7 +66,7 @@ namespace Tasks_Planner
                 {
                     return categoriesListView.SelectedIndices[categoriesListView.SelectedIndices.Count - 1];
                 }
-                else return 0;
+                else return -1;
             }
             set
             {
@@ -78,9 +78,10 @@ namespace Tasks_Planner
             }
         }
         public ListView CategoriesList { get => categoriesListView; set => categoriesListView = value; }
-        public MyTextBox CategoryName { get => categoryNameBox; set => categoryNameBox = value; }
+        public TextBox CategoryName { get => categoryNameBox; set => categoryNameBox = value; }
         public RichTextBox Description { get => categoryDescRich; set => categoryDescRich = value; }
         public CategoriesPresenter CategoriesPresenter { private get; set; }
+        public Button EditButton { get => editButton; set => editButton = value; }
         #endregion
 
         public MainForm()
@@ -89,7 +90,7 @@ namespace Tasks_Planner
 
             notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
             
-            dateTimePicker1.CustomFormat = "dd MMMM yyyy, HH:mm:ss";
+            dateTimePicker1.CustomFormat = "";
 
         }
 
@@ -132,6 +133,11 @@ namespace Tasks_Planner
         private void categoriesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             CategoriesPresenter.UpdateCategoryView();
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            CategoriesPresenter.Edit();
         }
     }
 

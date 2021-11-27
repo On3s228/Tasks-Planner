@@ -16,6 +16,7 @@ namespace Tasks_Planner.Presenters
         private readonly ICategoriesView _view;
         private readonly IRepository<Category> _categories;
         private readonly IRepository<UserTask> _tasks;
+        private bool IsEditMode = false;
 
         public CategoriesPresenter(ICategoriesView view, IRepository<Category> categories, IRepository<UserTask> tasks)
         {
@@ -26,7 +27,7 @@ namespace Tasks_Planner.Presenters
 
             UpdateCategoriesList();
         }
-        private void UpdateCategoriesList()
+        public void UpdateCategoriesList()
         {
             List<Category> categories = (List<Category>)_categories.GetList();
             int SelectedIndex = _view.SelectedCategory >= 0 ? _view.SelectedCategory : 0;
@@ -51,6 +52,36 @@ namespace Tasks_Planner.Presenters
             {
                 _view.CategoryName.Text = Messages.Empty;
                 _view.Description.Text = Messages.Empty;
+            }
+        }
+        private void Save()
+        {
+            ListViewItem i = _view.CategoriesList.SelectedItems[0];
+            Category c = new Category
+            {
+                Id = Convert.ToInt32(i.SubItems[0].Text),
+                Name = _view.CategoryName.Text,
+                Description = _view.Description.Text
+            };
+            _categories.Update(_view.SelectedCategory, c);
+        }
+        public void Edit()
+        {
+            _view.CategoryName.ReadOnly = IsEditMode;
+            _view.Description.ReadOnly = IsEditMode;
+
+            IsEditMode = !IsEditMode;
+            _view.EditButton.Text = IsEditMode ? Messages.Save : Messages.Edit;
+
+            if (!IsEditMode)
+            {
+                if (_view.SelectedCategory != -1)
+                {
+                    Save();
+                    UpdateCategoriesList();
+                    //UpdateCategoryView();
+                }
+                else MessageBox.Show(Messages.CategoryNotSelected);
             }
         }
     }
