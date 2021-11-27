@@ -43,6 +43,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tasksPage = new System.Windows.Forms.TabPage();
             this.categoriesPage = new System.Windows.Forms.TabPage();
+            this.deleteCategoryButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.categoryDescRich = new System.Windows.Forms.RichTextBox();
+            this.categoryNameBox = new Tasks_Planner.MyTextBox();
+            this.categoriesListView = new System.Windows.Forms.ListView();
+            this.categoryIdColumn = new System.Windows.Forms.ColumnHeader();
+            this.categoryNameColumn = new System.Windows.Forms.ColumnHeader();
             this.tabControl1.SuspendLayout();
             this.tasksPage.SuspendLayout();
             this.categoriesPage.SuspendLayout();
@@ -124,7 +134,7 @@
             // 
             // categoriesAddingButton
             // 
-            this.categoriesAddingButton.Location = new System.Drawing.Point(433, 332);
+            this.categoriesAddingButton.Location = new System.Drawing.Point(34, 355);
             this.categoriesAddingButton.Name = "categoriesAddingButton";
             this.categoriesAddingButton.Size = new System.Drawing.Size(121, 29);
             this.categoriesAddingButton.TabIndex = 9;
@@ -160,6 +170,14 @@
             // 
             // categoriesPage
             // 
+            this.categoriesPage.Controls.Add(this.deleteCategoryButton);
+            this.categoriesPage.Controls.Add(this.editButton);
+            this.categoriesPage.Controls.Add(this.label3);
+            this.categoriesPage.Controls.Add(this.label2);
+            this.categoriesPage.Controls.Add(this.label1);
+            this.categoriesPage.Controls.Add(this.categoryDescRich);
+            this.categoriesPage.Controls.Add(this.categoryNameBox);
+            this.categoriesPage.Controls.Add(this.categoriesListView);
             this.categoriesPage.Controls.Add(this.categoriesAddingButton);
             this.categoriesPage.Location = new System.Drawing.Point(4, 29);
             this.categoriesPage.Name = "categoriesPage";
@@ -168,6 +186,95 @@
             this.categoriesPage.TabIndex = 1;
             this.categoriesPage.Text = "Категории";
             this.categoriesPage.UseVisualStyleBackColor = true;
+            // 
+            // deleteCategoryButton
+            // 
+            this.deleteCategoryButton.Location = new System.Drawing.Point(161, 355);
+            this.deleteCategoryButton.Name = "deleteCategoryButton";
+            this.deleteCategoryButton.Size = new System.Drawing.Size(94, 29);
+            this.deleteCategoryButton.TabIndex = 17;
+            this.deleteCategoryButton.Text = "удалить";
+            this.deleteCategoryButton.UseVisualStyleBackColor = true;
+            // 
+            // editButton
+            // 
+            this.editButton.Location = new System.Drawing.Point(458, 260);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(119, 29);
+            this.editButton.TabIndex = 16;
+            this.editButton.Text = "Редактировать";
+            this.editButton.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(299, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Описание";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(371, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(299, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Название";
+            // 
+            // categoryDescRich
+            // 
+            this.categoryDescRich.Location = new System.Drawing.Point(392, 113);
+            this.categoryDescRich.Name = "categoryDescRich";
+            this.categoryDescRich.ReadOnly = true;
+            this.categoryDescRich.Size = new System.Drawing.Size(259, 120);
+            this.categoryDescRich.TabIndex = 12;
+            this.categoryDescRich.Text = "";
+            // 
+            // categoryNameBox
+            // 
+            this.categoryNameBox.BorderColor = System.Drawing.Color.Transparent;
+            this.categoryNameBox.Location = new System.Drawing.Point(392, 62);
+            this.categoryNameBox.Name = "categoryNameBox";
+            this.categoryNameBox.ReadOnly = true;
+            this.categoryNameBox.Size = new System.Drawing.Size(259, 27);
+            this.categoryNameBox.TabIndex = 11;
+            // 
+            // categoriesListView
+            // 
+            this.categoriesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.categoryIdColumn,
+            this.categoryNameColumn});
+            this.categoriesListView.FullRowSelect = true;
+            this.categoriesListView.GridLines = true;
+            this.categoriesListView.Location = new System.Drawing.Point(34, 27);
+            this.categoriesListView.MultiSelect = false;
+            this.categoriesListView.Name = "categoriesListView";
+            this.categoriesListView.Size = new System.Drawing.Size(221, 322);
+            this.categoriesListView.TabIndex = 10;
+            this.categoriesListView.UseCompatibleStateImageBehavior = false;
+            this.categoriesListView.View = System.Windows.Forms.View.Details;
+            this.categoriesListView.SelectedIndexChanged += new System.EventHandler(this.categoriesListView_SelectedIndexChanged);
+            // 
+            // categoryIdColumn
+            // 
+            this.categoryIdColumn.Text = "ID";
+            // 
+            // categoryNameColumn
+            // 
+            this.categoryNameColumn.Text = "Название";
+            this.categoryNameColumn.Width = 157;
             // 
             // MainForm
             // 
@@ -184,6 +291,7 @@
             this.tasksPage.ResumeLayout(false);
             this.tasksPage.PerformLayout();
             this.categoriesPage.ResumeLayout(false);
+            this.categoriesPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -203,5 +311,15 @@
         private TabControl tabControl1;
         private TabPage tasksPage;
         private TabPage categoriesPage;
+        private ListView categoriesListView;
+        private ColumnHeader categoryIdColumn;
+        private ColumnHeader categoryNameColumn;
+        private RichTextBox categoryDescRich;
+        private MyTextBox categoryNameBox;
+        private Button editButton;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Button deleteCategoryButton;
     }
 }

@@ -12,8 +12,9 @@ using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner
 {
-    public partial class MainForm : Form, IMainView
+    public partial class MainForm : Form, IMainView, ICategoriesView
     {
+        #region IMainView
         public int SelectedTask 
         { 
             get
@@ -33,6 +34,7 @@ namespace Tasks_Planner
                 }
             }
         }
+        
         NotifyIcon IMainView.Icon { get => notifyIcon1; set => notifyIcon1 = value; }
         public ListView TasksView { get => tasksView; set => tasksView = value; }
         public string NameField { get => nameBox.Text; set => nameBox.Text = value; }
@@ -54,6 +56,32 @@ namespace Tasks_Planner
 
         public MainPresenter Presenter { private get; set; }
         public bool IsVisible { get => Visible; set => Visible = value; }
+        #endregion
+        #region ICategoriesView
+        public int SelectedCategory
+        {
+            get
+            {
+                if (categoriesListView.SelectedIndices.Count > 0)
+                {
+                    return categoriesListView.SelectedIndices[categoriesListView.SelectedIndices.Count - 1];
+                }
+                else return 0;
+            }
+            set
+            {
+                if (categoriesListView.SelectedIndices.Count > 0)
+                {
+                    categoriesListView.SelectedIndices.Clear();
+                    categoriesListView.SelectedIndices.Add(value);
+                }
+            }
+        }
+        public ListView CategoriesList { get => categoriesListView; set => categoriesListView = value; }
+        public MyTextBox CategoryName { get => categoryNameBox; set => categoryNameBox = value; }
+        public RichTextBox Description { get => categoryDescRich; set => categoryDescRich = value; }
+        public CategoriesPresenter CategoriesPresenter { private get; set; }
+        #endregion
 
         public MainForm()
         {
@@ -99,6 +127,11 @@ namespace Tasks_Planner
         private void taskAddButton_Click(object sender, EventArgs e)
         {
             Presenter.NewTasksAdding();
+        }
+
+        private void categoriesListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CategoriesPresenter.UpdateCategoryView();
         }
     }
 

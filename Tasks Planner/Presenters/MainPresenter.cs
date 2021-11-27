@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
 using Tasks_Planner.Forms.TasksCreating;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
@@ -73,8 +74,8 @@ namespace Tasks_Planner.Presenters
             }
             else
             {
-                _view.NameField = "";
-                _view.DescriptionField = "";
+                _view.NameField = Messages.Empty;
+                _view.DescriptionField = Messages.Empty;
                 _view.Date = DateTime.MinValue;
             }
         }

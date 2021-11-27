@@ -27,6 +27,7 @@ namespace Tasks_Planner
             Notifier.GetNotify += mainViewHelper.Notify;
             Repositories repos = new Repositories(Application.StartupPath);
             var presenter = new MainPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
+            var categoriesPresenter = new CategoriesPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
             Application.Run(mainForm);
         }
     }
