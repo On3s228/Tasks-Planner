@@ -49,5 +49,10 @@ namespace Tasks_Planner.Forms.CategoriesAdding
         {
             nameBox.BorderColor = string.IsNullOrWhiteSpace(nameBox.Text) ? Color.Red : Color.Transparent;
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Presenter.AddCategory();
+        }
     }
 }

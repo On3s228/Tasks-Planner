@@ -79,9 +79,8 @@ namespace Tasks_Planner.Presenters
                 {
                     Save();
                     UpdateCategoriesList();
-                    //UpdateCategoryView();
                 }
-                else MessageBox.Show(Messages.CategoryNotSelected);
+                else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
             }
         }
     }

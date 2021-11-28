@@ -144,6 +144,9 @@
   <data name="Error" xml:space="preserve">
     <value>Error!!!</value>
   </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Некорректное имя, заполните поле в верном формате!</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>

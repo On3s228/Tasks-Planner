@@ -35,7 +35,7 @@ namespace Tasks_Planner
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultPeriodicDesc,
                 TaskDate = new DateTime(2021, 11, 23, 19, 30, 0),
-                Categories = new List<Category>()
+                CategoriesID = new List<int>()
             };
             t.Period = 30000;
             UserTask t1 = new UserTask
@@ -44,10 +44,10 @@ namespace Tasks_Planner
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultTaskDesc,
                 TaskDate = new DateTime(2022, 11, 24),
-                Categories = new List<Category>()
+                CategoriesID = new List<int>()
             };
-            t.Categories.Add(c);
-            t1.Categories.Add(c);
+            t.CategoriesID.Add(c.Id);
+            t1.CategoriesID.Add(c.Id);
             tasks.Add(t);
             tasks.Add(t1);
 

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tasks_Planner.Forms.CategoriesAdding;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner.Presenters
 {
@@ -20,9 +22,24 @@ namespace Tasks_Planner.Presenters
             _view.Presenter = this;
             _categories = categories;
         }
-        public void ValidateName()
+        private bool ValidateName()
         {
-
+            return !string.IsNullOrWhiteSpace(_view.NameField.Text);
+        }
+        public void AddCategory()
+        {
+            if (ValidateName())
+            {
+                Category c = new Category
+                {
+                    Id = Category.IdCounter++,
+                    Name = _view.NameField.Text,
+                    Description = _view.DescriptionField.Text
+                };
+                _categories.Create(c);
+                Events.CategoriesListChanged();
+            }
+            else Notifier.StringNotify?.Invoke(Messages.InvalidName);
         }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.descriptionBox = new System.Windows.Forms.RichTextBox();
+            this.dateField = new System.Windows.Forms.DateTimePicker();
             this.repeatableCheck = new System.Windows.Forms.CheckBox();
             this.periodicityCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,23 +39,25 @@
             this.label5 = new System.Windows.Forms.Label();
             this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.myTextBox1 = new Tasks_Planner.MyTextBox();
+            this.nameBox = new Tasks_Planner.MyTextBox();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // descriptionBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(154, 70);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(236, 120);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.descriptionBox.Location = new System.Drawing.Point(154, 70);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(236, 120);
+            this.descriptionBox.TabIndex = 1;
+            this.descriptionBox.Text = "";
             // 
-            // dateTimePicker1
+            // dateField
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(154, 196);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(236, 27);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateField.CustomFormat = "dd.MM.yyyy, HH:mm:ss";
+            this.dateField.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateField.Location = new System.Drawing.Point(154, 196);
+            this.dateField.Name = "dateField";
+            this.dateField.Size = new System.Drawing.Size(236, 27);
+            this.dateField.TabIndex = 2;
             // 
             // repeatableCheck
             // 
@@ -81,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 40);
+            this.label1.Location = new System.Drawing.Point(13, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 5;
@@ -90,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 73);
+            this.label2.Location = new System.Drawing.Point(13, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 6;
@@ -99,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 201);
+            this.label3.Location = new System.Drawing.Point(13, 201);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 7;
@@ -108,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 262);
+            this.label4.Location = new System.Drawing.Point(13, 262);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 20);
             this.label4.TabIndex = 8;
@@ -117,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 298);
+            this.label5.Location = new System.Drawing.Point(13, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 20);
             this.label5.TabIndex = 9;
@@ -140,20 +142,20 @@
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // myTextBox1
+            // nameBox
             // 
-            this.myTextBox1.BorderColor = System.Drawing.Color.Transparent;
-            this.myTextBox1.Location = new System.Drawing.Point(154, 33);
-            this.myTextBox1.Name = "myTextBox1";
-            this.myTextBox1.Size = new System.Drawing.Size(236, 27);
-            this.myTextBox1.TabIndex = 13;
+            this.nameBox.BorderColor = System.Drawing.Color.Transparent;
+            this.nameBox.Location = new System.Drawing.Point(154, 33);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(236, 27);
+            this.nameBox.TabIndex = 13;
             // 
             // TaskCreating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 485);
-            this.Controls.Add(this.myTextBox1);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.categoriesChecks);
             this.Controls.Add(this.label5);
@@ -163,8 +165,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.periodicityCombo);
             this.Controls.Add(this.repeatableCheck);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.dateField);
+            this.Controls.Add(this.descriptionBox);
             this.Name = "TaskCreating";
             this.Text = "TaskCreating";
             this.Load += new System.EventHandler(this.TaskCreating_Load);
@@ -174,8 +176,8 @@
         }
 
         #endregion
-        private RichTextBox richTextBox1;
-        private DateTimePicker dateTimePicker1;
+        private RichTextBox descriptionBox;
+        private DateTimePicker dateField;
         private CheckBox repeatableCheck;
         private ComboBox periodicityCombo;
         private Label label1;
@@ -185,6 +187,6 @@
         private Label label5;
         private CheckedListBox categoriesChecks;
         private Button saveButton;
-        private MyTextBox myTextBox1;
+        private MyTextBox nameBox;
     }
 }
