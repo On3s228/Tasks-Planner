@@ -12,14 +12,14 @@ namespace Tasks_Planner.Repos.Categories
     public class CategoriesRepository : IRepository<Category>
     {
         private readonly string _filePath;
-        private readonly List<Category>? _categories;
+        private readonly Categories? _categories;
 
         public CategoriesRepository(string programPath)
         {
             _filePath = programPath + @"\Categories.json";
             if (File.Exists(_filePath))
             {
-                _categories = JSerializer<List<Category>>.Deserialize(_filePath);
+                _categories = JSerializer<Categories>.Deserialize(_filePath);
             } 
             else
             {
@@ -30,10 +30,18 @@ namespace Tasks_Planner.Repos.Categories
 
         public void Create(Category item)
         {
-            if (_categories != null)
+            if (_categories?.CategoriesList != null)
             {
-                _categories.Add(item);
-                Save();
+                if (!_categories.CategoriesList.Contains(item))
+                {
+                    _categories.CategoriesList?.Add(item);
+                    Save();
+                }
+                else
+                {
+                    Notifier.StringNotify?.Invoke(Messages.CategoryExists);
+                    Categories.IdCounter--;
+                }
             }
             else throw new ArgumentException(Messages.Error);
         }
@@ -42,7 +50,7 @@ namespace Tasks_Planner.Repos.Categories
         {
             if (_categories != null)
             {
-                _categories.RemoveAt(id);
+                _categories.CategoriesList?.RemoveAt(id);
                 Save();
             }
             else throw new ArgumentException(Messages.Error);
@@ -55,32 +63,32 @@ namespace Tasks_Planner.Repos.Categories
 
         public Category GetByID(int id)
         {
-            if (_categories != null)
+            if (_categories?.CategoriesList != null)
             {
-                return _categories[id];
+                return _categories.CategoriesList[id];
             }
             else throw new ArgumentException(Messages.Error);
         }
 
         public IEnumerable<Category> GetList()
         {
-            if (_categories != null)
+            if (_categories?.CategoriesList != null)
             {
-                return _categories;
+                return _categories.CategoriesList;
             }
             else throw new ArgumentException(Messages.Error);
         }
 
         public void Save()
         {
-            JSerializer<List<Category>?>.Serialize(_categories, _filePath);
+            JSerializer<Categories?>.Serialize(_categories, _filePath);
         }
 
         public void Update(int id, Category item)
         {
-            if (_categories != null)
+            if (_categories?.CategoriesList != null)
             {
-                _categories[id] = item;
+                _categories.CategoriesList[id] = item;
                 Save();
             }
             else throw new ArgumentException(Messages.Error);

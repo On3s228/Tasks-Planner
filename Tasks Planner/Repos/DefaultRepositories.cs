@@ -12,16 +12,19 @@ namespace Tasks_Planner
 {
     public class DefaultRepositories
     {
-        public static List<Category> GetDefaultCategories()
+        public static Categories GetDefaultCategories()
         {
-            List<Category> categories = new List<Category>();
+            Categories categories = new Categories
+            {
+                CategoriesList = new List<Category>()
+            };
             Category c = new Category
             {
-                Id = Category.IdCounter++,
+                Id = ++Categories.IdCounter,
                 Name = Messages.DefaultCategoryName,
                 Description = Messages.Empty,
             };
-            categories.Add(c);
+            categories.CategoriesList.Add(c);
 
             return categories;
         }

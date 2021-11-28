@@ -70,6 +70,15 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Категория с таким именем уже существует..
+        /// </summary>
+        public static string CategoryExists {
+            get {
+                return ResourceManager.GetString("CategoryExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Категория не выбрана, сохранение невозможно..
         /// </summary>
         public static string CategoryNotSelected {

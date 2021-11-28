@@ -32,7 +32,7 @@ namespace Tasks_Planner.Presenters
             {
                 Category c = new Category
                 {
-                    Id = Category.IdCounter++,
+                    Id = ++Categories.IdCounter,
                     Name = _view.NameField.Text,
                     Description = _view.DescriptionField.Text
                 };

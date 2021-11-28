@@ -120,6 +120,9 @@
   <data name="Attention" xml:space="preserve">
     <value>Attention!</value>
   </data>
+  <data name="CategoryExists" xml:space="preserve">
+    <value>Категория с таким именем уже существует.</value>
+  </data>
   <data name="CategoryNotSelected" xml:space="preserve">
     <value>Категория не выбрана, сохранение невозможно.</value>
   </data>

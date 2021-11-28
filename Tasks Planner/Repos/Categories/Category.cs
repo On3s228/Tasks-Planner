@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,15 @@ using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Repos.Categories
 {
+    public class Categories
+    {
+        public List<Category>? CategoriesList { get; set; }
+        [JsonProperty]
+        public static int IdCounter { get; set; }
+        public Categories() { }
+    }
     public class Category : IEquatable<Category?>
     {
-        public static int IdCounter = 1;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -23,8 +30,7 @@ namespace Tasks_Planner.Repos.Categories
         public bool Equals(Category? other)
         {
             return other != null &&
-                   Name == other.Name &&
-                   Description == other.Description;
+                   Name == other.Name;
         }
 
         public override int GetHashCode()
