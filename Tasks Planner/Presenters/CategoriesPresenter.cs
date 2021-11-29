@@ -65,23 +65,36 @@ namespace Tasks_Planner.Presenters
             };
             _categories.Update(_view.SelectedCategory, c);
         }
+        private bool IsValid()
+        {
+            return !string.IsNullOrWhiteSpace(_view.CategoryName.Text);
+        }
+
+        private void ChangeFieldsState(bool state)
+        {
+            _view.CategoryName.ReadOnly = state;
+            _view.Description.ReadOnly = state;
+
+            _view.EditButton.Text = !state ? Messages.Save : Messages.Edit;
+        }
         public void Edit()
         {
-            _view.CategoryName.ReadOnly = IsEditMode;
-            _view.Description.ReadOnly = IsEditMode;
-
-            IsEditMode = !IsEditMode;
-            _view.EditButton.Text = IsEditMode ? Messages.Save : Messages.Edit;
-
-            if (!IsEditMode)
+            if (_view.SelectedCategory != -1)
             {
-                if (_view.SelectedCategory != -1)
+                IsEditMode = !IsEditMode;
+                ChangeFieldsState(!IsEditMode);
+
+                if (IsEditMode) return;
+
+                if (IsValid())
                 {
                     Save();
                     UpdateCategoriesList();
                 }
-                else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
+                else Notifier.StringNotify?.Invoke(Messages.InvalidName);
+
             }
+            else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
         }
     }
 }

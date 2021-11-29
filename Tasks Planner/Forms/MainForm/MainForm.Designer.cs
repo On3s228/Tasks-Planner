@@ -49,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.categoryDescRich = new System.Windows.Forms.RichTextBox();
-            this.categoryNameBox = new TextBox();//Tasks_Planner.MyTextBox();
+            this.categoryNameBox = new Tasks_Planner.MyTextBox();
             this.categoriesListView = new System.Windows.Forms.ListView();
             this.categoryIdColumn = new System.Windows.Forms.ColumnHeader();
             this.categoryNameColumn = new System.Windows.Forms.ColumnHeader();
@@ -246,7 +246,7 @@
             // 
             // categoryNameBox
             // 
-            //this.categoryNameBox.BorderColor = System.Drawing.Color.Transparent;
+            this.categoryNameBox.BorderColor = System.Drawing.Color.Transparent;
             this.categoryNameBox.Location = new System.Drawing.Point(392, 62);
             this.categoryNameBox.Name = "categoryNameBox";
             this.categoryNameBox.ReadOnly = true;
@@ -317,7 +317,7 @@
         private ColumnHeader categoryIdColumn;
         private ColumnHeader categoryNameColumn;
         private RichTextBox categoryDescRich;
-        private TextBox categoryNameBox;
+        private MyTextBox categoryNameBox;
         private Button editButton;
         private Label label3;
         private Label label2;

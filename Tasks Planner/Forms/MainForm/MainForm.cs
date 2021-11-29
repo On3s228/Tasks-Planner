@@ -78,7 +78,7 @@ namespace Tasks_Planner
             }
         }
         public ListView CategoriesList { get => categoriesListView; set => categoriesListView = value; }
-        public TextBox CategoryName { get => categoryNameBox; set => categoryNameBox = value; }
+        public MyTextBox CategoryName { get => categoryNameBox; set => categoryNameBox = value; }
         public RichTextBox Description { get => categoryDescRich; set => categoryDescRich = value; }
         public CategoriesPresenter CategoriesPresenter { private get; set; }
         public Button EditButton { get => editButton; set => editButton = value; }
