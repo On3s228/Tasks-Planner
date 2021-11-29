@@ -34,17 +34,6 @@ namespace Tasks_Planner.Forms.CategoriesAdding
 
         }
 
-        private void nameBox_Enter(object sender, EventArgs e)
-        {
-            //if (string.IsNullOrWhiteSpace(nameBox.Text))
-            //{
-            //    nameBox.ForeColor = Color.Red;
-            //    nameBox.BackColor = Color.Black;
-
-            //    nameBox.Select(nameBox.Text.Length, 0);
-            //}
-        }
-
         private void nameBox_Leave(object? sender, EventArgs e)
         {
             nameBox.BorderColor = string.IsNullOrWhiteSpace(nameBox.Text) ? Color.Red : Color.Transparent;

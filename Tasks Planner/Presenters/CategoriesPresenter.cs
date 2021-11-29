@@ -82,7 +82,8 @@ namespace Tasks_Planner.Presenters
             if (_view.SelectedCategory != -1)
             {
                 IsEditMode = !IsEditMode;
-                ChangeFieldsState(!IsEditMode);
+                if (IsValid())
+                    ChangeFieldsState(!IsEditMode);
 
                 if (IsEditMode) return;
 
@@ -95,6 +96,10 @@ namespace Tasks_Planner.Presenters
 
             }
             else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
+        }
+        public void OnNameFieldLeave()
+        {
+            _view.CategoryName.BorderColor = string.IsNullOrWhiteSpace(_view.CategoryName.Text) && !_view.CategoryName.ReadOnly ? Color.Red : Color.Transparent;
         }
     }
 }

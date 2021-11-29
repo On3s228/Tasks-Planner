@@ -89,9 +89,16 @@ namespace Tasks_Planner
             InitializeComponent();
 
             notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
+            categoryNameBox.Leave += CategoryNameBox_Leave;
+            categoryNameBox.TextChanged += CategoryNameBox_Leave;
             
             dateTimePicker1.CustomFormat = "";
 
+        }
+
+        private void CategoryNameBox_Leave(object? sender, EventArgs e)
+        {
+            CategoriesPresenter.OnNameFieldLeave();
         }
 
         private void NotifyIcon1_MouseDoubleClick(object? sender, MouseEventArgs e)

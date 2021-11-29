@@ -61,7 +61,6 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(294, 27);
             this.nameBox.TabIndex = 2;
-            this.nameBox.Enter += new System.EventHandler(this.nameBox_Enter);
             this.nameBox.Leave += new System.EventHandler(this.nameBox_Leave);
             // 
             // descriptionRich
