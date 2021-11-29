@@ -124,7 +124,7 @@
     <value>Категория с таким именем уже существует.</value>
   </data>
   <data name="CategoryNotSelected" xml:space="preserve">
-    <value>Категория не выбрана, сохранение невозможно.</value>
+    <value>Категория не выбрана :/</value>
   </data>
   <data name="DefaultCategoryName" xml:space="preserve">
     <value>Tasks</value>

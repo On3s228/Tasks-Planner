@@ -79,7 +79,7 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория не выбрана, сохранение невозможно..
+        ///   Looks up a localized string similar to Категория не выбрана :/.
         /// </summary>
         public static string CategoryNotSelected {
             get {
