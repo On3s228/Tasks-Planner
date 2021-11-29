@@ -119,7 +119,6 @@ namespace Tasks_Planner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.descriptionBox = new System.Windows.Forms.RichTextBox();
+            this.descriptionBox = new Tasks_Planner.MyRichTextBox();
             this.dateField = new System.Windows.Forms.DateTimePicker();
             this.repeatableCheck = new System.Windows.Forms.CheckBox();
             this.periodicityCombo = new System.Windows.Forms.ComboBox();
@@ -40,10 +40,14 @@
             this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.nameBox = new Tasks_Planner.MyTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // descriptionBox
             // 
+            this.descriptionBox.BorderColor = System.Drawing.Color.Transparent;
             this.descriptionBox.Location = new System.Drawing.Point(154, 70);
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(236, 120);
@@ -150,11 +154,44 @@
             this.nameBox.Size = new System.Drawing.Size(236, 27);
             this.nameBox.TabIndex = 13;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(87, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(15, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "*";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(87, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 20);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(49, 201);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "*";
+            // 
             // TaskCreating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 485);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.categoriesChecks);
@@ -176,7 +213,7 @@
         }
 
         #endregion
-        private RichTextBox descriptionBox;
+        private MyRichTextBox descriptionBox;
         private DateTimePicker dateField;
         private CheckBox repeatableCheck;
         private ComboBox periodicityCombo;
@@ -188,5 +225,8 @@
         private CheckedListBox categoriesChecks;
         private Button saveButton;
         private MyTextBox nameBox;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }

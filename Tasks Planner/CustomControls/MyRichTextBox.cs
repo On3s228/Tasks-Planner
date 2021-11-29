@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tasks_Planner.Properties
+namespace Tasks_Planner
 {
     public partial class MyRichTextBox : RichTextBox
     {
