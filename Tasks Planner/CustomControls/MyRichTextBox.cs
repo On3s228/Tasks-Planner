@@ -4,10 +4,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Tasks_Planner.CustomControls;
 
 namespace Tasks_Planner
 {
-    public partial class MyRichTextBox : RichTextBox
+    public partial class MyRichTextBox : RichTextBox, ICustomTextBox
     {
         const int WM_NCPAINT = 0x85;
         const uint RDW_INVALIDATE = 0x1;

@@ -53,7 +53,7 @@ namespace Tasks_Planner.Repos.Tasks
         {
             return other != null &&
                    Name == other.Name &&
-                   Description == other.Description
+                   Description == other.Description;
         }
 
         public override int GetHashCode()

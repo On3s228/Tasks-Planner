@@ -33,5 +33,18 @@ namespace Tasks_Planner.Presenters
                 _view.CheckedCategories.Items.Add(category, false);
             }
         }
+        private bool IsValid()
+        {
+            return !string.IsNullOrWhiteSpace(_view.NameField.Text) &&
+                !string.IsNullOrWhiteSpace(_view.DescriptionField.Text) &&
+                _view.Date >= DateTime.Now.AddMinutes(30);
+        }
+        public void Add()
+        {
+            if (IsValid())
+            {
+
+            }
+        }
     }
 }

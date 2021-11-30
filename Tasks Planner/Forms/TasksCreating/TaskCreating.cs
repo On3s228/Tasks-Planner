@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tasks_Planner.CustomControls;
 using Tasks_Planner.Presenters;
 
 namespace Tasks_Planner.Forms.TasksCreating
@@ -16,6 +17,20 @@ namespace Tasks_Planner.Forms.TasksCreating
         public TaskCreating()
         {
             InitializeComponent();
+
+            nameBox.Leave += NameBox_Leave;
+            nameBox.TextChanged += NameBox_Leave;
+            descriptionBox.Leave += NameBox_Leave;
+            descriptionBox.TextChanged += NameBox_Leave;
+        }
+
+        private void NameBox_Leave(object? sender, EventArgs e)
+        {
+            //todo: объединить MyRichTextBox и MyTextBox в один интерфейс для более удобного кода ивентов
+            if (sender is ICustomTextBox myBox)
+            {
+                myBox.BorderColor = string.IsNullOrWhiteSpace(myBox.Text) ? Color.Red : Color.Transparent;
+            }
         }
 
         public CheckedListBox CheckedCategories { get => categoriesChecks; set => categoriesChecks = value; }

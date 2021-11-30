@@ -2,10 +2,11 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Tasks_Planner.CustomControls;
 
 namespace Tasks_Planner
 {
-    public class MyTextBox : TextBox
+    public class MyTextBox : TextBox, ICustomTextBox
     {
         const int WM_NCPAINT = 0x85;
         const uint RDW_INVALIDATE = 0x1;
