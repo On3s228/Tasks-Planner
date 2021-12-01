@@ -145,6 +145,7 @@
             this.saveButton.TabIndex = 12;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // nameBox
             // 

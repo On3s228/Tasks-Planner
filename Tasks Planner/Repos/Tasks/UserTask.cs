@@ -1,44 +1,82 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Tasks_Planner.Repos.Categories;
 
 namespace Tasks_Planner.Repos.Tasks
 {
+    public class UserTasks
+    {
+        public List<UserTask>? TasksList { get; set; }
+        [JsonProperty]
+        public static int IdCounter { get; set; }
+        public UserTasks() { }
+    }
     public class UserTask : IEquatable<UserTask?>
     {
-        public static int IdCounter = 1;
-        
+
         private int period;
+        private DateTime taskDate;
 
         public int Period
         {
             get => period;
             set
             {
-                if (value != 0)
+                if (value > 0)
                 {
                     period = value;
-                    TimerCallback tc = new TimerCallback(Notifier.GetNotify);
-                    Timer = new System.Threading.Timer(tc, this, value, value);
-                } else
-                {
-                    if (Timer != null)
+                    PeriodicTimer = new System.Windows.Forms.Timer();
+                    PeriodicTimer.Interval = value;
+                    PeriodicTimer.Tick += (sender, args) =>
                     {
-                        Timer.Dispose();
+                        Notifier.GetNotify?.Invoke(this);
+                        LastTick = DateTime.Now;
+                    };
+                    PeriodicTimer.Start();
+                }
+                else
+                {
+                    if (PeriodicTimer != null)
+                    {
+                        PeriodicTimer.Dispose();
                     }
                 }
             }
         }
+        public DateTime TaskDate 
+        { 
+            get => taskDate; 
+            set
+            {
+                taskDate = value;
+                if (value > DateTime.Now)
+                {
+                    DefaultTimer = new System.Windows.Forms.Timer();
+                    DefaultTimer.Interval = 60000;
+                    DefaultTimer.Tick += (sender, args) =>
+                    {
+                        if (DateTime.Now >= taskDate)
+                        {
+                            Notifier.GetNotify?.Invoke(this);
+                            IsHandled = true;
+                        }
+                    };
+                    DefaultTimer.Enabled = true;
+                }
+            }
+        }
         [JsonIgnore]
-        public System.Threading.Timer Timer { get; set; } //in miliseconds
+        private System.Windows.Forms.Timer PeriodicTimer { get; set; } //in miliseconds
+        [JsonIgnore]
+        private System.Windows.Forms.Timer DefaultTimer { get; set; }
+        public DateTime LastTick { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime TaskDate { get; set; }
         public List<int> CategoriesID { get; set; }
         public bool IsHandled { get; set; }
 

@@ -11,7 +11,7 @@ namespace Tasks_Planner.Repos.Tasks
     public class TasksRepository : IRepository<UserTask>
     {
         private readonly string _filePath;
-        private readonly List<UserTask>? _tasks;
+        private readonly UserTasks? _tasks;
         private readonly IRepository<Category> _categories;
 
         public TasksRepository(string programPath, IRepository<Category> categoriesRepository)
@@ -20,7 +20,7 @@ namespace Tasks_Planner.Repos.Tasks
             _categories = categoriesRepository;
             if (File.Exists(_filePath))
             {
-                _tasks = JSerializer<List<UserTask>>.Deserialize(_filePath);
+                _tasks = JSerializer<UserTasks>.Deserialize(_filePath);
             } else
             {
                 _tasks = DefaultRepositories.GetDefaultTasks(_categories);
@@ -33,7 +33,8 @@ namespace Tasks_Planner.Repos.Tasks
         {
             if (_tasks != null)
             {
-                _tasks.Add(item);
+                _tasks.TasksList?.Add(item);
+                Save();
             } else throw new ArgumentException(Messages.Error);
         }
 
@@ -41,7 +42,7 @@ namespace Tasks_Planner.Repos.Tasks
         {
             if (_tasks != null)
             {
-                _tasks.RemoveAt(id);
+                _tasks.TasksList?.RemoveAt(id);
                 Save();
             }
         }
@@ -53,31 +54,31 @@ namespace Tasks_Planner.Repos.Tasks
 
         public UserTask GetByID(int id)
         {
-            if (_tasks != null)
+            if (_tasks != null && _tasks.TasksList != null)
             {
-                return _tasks[id];
+                return _tasks.TasksList[id];
             }
             else throw new ArgumentException(Messages.Error);
         }
 
         public IEnumerable<UserTask> GetList()
         {
-            if (_tasks != null)
+            if (_tasks != null && _tasks.TasksList != null)
             {
-                return _tasks; 
+                return _tasks.TasksList; 
             } else throw new ArgumentException(Messages.Error);
         }
 
         public void Save()
         {
-            JSerializer<List<UserTask>?>.Serialize(_tasks, _filePath);
+            JSerializer<UserTasks?>.Serialize(_tasks, _filePath);
         }
 
         public void Update(int id, UserTask item)
         {
-            if (_tasks != null)
+            if (_tasks != null && _tasks.TasksList != null)
             {
-                _tasks[id] = item;
+                _tasks.TasksList[id] = item;
                 Save(); 
             }
         }

@@ -7,6 +7,7 @@ using Tasks_Planner.Forms.TasksCreating;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner.Presenters
 {
@@ -15,6 +16,7 @@ namespace Tasks_Planner.Presenters
         private readonly ITasksAddingView _view;
         private readonly IRepository<UserTask> _tasks;
         private readonly IRepository<Category> _categories;
+        private readonly int[] Periods = { 3600, 7200, 14400, 28800, 43200, 86400, 259200, 604800, 2592000};
 
         public TasksAddingPresenter(ITasksAddingView view, IRepository<UserTask> tasks, IRepository<Category> categories)
         {
@@ -43,7 +45,27 @@ namespace Tasks_Planner.Presenters
         {
             if (IsValid())
             {
-
+                UserTask task = new UserTask
+                {
+                    Id = ++UserTasks.IdCounter,
+                    Name = _view.NameField.Text,
+                    Description = _view.DescriptionField.Text,
+                    TaskDate = _view.Date,
+                    IsHandled = false
+                };
+                if (_view.IsPeriodic)
+                {
+                    task.Period = Periods[_view.Periodicity.SelectedIndex];
+                }
+                List<string> categoriesNames = new List<string>();
+                foreach (var item in _view.CheckedCategories.CheckedItems)
+                {
+                    categoriesNames.Add(item.ToString()); 
+                }
+                var checkedCategories = _categories.GetList().ToList().FindAll(c => categoriesNames.Contains(c.Name));
+                task.CategoriesID = (from category in checkedCategories select category.Id).ToList();
+                _tasks.Create(task);
+                Events.TasksListChanged();
             }
         }
     }

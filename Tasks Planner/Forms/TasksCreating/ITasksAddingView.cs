@@ -12,7 +12,8 @@ namespace Tasks_Planner.Forms.TasksCreating
         MyTextBox NameField { get; set; }
         MyRichTextBox DescriptionField { get; set; }
         DateTime Date { get; set; }
-        List<string> Periodicity { get; set; }
+        bool IsPeriodic { get; set; }
+        ComboBox Periodicity { get; set; }
         CheckedListBox CheckedCategories { get; set; }
         TasksAddingPresenter Presenter { set; }
     }

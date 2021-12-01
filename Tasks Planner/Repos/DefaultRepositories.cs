@@ -28,13 +28,16 @@ namespace Tasks_Planner
 
             return categories;
         }
-        public static List<UserTask> GetDefaultTasks(IRepository<Category> categories)
+        public static UserTasks GetDefaultTasks(IRepository<Category> categories)
         {
-            List<UserTask> tasks = new List<UserTask>();
+            UserTasks tasks = new UserTasks
+            {
+                TasksList = new List<UserTask>()
+            };
             Category c = categories.GetByID(0);
             UserTask t = new UserTask
             {
-                Id = UserTask.IdCounter++,
+                Id = ++UserTasks.IdCounter,
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultPeriodicDesc,
                 TaskDate = new DateTime(2021, 11, 23, 19, 30, 0),
@@ -43,7 +46,7 @@ namespace Tasks_Planner
             t.Period = 30000;
             UserTask t1 = new UserTask
             {
-                Id = UserTask.IdCounter++,
+                Id = ++UserTasks.IdCounter,
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultTaskDesc,
                 TaskDate = new DateTime(2022, 11, 24),
@@ -51,8 +54,10 @@ namespace Tasks_Planner
             };
             t.CategoriesID.Add(c.Id);
             t1.CategoriesID.Add(c.Id);
-            tasks.Add(t);
-            tasks.Add(t1);
+
+            tasks.TasksList.Add(t);
+            tasks.TasksList.Add(t1);
+
 
             return tasks;
         }
