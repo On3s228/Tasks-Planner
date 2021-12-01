@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.descriptionRichBox = new System.Windows.Forms.RichTextBox();
             this.tasksView = new System.Windows.Forms.ListView();
@@ -53,6 +52,14 @@
             this.categoriesListView = new System.Windows.Forms.ListView();
             this.categoryIdColumn = new System.Windows.Forms.ColumnHeader();
             this.categoryNameColumn = new System.Windows.Forms.ColumnHeader();
+            this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.periodicityCombo = new System.Windows.Forms.ComboBox();
+            this.repeatableCheck = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tasksPage.SuspendLayout();
             this.categoriesPage.SuspendLayout();
@@ -70,20 +77,14 @@
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy, HH:mm:ss";
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(516, 267);
+            this.dateTimePicker1.Location = new System.Drawing.Point(494, 151);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker1.TabIndex = 0;
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(9, 124);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 3;
-            // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(516, 149);
+            this.nameBox.Location = new System.Drawing.Point(494, 33);
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(250, 27);
@@ -91,7 +92,7 @@
             // 
             // descriptionRichBox
             // 
-            this.descriptionRichBox.Location = new System.Drawing.Point(516, 182);
+            this.descriptionRichBox.Location = new System.Drawing.Point(494, 66);
             this.descriptionRichBox.Name = "descriptionRichBox";
             this.descriptionRichBox.ReadOnly = true;
             this.descriptionRichBox.Size = new System.Drawing.Size(250, 79);
@@ -105,7 +106,7 @@
             this.nameColumn});
             this.tasksView.FullRowSelect = true;
             this.tasksView.GridLines = true;
-            this.tasksView.Location = new System.Drawing.Point(204, 124);
+            this.tasksView.Location = new System.Drawing.Point(17, 19);
             this.tasksView.MultiSelect = false;
             this.tasksView.Name = "tasksView";
             this.tasksView.Size = new System.Drawing.Size(213, 207);
@@ -125,7 +126,7 @@
             // 
             // taskAddButton
             // 
-            this.taskAddButton.Location = new System.Drawing.Point(227, 335);
+            this.taskAddButton.Location = new System.Drawing.Point(17, 242);
             this.taskAddButton.Name = "taskAddButton";
             this.taskAddButton.Size = new System.Drawing.Size(170, 29);
             this.taskAddButton.TabIndex = 8;
@@ -155,7 +156,14 @@
             // 
             // tasksPage
             // 
-            this.tasksPage.Controls.Add(this.monthCalendar1);
+            this.tasksPage.Controls.Add(this.label6);
+            this.tasksPage.Controls.Add(this.label7);
+            this.tasksPage.Controls.Add(this.label8);
+            this.tasksPage.Controls.Add(this.categoriesChecks);
+            this.tasksPage.Controls.Add(this.label5);
+            this.tasksPage.Controls.Add(this.label4);
+            this.tasksPage.Controls.Add(this.periodicityCombo);
+            this.tasksPage.Controls.Add(this.repeatableCheck);
             this.tasksPage.Controls.Add(this.taskAddButton);
             this.tasksPage.Controls.Add(this.tasksView);
             this.tasksPage.Controls.Add(this.nameBox);
@@ -278,6 +286,79 @@
             this.categoryNameColumn.Text = "Название";
             this.categoryNameColumn.Width = 157;
             // 
+            // categoriesChecks
+            // 
+            this.categoriesChecks.FormattingEnabled = true;
+            this.categoriesChecks.Location = new System.Drawing.Point(494, 256);
+            this.categoriesChecks.Name = "categoriesChecks";
+            this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
+            this.categoriesChecks.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(353, 256);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Категории";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(353, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Периодичность";
+            // 
+            // periodicityCombo
+            // 
+            this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.periodicityCombo.Enabled = false;
+            this.periodicityCombo.FormattingEnabled = true;
+            this.periodicityCombo.Location = new System.Drawing.Point(494, 217);
+            this.periodicityCombo.Name = "periodicityCombo";
+            this.periodicityCombo.Size = new System.Drawing.Size(236, 28);
+            this.periodicityCombo.TabIndex = 13;
+            // 
+            // repeatableCheck
+            // 
+            this.repeatableCheck.AutoSize = true;
+            this.repeatableCheck.Location = new System.Drawing.Point(494, 187);
+            this.repeatableCheck.Name = "repeatableCheck";
+            this.repeatableCheck.Size = new System.Drawing.Size(130, 24);
+            this.repeatableCheck.TabIndex = 12;
+            this.repeatableCheck.Text = "Повторяемый";
+            this.repeatableCheck.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(358, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 20);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Дата";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(358, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Описание";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(358, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 20);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Название";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -302,7 +383,6 @@
 
         private NotifyIcon notifyIcon1;
         private DateTimePicker dateTimePicker1;
-        private MonthCalendar monthCalendar1;
         private TextBox nameBox;
         private RichTextBox descriptionRichBox;
         private ListView tasksView;
@@ -323,5 +403,13 @@
         private Label label2;
         private Label label1;
         private Button deleteCategoryButton;
+        private CheckedListBox categoriesChecks;
+        private Label label5;
+        private Label label4;
+        private ComboBox periodicityCombo;
+        private CheckBox repeatableCheck;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
