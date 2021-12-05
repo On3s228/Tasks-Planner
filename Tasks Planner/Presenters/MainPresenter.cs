@@ -11,6 +11,7 @@ using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner.Presenters
 {
@@ -26,6 +27,8 @@ namespace Tasks_Planner.Presenters
             _view.Presenter = this;
             _categories = categories;
             _tasks = tasks;
+
+            _view.PeriodicityCombo.DataSource = Periodicities.PeriodsStrings;
 
             UpdateTasksList();
         }
@@ -62,7 +65,16 @@ namespace Tasks_Planner.Presenters
                 _view.NameField = task.Name;
                 _view.DescriptionField = task.Description;
                 _view.Date = task.TaskDate;
-                
+                _view.IsPeriodic = task.Period != 0;
+                if (_view.IsPeriodic)
+                {
+                    Dictionary<string, int> Periods = Periodicities.GetPeriodsDictionary();
+                    int periodIndex = Periodicities.PeriodsStrings.IndexOf(Periods.FirstOrDefault(x => x.Value == task.Period).Key);
+                    _view.PeriodicityCombo.SelectedIndex = periodIndex;
+                } else
+                {
+                    _view.PeriodicityCombo.SelectedIndex = -1;
+                }
 
             }
             else

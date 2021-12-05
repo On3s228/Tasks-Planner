@@ -57,8 +57,9 @@ namespace Tasks_Planner.Presenters
             _view.DescriptionField.Text = task.Description;
             _view.Date = task.TaskDate;
             _view.IsPeriodic = task.Period != 0;
-            _view.Periodicity.SelectedItem = _view.Periodicity.Items
-                .IndexOf(Periods.FirstOrDefault(x => x.Value == task.Period / 1000).Key);
+            int periodIndex = Periodicities.PeriodsStrings.IndexOf(Periods.FirstOrDefault(x => x.Value == task.Period).Key);
+            _view.Periodicity.SelectedIndex = periodIndex;
+                
 
             List<Category> categories = (List<Category>)_categories.GetList();
             List<Category> categoriesWithNeededId = categories.FindAll(c => task.CategoriesID.Contains(c.Id));
