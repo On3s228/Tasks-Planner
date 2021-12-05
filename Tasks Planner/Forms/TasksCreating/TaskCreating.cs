@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tasks_Planner.CustomControls;
 using Tasks_Planner.Presenters;
+using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Forms.TasksCreating
 {
@@ -40,6 +41,7 @@ namespace Tasks_Planner.Forms.TasksCreating
         public DateTime Date { get => dateField.Value; set => dateField.Value = value; }
         public ComboBox Periodicity { get => periodicityCombo; set => periodicityCombo = value; }
         public bool IsPeriodic { get => repeatableCheck.Checked; set => repeatableCheck.Checked = value; }
+        public UserTask Edit { get; set; }
 
         private void TaskCreating_Load(object sender, EventArgs e)
         {

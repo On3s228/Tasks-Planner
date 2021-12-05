@@ -29,7 +29,12 @@ namespace Tasks_Planner.Presenters
             _view.Periodicity.DataSource = Periodicities.PeriodsStrings;
             Periods = Periodicities.GetPeriodsDictionary();
 
+
             UpdateCheckedListBox();
+            if (_view.Edit != null)
+            {
+                FillFields(_view.Edit);
+            }            
         }
         private void UpdateCheckedListBox()
         {
@@ -44,6 +49,29 @@ namespace Tasks_Planner.Presenters
             return !string.IsNullOrWhiteSpace(_view.NameField.Text) &&
                 !string.IsNullOrWhiteSpace(_view.DescriptionField.Text) &&
                 _view.Date >= DateTime.Now.AddMinutes(30);
+        }
+
+        private void FillFields(UserTask task)
+        {
+            _view.NameField.Text = task.Name;
+            _view.DescriptionField.Text = task.Description;
+            _view.Date = task.TaskDate;
+            _view.IsPeriodic = task.Period != 0;
+            _view.Periodicity.SelectedItem = _view.Periodicity.Items
+                .IndexOf(Periods.FirstOrDefault(x => x.Value == task.Period / 1000).Key);
+
+            List<Category> categories = (List<Category>)_categories.GetList();
+            List<Category> categoriesWithNeededId = categories.FindAll(c => task.CategoriesID.Contains(c.Id));
+            List<string> categoriesStrings = (from category in categoriesWithNeededId select category.Name).ToList();
+            foreach (var category in categoriesStrings)
+            {
+                if (_view.CheckedCategories.Items.Contains(category))
+                {
+                    int index = _view.CheckedCategories.Items.IndexOf(category);
+                    _view.CheckedCategories.SetItemChecked(index, true);
+                }
+            }
+
         }
         private void ClearFields()
         {
@@ -76,18 +104,31 @@ namespace Tasks_Planner.Presenters
                 }
                 var checkedCategories = _categories.GetList().ToList().FindAll(c => checkedCategoriesNames.Contains(c.Name));
                 task.CategoriesID = (from category in checkedCategories select category.Id).ToList();
-                
-                if (_tasks.Create(task))
+
+                if (_view.Edit == null)
                 {
-                    Events.TasksListChanged();
-                    ClearFields();
-                    Notifier.StringNotify?.Invoke(Messages.TaskAdded);
+                    if (_tasks.Create(task))
+                    {
+                        Events.TasksListChanged();
+                        ClearFields();
+                        Notifier.StringNotify?.Invoke(Messages.TaskAdded);
+                    }
+                    else
+                    {
+                        Notifier.StringNotify?.Invoke(Messages.TaskExists);
+                        UserTasks.IdCounter--;
+                    } 
                 } else
                 {
-                    Notifier.StringNotify?.Invoke(Messages.TaskExists);
+                    task.Id = _view.Edit.Id;
                     UserTasks.IdCounter--;
+                    List<UserTask> tasks = _tasks.GetList().ToList();
+                    int index = tasks.IndexOf(_view.Edit);
+                    _tasks.Update(index, task);
+                    Events.TasksListChanged();
                 }
             }
         }
+
     }
 }

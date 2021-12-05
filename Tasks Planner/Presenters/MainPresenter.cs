@@ -62,6 +62,7 @@ namespace Tasks_Planner.Presenters
                 _view.NameField = task.Name;
                 _view.DescriptionField = task.Description;
                 _view.Date = task.TaskDate;
+                
 
             }
             else
@@ -70,6 +71,14 @@ namespace Tasks_Planner.Presenters
                 _view.DescriptionField = Messages.Empty;
                 _view.Date = DateTime.MinValue;
             }
+        }
+
+        public void Edit()
+        {
+            var form = new TaskCreating();
+            form.Edit = _tasks.GetByID(_view.SelectedTask);
+            var presenter = new TasksAddingPresenter(form, _tasks, _categories);
+            form.ShowDialog();
         }
 
     }

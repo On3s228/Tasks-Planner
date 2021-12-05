@@ -41,6 +41,7 @@
             this.categoriesAddingButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tasksPage = new System.Windows.Forms.TabPage();
+            this.taskEditButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,14 +78,14 @@
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy, HH:mm:ss";
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(494, 151);
+            this.dateTimePicker1.Location = new System.Drawing.Point(494, 127);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(494, 33);
+            this.nameBox.Location = new System.Drawing.Point(494, 9);
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(250, 27);
@@ -92,7 +93,7 @@
             // 
             // descriptionRichBox
             // 
-            this.descriptionRichBox.Location = new System.Drawing.Point(494, 66);
+            this.descriptionRichBox.Location = new System.Drawing.Point(494, 42);
             this.descriptionRichBox.Name = "descriptionRichBox";
             this.descriptionRichBox.ReadOnly = true;
             this.descriptionRichBox.Size = new System.Drawing.Size(250, 79);
@@ -156,6 +157,7 @@
             // 
             // tasksPage
             // 
+            this.tasksPage.Controls.Add(this.taskEditButton);
             this.tasksPage.Controls.Add(this.label6);
             this.tasksPage.Controls.Add(this.label7);
             this.tasksPage.Controls.Add(this.label8);
@@ -177,10 +179,20 @@
             this.tasksPage.Text = "Напоминания";
             this.tasksPage.UseVisualStyleBackColor = true;
             // 
+            // taskEditButton
+            // 
+            this.taskEditButton.Location = new System.Drawing.Point(548, 352);
+            this.taskEditButton.Name = "taskEditButton";
+            this.taskEditButton.Size = new System.Drawing.Size(124, 29);
+            this.taskEditButton.TabIndex = 20;
+            this.taskEditButton.Text = "Редактировать";
+            this.taskEditButton.UseVisualStyleBackColor = true;
+            this.taskEditButton.Click += new System.EventHandler(this.taskEditButton_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(358, 156);
+            this.label6.Location = new System.Drawing.Point(358, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 20);
             this.label6.TabIndex = 19;
@@ -189,7 +201,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(358, 73);
+            this.label7.Location = new System.Drawing.Point(358, 49);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 18;
@@ -198,7 +210,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(358, 36);
+            this.label8.Location = new System.Drawing.Point(358, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 20);
             this.label8.TabIndex = 17;
@@ -208,7 +220,7 @@
             // 
             this.categoriesChecks.Enabled = false;
             this.categoriesChecks.FormattingEnabled = true;
-            this.categoriesChecks.Location = new System.Drawing.Point(494, 256);
+            this.categoriesChecks.Location = new System.Drawing.Point(494, 232);
             this.categoriesChecks.Name = "categoriesChecks";
             this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
             this.categoriesChecks.TabIndex = 16;
@@ -216,7 +228,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(353, 256);
+            this.label5.Location = new System.Drawing.Point(353, 232);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 20);
             this.label5.TabIndex = 15;
@@ -225,7 +237,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(353, 220);
+            this.label4.Location = new System.Drawing.Point(353, 196);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 20);
             this.label4.TabIndex = 14;
@@ -236,7 +248,7 @@
             this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.periodicityCombo.Enabled = false;
             this.periodicityCombo.FormattingEnabled = true;
-            this.periodicityCombo.Location = new System.Drawing.Point(494, 217);
+            this.periodicityCombo.Location = new System.Drawing.Point(494, 193);
             this.periodicityCombo.Name = "periodicityCombo";
             this.periodicityCombo.Size = new System.Drawing.Size(236, 28);
             this.periodicityCombo.TabIndex = 13;
@@ -245,7 +257,7 @@
             // 
             this.repeatableCheck.AutoSize = true;
             this.repeatableCheck.Enabled = false;
-            this.repeatableCheck.Location = new System.Drawing.Point(494, 187);
+            this.repeatableCheck.Location = new System.Drawing.Point(494, 163);
             this.repeatableCheck.Name = "repeatableCheck";
             this.repeatableCheck.Size = new System.Drawing.Size(130, 24);
             this.repeatableCheck.TabIndex = 12;
@@ -413,5 +425,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Button taskEditButton;
     }
 }

@@ -15,6 +15,9 @@ namespace Tasks_Planner.Forms.MainForm
         string NameField { get; set; }
         string DescriptionField { get; set; }
         DateTime Date { get; set; }
+        bool IsPeriodic { get; set; }
+        ComboBox PeriodicityCombo { get; set; }
+        CheckedListBox Categories { get; set; }
         bool IsVisible { get; set; }
         MainPresenter Presenter { set; }
     }

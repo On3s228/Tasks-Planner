@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Tasks_Planner.Repos.Tasks
             {
                 if (value > 0)
                 {
-                    period = value * 1000;
+                    period = value;
                     PeriodicTimer = new System.Windows.Forms.Timer();
                     //because setter gets value in seconds, but Timer.Interval needs miliseconds
                     PeriodicTimer.Interval = value * 1000;

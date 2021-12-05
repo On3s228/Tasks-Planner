@@ -53,7 +53,9 @@ namespace Tasks_Planner
                 }
             }
         }
-
+        public bool IsPeriodic { get => repeatableCheck.Checked; set => repeatableCheck.Checked = value; }
+        public ComboBox PeriodicityCombo { get => periodicityCombo; set => periodicityCombo = value; }
+        public CheckedListBox Categories { get => categoriesChecks; set => categoriesChecks = value; }
         public MainPresenter Presenter { private get; set; }
         public bool IsVisible { get => Visible; set => Visible = value; }
         #endregion
@@ -144,6 +146,11 @@ namespace Tasks_Planner
         private void editButton_Click(object sender, EventArgs e)
         {
             CategoriesPresenter.Edit();
+        }
+
+        private void taskEditButton_Click(object sender, EventArgs e)
+        {
+            Presenter.Edit();
         }
     }
 

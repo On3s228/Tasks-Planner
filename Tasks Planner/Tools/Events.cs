@@ -16,6 +16,7 @@ namespace Tasks_Planner.Tools
             if (MainPresenter != null)
             {
                 MainPresenter.UpdateTasksList();
+                MainPresenter.UpdateTaskView();
             }
             else throw new ArgumentException(typeof(Events).ToString());
         }
