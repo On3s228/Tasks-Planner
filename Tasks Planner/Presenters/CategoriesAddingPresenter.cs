@@ -26,6 +26,11 @@ namespace Tasks_Planner.Presenters
         {
             return !string.IsNullOrWhiteSpace(_view.NameField.Text);
         }
+        private void ClearFields()
+        {
+            _view.NameField.Text = Messages.Empty;
+            _view.DescriptionField.Text = Messages.Empty;
+        }
         public void AddCategory()
         {
             if (ValidateName())
@@ -36,8 +41,17 @@ namespace Tasks_Planner.Presenters
                     Name = _view.NameField.Text,
                     Description = _view.DescriptionField.Text
                 };
-                _categories.Create(c);
-                Events.CategoriesListChanged();
+                if (_categories.Create(c))
+                {
+                    Events.CategoriesListChanged();
+                    ClearFields();
+                    Notifier.StringNotify?.Invoke(Messages.CategoryAdded);
+                } else
+                {
+                    Notifier.StringNotify?.Invoke(Messages.CategoryExists);
+                    Categories.IdCounter--;
+                }
+                
             }
             else Notifier.StringNotify?.Invoke(Messages.InvalidName);
         }

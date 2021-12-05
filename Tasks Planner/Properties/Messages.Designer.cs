@@ -70,6 +70,15 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Категория добавлена!.
+        /// </summary>
+        public static string CategoryAdded {
+            get {
+                return ResourceManager.GetString("CategoryAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Категория с таким именем уже существует..
         /// </summary>
         public static string CategoryExists {
@@ -165,6 +174,24 @@ namespace Tasks_Planner.Properties {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Напоминание добавлено..
+        /// </summary>
+        public static string TaskAdded {
+            get {
+                return ResourceManager.GetString("TaskAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Напоминание уже существует..
+        /// </summary>
+        public static string TaskExists {
+            get {
+                return ResourceManager.GetString("TaskExists", resourceCulture);
             }
         }
         

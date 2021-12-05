@@ -40,16 +40,16 @@ namespace Tasks_Planner
                 Id = ++UserTasks.IdCounter,
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultPeriodicDesc,
-                TaskDate = new DateTime(2021, 11, 23, 19, 30, 0),
+                TaskDate = DateTime.Now.AddMinutes(40),
+                Period = 30000,
                 CategoriesID = new List<int>()
             };
-            t.Period = 30000;
             UserTask t1 = new UserTask
             {
                 Id = ++UserTasks.IdCounter,
                 Name = Messages.DefaultTaskName,
                 Description = Messages.DefaultTaskDesc,
-                TaskDate = new DateTime(2022, 11, 24),
+                TaskDate = DateTime.Now.AddMinutes(50),
                 CategoriesID = new List<int>()
             };
             t.CategoriesID.Add(c.Id);

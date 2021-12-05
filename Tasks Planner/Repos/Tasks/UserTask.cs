@@ -30,7 +30,8 @@ namespace Tasks_Planner.Repos.Tasks
                 {
                     period = value;
                     PeriodicTimer = new System.Windows.Forms.Timer();
-                    PeriodicTimer.Interval = value;
+                    //because setter gets value in seconds, but Timer.Interval needs miliseconds
+                    PeriodicTimer.Interval = value * 1000;
                     PeriodicTimer.Tick += (sender, args) =>
                     {
                         Notifier.GetNotify?.Invoke(this);
@@ -90,8 +91,7 @@ namespace Tasks_Planner.Repos.Tasks
         public bool Equals(UserTask? other)
         {
             return other != null &&
-                   Name == other.Name &&
-                   Description == other.Description;
+                   (Name == other.Name || Description == other.Description);
         }
 
         public override int GetHashCode()

@@ -28,7 +28,7 @@ namespace Tasks_Planner.Repos.Categories
             }
         }
 
-        public void Create(Category item)
+        public bool Create(Category item)
         {
             if (_categories?.CategoriesList != null)
             {
@@ -36,12 +36,10 @@ namespace Tasks_Planner.Repos.Categories
                 {
                     _categories.CategoriesList?.Add(item);
                     Save();
+                    return true;
                 }
                 else
-                {
-                    Notifier.StringNotify?.Invoke(Messages.CategoryExists);
-                    Categories.IdCounter--;
-                }
+                    return false;
             }
             else throw new ArgumentException(Messages.Error);
         }

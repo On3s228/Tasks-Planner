@@ -29,12 +29,18 @@ namespace Tasks_Planner.Repos.Tasks
             }
         }
 
-        public void Create(UserTask item)
+        public bool Create(UserTask item)
         {
-            if (_tasks != null)
+            if (_tasks?.TasksList != null)
             {
-                _tasks.TasksList?.Add(item);
-                Save();
+                if (!_tasks.TasksList.Contains(item))
+                {
+                    _tasks.TasksList?.Add(item);
+                    Save();
+                    return true;
+                } else 
+                    return false;
+
             } else throw new ArgumentException(Messages.Error);
         }
 

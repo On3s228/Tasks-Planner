@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tasks_Planner.Forms.TasksCreating;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Categories;
 using Tasks_Planner.Repos.Tasks;
@@ -41,6 +42,14 @@ namespace Tasks_Planner.Presenters
                 !string.IsNullOrWhiteSpace(_view.DescriptionField.Text) &&
                 _view.Date >= DateTime.Now.AddMinutes(30);
         }
+        private void ClearFields()
+        {
+            _view.NameField.Text = Messages.Empty;
+            _view.DescriptionField.Text = Messages.Empty;
+            _view.IsPeriodic = default;
+            _view.CheckedCategories.ClearSelected();
+
+        }
         public void Add()
         {
             if (IsValid())
@@ -57,15 +66,24 @@ namespace Tasks_Planner.Presenters
                 {
                     task.Period = Periods[_view.Periodicity.SelectedIndex];
                 }
-                List<string> categoriesNames = new List<string>();
+                List<string> checkedCategoriesNames = new List<string>();
                 foreach (var item in _view.CheckedCategories.CheckedItems)
                 {
-                    categoriesNames.Add(item.ToString()); 
+                    checkedCategoriesNames.Add(item.ToString()); 
                 }
-                var checkedCategories = _categories.GetList().ToList().FindAll(c => categoriesNames.Contains(c.Name));
+                var checkedCategories = _categories.GetList().ToList().FindAll(c => checkedCategoriesNames.Contains(c.Name));
                 task.CategoriesID = (from category in checkedCategories select category.Id).ToList();
-                _tasks.Create(task);
-                Events.TasksListChanged();
+                
+                if (_tasks.Create(task))
+                {
+                    Events.TasksListChanged();
+                    ClearFields();
+                    Notifier.StringNotify?.Invoke(Messages.TaskAdded);
+                } else
+                {
+                    Notifier.StringNotify?.Invoke(Messages.TaskExists);
+                    UserTasks.IdCounter--;
+                }
             }
         }
     }
