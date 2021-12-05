@@ -17,7 +17,7 @@ namespace Tasks_Planner.Presenters
         private readonly ITasksAddingView _view;
         private readonly IRepository<UserTask> _tasks;
         private readonly IRepository<Category> _categories;
-        private readonly int[] Periods = { 3600, 7200, 14400, 28800, 43200, 86400, 259200, 604800, 2592000};
+        private readonly Dictionary<string, int> Periods;
 
         public TasksAddingPresenter(ITasksAddingView view, IRepository<UserTask> tasks, IRepository<Category> categories)
         {
@@ -25,6 +25,9 @@ namespace Tasks_Planner.Presenters
             _view.Presenter = this;
             _tasks = tasks;
             _categories = categories;
+
+            _view.Periodicity.DataSource = Periodicities.PeriodsStrings;
+            Periods = Periodicities.GetPeriodsDictionary();
 
             UpdateCheckedListBox();
         }
@@ -64,7 +67,7 @@ namespace Tasks_Planner.Presenters
                 };
                 if (_view.IsPeriodic)
                 {
-                    task.Period = Periods[_view.Periodicity.SelectedIndex];
+                    task.Period = Periods[_view.Periodicity.SelectedItem.ToString()];
                 }
                 List<string> checkedCategoriesNames = new List<string>();
                 foreach (var item in _view.CheckedCategories.CheckedItems)

@@ -41,6 +41,14 @@
             this.categoriesAddingButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tasksPage = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.periodicityCombo = new System.Windows.Forms.ComboBox();
+            this.repeatableCheck = new System.Windows.Forms.CheckBox();
             this.categoriesPage = new System.Windows.Forms.TabPage();
             this.deleteCategoryButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -52,14 +60,6 @@
             this.categoriesListView = new System.Windows.Forms.ListView();
             this.categoryIdColumn = new System.Windows.Forms.ColumnHeader();
             this.categoryNameColumn = new System.Windows.Forms.ColumnHeader();
-            this.categoriesChecks = new System.Windows.Forms.CheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.periodicityCombo = new System.Windows.Forms.ComboBox();
-            this.repeatableCheck = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tasksPage.SuspendLayout();
             this.categoriesPage.SuspendLayout();
@@ -177,6 +177,81 @@
             this.tasksPage.Text = "Напоминания";
             this.tasksPage.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(358, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 20);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Дата";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(358, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Описание";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(358, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 20);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Название";
+            // 
+            // categoriesChecks
+            // 
+            this.categoriesChecks.Enabled = false;
+            this.categoriesChecks.FormattingEnabled = true;
+            this.categoriesChecks.Location = new System.Drawing.Point(494, 256);
+            this.categoriesChecks.Name = "categoriesChecks";
+            this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
+            this.categoriesChecks.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(353, 256);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Категории";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(353, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Периодичность";
+            // 
+            // periodicityCombo
+            // 
+            this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.periodicityCombo.Enabled = false;
+            this.periodicityCombo.FormattingEnabled = true;
+            this.periodicityCombo.Location = new System.Drawing.Point(494, 217);
+            this.periodicityCombo.Name = "periodicityCombo";
+            this.periodicityCombo.Size = new System.Drawing.Size(236, 28);
+            this.periodicityCombo.TabIndex = 13;
+            // 
+            // repeatableCheck
+            // 
+            this.repeatableCheck.AutoSize = true;
+            this.repeatableCheck.Enabled = false;
+            this.repeatableCheck.Location = new System.Drawing.Point(494, 187);
+            this.repeatableCheck.Name = "repeatableCheck";
+            this.repeatableCheck.Size = new System.Drawing.Size(130, 24);
+            this.repeatableCheck.TabIndex = 12;
+            this.repeatableCheck.Text = "Повторяемый";
+            this.repeatableCheck.UseVisualStyleBackColor = true;
+            // 
             // categoriesPage
             // 
             this.categoriesPage.Controls.Add(this.deleteCategoryButton);
@@ -285,79 +360,6 @@
             // 
             this.categoryNameColumn.Text = "Название";
             this.categoryNameColumn.Width = 157;
-            // 
-            // categoriesChecks
-            // 
-            this.categoriesChecks.FormattingEnabled = true;
-            this.categoriesChecks.Location = new System.Drawing.Point(494, 256);
-            this.categoriesChecks.Name = "categoriesChecks";
-            this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
-            this.categoriesChecks.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(353, 256);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 20);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Категории";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(353, 220);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Периодичность";
-            // 
-            // periodicityCombo
-            // 
-            this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.periodicityCombo.Enabled = false;
-            this.periodicityCombo.FormattingEnabled = true;
-            this.periodicityCombo.Location = new System.Drawing.Point(494, 217);
-            this.periodicityCombo.Name = "periodicityCombo";
-            this.periodicityCombo.Size = new System.Drawing.Size(236, 28);
-            this.periodicityCombo.TabIndex = 13;
-            // 
-            // repeatableCheck
-            // 
-            this.repeatableCheck.AutoSize = true;
-            this.repeatableCheck.Location = new System.Drawing.Point(494, 187);
-            this.repeatableCheck.Name = "repeatableCheck";
-            this.repeatableCheck.Size = new System.Drawing.Size(130, 24);
-            this.repeatableCheck.TabIndex = 12;
-            this.repeatableCheck.Text = "Повторяемый";
-            this.repeatableCheck.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(358, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 20);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Дата";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(358, 73);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 20);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Описание";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(358, 36);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 20);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Название";
             // 
             // MainForm
             // 

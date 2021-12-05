@@ -43,15 +43,6 @@ namespace Tasks_Planner.Forms.TasksCreating
 
         private void TaskCreating_Load(object sender, EventArgs e)
         {
-            periodicityCombo.Items.Add("раз в 1 час");
-            periodicityCombo.Items.Add("раз в 2 часа");
-            periodicityCombo.Items.Add("раз в 4 часа");
-            periodicityCombo.Items.Add("раз в 8 часов");
-            periodicityCombo.Items.Add("раз в 12 часов");
-            periodicityCombo.Items.Add("раз в 24 часа");
-            periodicityCombo.Items.Add("раз в 3 дня");
-            periodicityCombo.Items.Add("раз в неделю");
-            periodicityCombo.Items.Add("раз в месяц");
         }
 
         private void repeatableCheck_CheckedChanged(object sender, EventArgs e)

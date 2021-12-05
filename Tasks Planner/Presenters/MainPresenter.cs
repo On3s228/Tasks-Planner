@@ -29,15 +29,6 @@ namespace Tasks_Planner.Presenters
 
             UpdateTasksList();
         }
-
-        //public IRepository<Category> GetCategoriesRepository()
-        //{
-        //    return _categories;
-        //}
-        //public IRepository<UserTask> GetTasksRepository()
-        //{
-        //    return _tasks;
-        //}
         public void NewTasksAdding()
         {
             var form = new TaskCreating();
@@ -71,6 +62,7 @@ namespace Tasks_Planner.Presenters
                 _view.NameField = task.Name;
                 _view.DescriptionField = task.Description;
                 _view.Date = task.TaskDate;
+
             }
             else
             {
