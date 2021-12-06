@@ -22,9 +22,10 @@ namespace Tasks_Planner.Tools
         }
         public static void CategoriesListChanged()
         {
-            if (CategoriesPresenter != null)
+            if (CategoriesPresenter != null && MainPresenter != null)
             {
                 CategoriesPresenter.UpdateCategoriesList();
+                MainPresenter.UpdateCheckedListBox();
             }
             else throw new ArgumentException(typeof(Events).ToString());
         }

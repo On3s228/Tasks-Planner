@@ -29,7 +29,7 @@ namespace Tasks_Planner.Presenters
         }
         public void UpdateCategoriesList()
         {
-            List<Category> categories = (List<Category>)_categories.GetList();
+            List<Category> categories = _categories.GetList().ToList(); ;
             int SelectedIndex = _view.SelectedCategory >= 0 ? _view.SelectedCategory : 0;
             _view.CategoriesList.Items.Clear();
             foreach (Category category in categories)

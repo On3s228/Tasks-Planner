@@ -11,7 +11,7 @@ namespace Tasks_Planner.Repos.Tasks
 {
     public class UserTasks
     {
-        public List<UserTask>? TasksList { get; set; }
+        public ObservableCollection<UserTask>? TasksList { get; set; }
         [JsonProperty]
         public static int IdCounter { get; set; }
         public UserTasks() { }
@@ -65,6 +65,7 @@ namespace Tasks_Planner.Repos.Tasks
                         {
                             Notifier.GetNotify?.Invoke(this);
                             IsHandled = true;
+                            DefaultTimer.Dispose();
                         }
                     };
                     DefaultTimer.Enabled = true;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Tasks_Planner
         {
             Categories categories = new Categories
             {
-                CategoriesList = new List<Category>()
+                CategoriesList = new ObservableCollection<Category>()
             };
             Category c = new Category
             {
@@ -32,7 +33,7 @@ namespace Tasks_Planner
         {
             UserTasks tasks = new UserTasks
             {
-                TasksList = new List<UserTask>()
+                TasksList = new ObservableCollection<UserTask>()
             };
             Category c = categories.GetByID(0);
             UserTask t = new UserTask

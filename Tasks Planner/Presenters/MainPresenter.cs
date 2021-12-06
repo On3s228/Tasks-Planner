@@ -31,6 +31,7 @@ namespace Tasks_Planner.Presenters
             _view.PeriodicityCombo.DataSource = Periodicities.PeriodsStrings;
 
             UpdateTasksList();
+            UpdateCheckedListBox();
         }
         public void NewTasksAdding()
         {
@@ -44,9 +45,18 @@ namespace Tasks_Planner.Presenters
             var presenter = new CategoriesAddingPresenter(form, _categories);
             form.ShowDialog();
         }
+
+        public void UpdateCheckedListBox()
+        {
+            var categories = (from category in _categories.GetList() select category.Name).ToList();
+            foreach (string category in categories)
+            {
+                _view.Categories.Items.Add(category, false);
+            }
+        }
         public void UpdateTasksList()
         {
-            List<UserTask> tasks = (List<UserTask>)_tasks.GetList();
+            List<UserTask> tasks = _tasks.GetList().ToList();
             int SelectedIndex = _view.SelectedTask >= 0 ? _view.SelectedTask : 0;
             _view.TasksView.Items.Clear();
             foreach (UserTask task in tasks)

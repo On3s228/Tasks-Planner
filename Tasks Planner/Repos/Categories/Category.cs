@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Tasks_Planner.Repos.Categories
 {
     public class Categories
     {
-        public List<Category>? CategoriesList { get; set; }
+        public ObservableCollection<Category>? CategoriesList { get; set; }
         [JsonProperty]
         public static int IdCounter { get; set; }
         public Categories() { }

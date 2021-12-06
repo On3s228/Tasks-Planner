@@ -61,7 +61,7 @@ namespace Tasks_Planner.Presenters
             _view.Periodicity.SelectedIndex = periodIndex;
                 
 
-            List<Category> categories = (List<Category>)_categories.GetList();
+            List<Category> categories = _categories.GetList().ToList();
             List<Category> categoriesWithNeededId = categories.FindAll(c => task.CategoriesID.Contains(c.Id));
             List<string> categoriesStrings = (from category in categoriesWithNeededId select category.Name).ToList();
             foreach (var category in categoriesStrings)
@@ -94,7 +94,7 @@ namespace Tasks_Planner.Presenters
                     TaskDate = _view.Date,
                     IsHandled = false
                 };
-                if (_view.IsPeriodic)
+                if (_view.IsPeriodic && _view.Periodicity.SelectedIndex != -1)
                 {
                     task.Period = Periods[_view.Periodicity.SelectedItem.ToString()];
                 }
