@@ -152,6 +152,11 @@ namespace Tasks_Planner
         {
             Presenter.Edit();
         }
+
+        private void taskDeleteButton_Click(object sender, EventArgs e)
+        {
+            Presenter.Delete();
+        }
     }
 
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Tasks_Planner.Properties;
 using Tasks_Planner.Repos.Tasks;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner.Repos.Categories
 {
@@ -26,6 +27,10 @@ namespace Tasks_Planner.Repos.Categories
                 _categories = DefaultRepositories.GetDefaultCategories();
                 Save();
             }
+            _categories.CategoriesList.CollectionChanged += (sender, args) =>
+            {
+                Events.CategoriesListChanged();
+            };
         }
 
         public bool Create(Category item)
@@ -82,12 +87,13 @@ namespace Tasks_Planner.Repos.Categories
             JSerializer<Categories?>.Serialize(_categories, _filePath);
         }
 
-        public void Update(int id, Category item)
+        public bool Update(int id, Category item)
         {
             if (_categories?.CategoriesList != null)
             {
                 _categories.CategoriesList[id] = item;
                 Save();
+                return true;
             }
             else throw new ArgumentException(Messages.Error);
         }

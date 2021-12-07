@@ -153,14 +153,29 @@
   <data name="InvalidName" xml:space="preserve">
     <value>Некорректное имя, заполните поле в верном формате!</value>
   </data>
+  <data name="InvalidTaskData" xml:space="preserve">
+    <value>Некорректные данные. Пожалуйста, проверьте поля! Особенно обратите внимание на поле с датой! Минимальная дата должна быть на 30 минут больше текущей!</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Успешно сохранено.</value>
   </data>
   <data name="TaskAdded" xml:space="preserve">
     <value>Напоминание добавлено.</value>
   </data>
+  <data name="TaskAddingForm" xml:space="preserve">
+    <value>Добавление напоминания</value>
+  </data>
+  <data name="TaskEditForm" xml:space="preserve">
+    <value>Редактирование напоминания</value>
+  </data>
   <data name="TaskExists" xml:space="preserve">
     <value>Напоминание уже существует.</value>
+  </data>
+  <data name="TaskNotUnique" xml:space="preserve">
+    <value>Напоминание с такими названием/описанием уже существует.</value>
   </data>
   <data name="Test" xml:space="preserve">
     <value>Test message</value>

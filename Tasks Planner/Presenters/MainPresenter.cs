@@ -36,6 +36,7 @@ namespace Tasks_Planner.Presenters
         public void NewTasksAdding()
         {
             var form = new TaskCreating();
+            form.Text = Messages.TaskAddingForm;
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();
         }
@@ -85,22 +86,46 @@ namespace Tasks_Planner.Presenters
                 {
                     _view.PeriodicityCombo.SelectedIndex = -1;
                 }
-
+                List<Category> neededIdCategories = _categories.GetList().ToList().FindAll(c => task.CategoriesID.Contains(c.Id));
+                List<string> categoriesStrings = (from category in neededIdCategories select category.Name).ToList();
+                foreach (string category in categoriesStrings)
+                {
+                    if (_view.Categories.Items.Contains(category))
+                    {
+                        int index = _view.Categories.Items.IndexOf(category);
+                        _view.Categories.SetItemChecked(index, true);
+                    }
+                }
             }
             else
             {
                 _view.NameField = Messages.Empty;
                 _view.DescriptionField = Messages.Empty;
                 _view.Date = DateTime.MinValue;
+                _view.IsPeriodic = false;
+                _view.PeriodicityCombo.SelectedIndex = -1;
+                for (int i = 0; i < _view.Categories.Items.Count; i++)
+                {
+                    _view.Categories.SetItemChecked(i, false);
+                }
             }
         }
 
         public void Edit()
         {
             var form = new TaskCreating();
+            form.Text = Messages.TaskEditForm;
             form.Edit = _tasks.GetByID(_view.SelectedTask);
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();
+        }
+
+        public void Delete()
+        {
+            if (_view.SelectedTask >= 0)
+            {
+                _tasks.Delete(_view.SelectedTask);
+            }
         }
 
     }

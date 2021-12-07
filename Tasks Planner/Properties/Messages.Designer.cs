@@ -169,11 +169,29 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Некорректные данные. Пожалуйста, проверьте поля! Особенно обратите внимание на поле с датой! Минимальная дата должна быть на 30 минут больше текущей!.
+        /// </summary>
+        public static string InvalidTaskData {
+            get {
+                return ResourceManager.GetString("InvalidTaskData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сохранить.
         /// </summary>
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Успешно сохранено..
+        /// </summary>
+        public static string Saved {
+            get {
+                return ResourceManager.GetString("Saved", resourceCulture);
             }
         }
         
@@ -187,11 +205,38 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавление напоминания.
+        /// </summary>
+        public static string TaskAddingForm {
+            get {
+                return ResourceManager.GetString("TaskAddingForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование напоминания.
+        /// </summary>
+        public static string TaskEditForm {
+            get {
+                return ResourceManager.GetString("TaskEditForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Напоминание уже существует..
         /// </summary>
         public static string TaskExists {
             get {
                 return ResourceManager.GetString("TaskExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Напоминание с такими названием/описанием уже существует..
+        /// </summary>
+        public static string TaskNotUnique {
+            get {
+                return ResourceManager.GetString("TaskNotUnique", resourceCulture);
             }
         }
         

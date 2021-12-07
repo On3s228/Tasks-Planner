@@ -101,7 +101,7 @@ namespace Tasks_Planner.Presenters
                 List<string> checkedCategoriesNames = new List<string>();
                 foreach (var item in _view.CheckedCategories.CheckedItems)
                 {
-                    checkedCategoriesNames.Add(item.ToString()); 
+                    checkedCategoriesNames.Add(item.ToString());
                 }
                 var checkedCategories = _categories.GetList().ToList().FindAll(c => checkedCategoriesNames.Contains(c.Name));
                 task.CategoriesID = (from category in checkedCategories select category.Id).ToList();
@@ -110,7 +110,6 @@ namespace Tasks_Planner.Presenters
                 {
                     if (_tasks.Create(task))
                     {
-                        Events.TasksListChanged();
                         ClearFields();
                         Notifier.StringNotify?.Invoke(Messages.TaskAdded);
                     }
@@ -118,17 +117,23 @@ namespace Tasks_Planner.Presenters
                     {
                         Notifier.StringNotify?.Invoke(Messages.TaskExists);
                         UserTasks.IdCounter--;
-                    } 
-                } else
+                    }
+                }
+                else
                 {
                     task.Id = _view.Edit.Id;
                     UserTasks.IdCounter--;
                     List<UserTask> tasks = _tasks.GetList().ToList();
                     int index = tasks.IndexOf(_view.Edit);
-                    _tasks.Update(index, task);
-                    Events.TasksListChanged();
+                    if (_tasks.Update(index, task))
+                    {
+                        Notifier.StringNotify?.Invoke(Messages.Saved);
+                    }
+                    else Notifier.StringNotify?.Invoke(Messages.TaskNotUnique);
+                    
                 }
             }
+            else Notifier.GetNotify?.Invoke(Messages.InvalidTaskData);
         }
 
     }

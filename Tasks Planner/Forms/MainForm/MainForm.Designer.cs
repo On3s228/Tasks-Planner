@@ -41,6 +41,7 @@
             this.categoriesAddingButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tasksPage = new System.Windows.Forms.TabPage();
+            this.taskDeleteButton = new System.Windows.Forms.Button();
             this.taskEditButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@
             // 
             // tasksPage
             // 
+            this.tasksPage.Controls.Add(this.taskDeleteButton);
             this.tasksPage.Controls.Add(this.taskEditButton);
             this.tasksPage.Controls.Add(this.label6);
             this.tasksPage.Controls.Add(this.label7);
@@ -178,6 +180,16 @@
             this.tasksPage.TabIndex = 0;
             this.tasksPage.Text = "Напоминания";
             this.tasksPage.UseVisualStyleBackColor = true;
+            // 
+            // taskDeleteButton
+            // 
+            this.taskDeleteButton.Location = new System.Drawing.Point(17, 277);
+            this.taskDeleteButton.Name = "taskDeleteButton";
+            this.taskDeleteButton.Size = new System.Drawing.Size(94, 29);
+            this.taskDeleteButton.TabIndex = 21;
+            this.taskDeleteButton.Text = "Удалить";
+            this.taskDeleteButton.UseVisualStyleBackColor = true;
+            this.taskDeleteButton.Click += new System.EventHandler(this.taskDeleteButton_Click);
             // 
             // taskEditButton
             // 
@@ -218,10 +230,10 @@
             // 
             // categoriesChecks
             // 
-            this.categoriesChecks.Enabled = false;
             this.categoriesChecks.FormattingEnabled = true;
             this.categoriesChecks.Location = new System.Drawing.Point(494, 232);
             this.categoriesChecks.Name = "categoriesChecks";
+            this.categoriesChecks.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.categoriesChecks.Size = new System.Drawing.Size(236, 114);
             this.categoriesChecks.TabIndex = 16;
             // 
@@ -426,5 +438,6 @@
         private Label label7;
         private Label label8;
         private Button taskEditButton;
+        private Button taskDeleteButton;
     }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
 using Tasks_Planner.Properties;
 using Tasks_Planner.Repos.Categories;
+using Tasks_Planner.Tools;
 
 namespace Tasks_Planner.Repos.Tasks
 {
@@ -27,6 +29,10 @@ namespace Tasks_Planner.Repos.Tasks
 
                 Save();
             }
+            _tasks.TasksList.CollectionChanged += (sender, args) =>
+            {
+                Events.TasksListChanged();
+            };
         }
 
         public bool Create(UserTask item)
@@ -80,13 +86,20 @@ namespace Tasks_Planner.Repos.Tasks
             JSerializer<UserTasks?>.Serialize(_tasks, _filePath);
         }
 
-        public void Update(int id, UserTask item)
+        public bool Update(int id, UserTask item)
         {
             if (_tasks != null && _tasks.TasksList != null)
             {
-                _tasks.TasksList[id] = item;
-                Save(); 
+                if (!_tasks.TasksList.Contains(item))
+                {
+                    _tasks.TasksList[id] = item;
+                    Save();
+                    return true;
+                }
+                else
+                    return false;
             }
+            else throw new ArgumentException();
         }
     }
 }
