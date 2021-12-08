@@ -64,7 +64,7 @@ namespace Tasks_Planner.Repos.Tasks
             throw new NotImplementedException();
         }
 
-        public UserTask GetByID(int id)
+        public UserTask GetByIndex(int id)
         {
             if (_tasks != null && _tasks.TasksList != null)
             {
@@ -73,7 +73,7 @@ namespace Tasks_Planner.Repos.Tasks
             else throw new ArgumentException(Messages.Error);
         }
 
-        public IEnumerable<UserTask> GetList()
+        public IEnumerable<UserTask> GetCollection()
         {
             if (_tasks != null && _tasks.TasksList != null)
             {

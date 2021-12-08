@@ -9,8 +9,8 @@ namespace Tasks_Planner.Repos
     public interface IRepository<T> : IDisposable
         where T : class
     {
-        IEnumerable<T> GetList(); // получение всех объектов
-        T GetByID(int id); // получение одного объекта по id
+        IEnumerable<T> GetCollection(); // получение всех объектов
+        T GetByIndex(int id); // получение одного объекта по id
         bool Create(T item); // создание объекта
         bool Update(T item); // обновление объекта
         void Delete(int id); // удаление объекта по id

@@ -303,6 +303,7 @@
             this.deleteCategoryButton.TabIndex = 17;
             this.deleteCategoryButton.Text = "удалить";
             this.deleteCategoryButton.UseVisualStyleBackColor = true;
+            this.deleteCategoryButton.Click += new System.EventHandler(this.deleteCategoryButton_Click);
             // 
             // editButton
             // 

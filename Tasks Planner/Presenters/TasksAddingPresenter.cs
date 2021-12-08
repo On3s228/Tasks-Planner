@@ -38,7 +38,7 @@ namespace Tasks_Planner.Presenters
         }
         private void UpdateCheckedListBox()
         {
-            var categories = (from category in _categories.GetList() select category.Name).ToList();
+            var categories = (from category in _categories.GetCollection() select category.Name).ToList();
             foreach (string category in categories)
             {
                 _view.CheckedCategories.Items.Add(category, false);
@@ -61,7 +61,7 @@ namespace Tasks_Planner.Presenters
             _view.Periodicity.SelectedIndex = periodIndex;
                 
 
-            List<Category> categories = _categories.GetList().ToList();
+            List<Category> categories = _categories.GetCollection().ToList();
             List<Category> categoriesWithNeededId = categories.FindAll(c => task.CategoriesID.Contains(c.Id));
             List<string> categoriesStrings = (from category in categoriesWithNeededId select category.Name).ToList();
             foreach (var category in categoriesStrings)
@@ -103,7 +103,7 @@ namespace Tasks_Planner.Presenters
                 {
                     checkedCategoriesNames.Add(item.ToString());
                 }
-                var checkedCategories = _categories.GetList().ToList().FindAll(c => checkedCategoriesNames.Contains(c.Name));
+                var checkedCategories = _categories.GetCollection().ToList().FindAll(c => checkedCategoriesNames.Contains(c.Name));
                 task.CategoriesID = (from category in checkedCategories select category.Id).ToList();
 
                 if (_view.Edit == null)

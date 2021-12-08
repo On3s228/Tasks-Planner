@@ -35,7 +35,7 @@ namespace Tasks_Planner
             {
                 TasksList = new ObservableCollection<UserTask>()
             };
-            Category c = categories.GetByID(0);
+            Category c = categories.GetByIndex(0);
             UserTask t = new UserTask
             {
                 Id = ++UserTasks.IdCounter,

@@ -53,6 +53,10 @@ namespace Tasks_Planner.Repos.Categories
         {
             if (_categories != null)
             {
+                if (Categories.IdCounter == _categories.CategoriesList[id].Id)
+                {
+                    Categories.IdCounter--;
+                }
                 _categories.CategoriesList?.RemoveAt(id);
                 Save();
             }
@@ -64,7 +68,7 @@ namespace Tasks_Planner.Repos.Categories
             throw new NotImplementedException();
         }
 
-        public Category GetByID(int id)
+        public Category GetByIndex(int id)
         {
             if (_categories?.CategoriesList != null)
             {
@@ -73,7 +77,7 @@ namespace Tasks_Planner.Repos.Categories
             else throw new ArgumentException(Messages.Error);
         }
 
-        public IEnumerable<Category> GetList()
+        public IEnumerable<Category> GetCollection()
         {
             if (_categories?.CategoriesList != null)
             {

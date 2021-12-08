@@ -79,6 +79,15 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Категория успешно удалена..
+        /// </summary>
+        public static string CategoryDeleted {
+            get {
+                return ResourceManager.GetString("CategoryDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Категория с таким именем уже существует..
         /// </summary>
         public static string CategoryExists {
@@ -93,6 +102,15 @@ namespace Tasks_Planner.Properties {
         public static string CategoryNotSelected {
             get {
                 return ResourceManager.GetString("CategoryNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категория привязана к напоминаниям. Либо удалите все напоминания, которые привязаны к данной категории, либо отвяжите данную категорию от всех напоминаний посредством редактирования..
+        /// </summary>
+        public static string CategoryUsed {
+            get {
+                return ResourceManager.GetString("CategoryUsed", resourceCulture);
             }
         }
         
@@ -237,15 +255,6 @@ namespace Tasks_Planner.Properties {
         public static string TaskNotUnique {
             get {
                 return ResourceManager.GetString("TaskNotUnique", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test message.
-        /// </summary>
-        public static string Test {
-            get {
-                return ResourceManager.GetString("Test", resourceCulture);
             }
         }
     }

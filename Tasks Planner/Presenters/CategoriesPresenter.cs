@@ -29,7 +29,7 @@ namespace Tasks_Planner.Presenters
         }
         public void UpdateCategoriesList()
         {
-            List<Category> categories = _categories.GetList().ToList(); ;
+            List<Category> categories = _categories.GetCollection().ToList(); ;
             int SelectedIndex = _view.SelectedCategory >= 0 ? _view.SelectedCategory : 0;
             _view.CategoriesList.Items.Clear();
             foreach (Category category in categories)
@@ -44,7 +44,7 @@ namespace Tasks_Planner.Presenters
         {
             if (_view.CategoriesList.SelectedIndices.Count > 0)
             {
-                Category c = _categories.GetByID(_view.SelectedCategory);
+                Category c = _categories.GetByIndex(_view.SelectedCategory);
                 _view.CategoryName.Text = c.Name;
                 _view.Description.Text = c.Description;
             }
@@ -96,6 +96,18 @@ namespace Tasks_Planner.Presenters
 
             }
             else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
+        }
+        public void Delete()
+        {
+            Category c = _categories.GetByIndex(_view.SelectedCategory);
+            List<UserTask> tasks = _tasks.GetCollection().ToList();
+            tasks = tasks.FindAll(task => task.CategoriesID.Contains(c.Id));
+            if (!tasks.Any())
+            {
+                _categories.Delete(_view.SelectedCategory);
+                Notifier.StringNotify?.Invoke(Messages.CategoryDeleted);
+            }
+            else Notifier.StringNotify?.Invoke(Messages.CategoryUsed);
         }
         public void OnNameFieldLeave()
         {

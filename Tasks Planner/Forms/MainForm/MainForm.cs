@@ -157,6 +157,11 @@ namespace Tasks_Planner
         {
             Presenter.Delete();
         }
+
+        private void deleteCategoryButton_Click(object sender, EventArgs e)
+        {
+            CategoriesPresenter.Delete();
+        }
     }
 
 }

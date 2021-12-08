@@ -123,11 +123,17 @@
   <data name="CategoryAdded" xml:space="preserve">
     <value>Категория добавлена!</value>
   </data>
+  <data name="CategoryDeleted" xml:space="preserve">
+    <value>Категория успешно удалена.</value>
+  </data>
   <data name="CategoryExists" xml:space="preserve">
     <value>Категория с таким именем уже существует.</value>
   </data>
   <data name="CategoryNotSelected" xml:space="preserve">
     <value>Категория не выбрана :/</value>
+  </data>
+  <data name="CategoryUsed" xml:space="preserve">
+    <value>Категория привязана к напоминаниям. Либо удалите все напоминания, которые привязаны к данной категории, либо отвяжите данную категорию от всех напоминаний посредством редактирования.</value>
   </data>
   <data name="DefaultCategoryName" xml:space="preserve">
     <value>Tasks</value>
@@ -176,8 +182,5 @@
   </data>
   <data name="TaskNotUnique" xml:space="preserve">
     <value>Напоминание с такими названием/описанием уже существует.</value>
-  </data>
-  <data name="Test" xml:space="preserve">
-    <value>Test message</value>
   </data>
 </root>

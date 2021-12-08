@@ -49,7 +49,7 @@ namespace Tasks_Planner.Presenters
 
         public void UpdateCheckedListBox()
         {
-            var categories = (from category in _categories.GetList() select category.Name).ToList();
+            var categories = (from category in _categories.GetCollection() select category.Name).ToList();
             foreach (string category in categories)
             {
                 _view.Categories.Items.Add(category, false);
@@ -57,7 +57,7 @@ namespace Tasks_Planner.Presenters
         }
         public void UpdateTasksList()
         {
-            List<UserTask> tasks = _tasks.GetList().ToList();
+            List<UserTask> tasks = _tasks.GetCollection().ToList();
             int SelectedIndex = _view.SelectedTask >= 0 ? _view.SelectedTask : 0;
             _view.TasksView.Items.Clear();
             foreach (UserTask task in tasks)
@@ -72,7 +72,7 @@ namespace Tasks_Planner.Presenters
         {
             if (_view.TasksView.SelectedIndices.Count > 0)
             {
-                UserTask task = _tasks.GetByID(_view.SelectedTask);
+                UserTask task = _tasks.GetByIndex(_view.SelectedTask);
                 _view.NameField = task.Name;
                 _view.DescriptionField = task.Description;
                 _view.Date = task.TaskDate;
@@ -86,7 +86,7 @@ namespace Tasks_Planner.Presenters
                 {
                     _view.PeriodicityCombo.SelectedIndex = -1;
                 }
-                List<Category> neededIdCategories = _categories.GetList().ToList().FindAll(c => task.CategoriesID.Contains(c.Id));
+                List<Category> neededIdCategories = _categories.GetCollection().ToList().FindAll(c => task.CategoriesID.Contains(c.Id));
                 List<string> categoriesStrings = (from category in neededIdCategories select category.Name).ToList();
                 foreach (string category in categoriesStrings)
                 {
@@ -115,7 +115,7 @@ namespace Tasks_Planner.Presenters
         {
             var form = new TaskCreating();
             form.Text = Messages.TaskEditForm;
-            form.Edit = _tasks.GetByID(_view.SelectedTask);
+            form.Edit = _tasks.GetByIndex(_view.SelectedTask);
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();
         }
