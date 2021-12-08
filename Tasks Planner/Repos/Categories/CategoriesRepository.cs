@@ -13,7 +13,7 @@ namespace Tasks_Planner.Repos.Categories
     public class CategoriesRepository : IRepository<Category>
     {
         private readonly string _filePath;
-        private readonly Categories? _categories;
+        private readonly Categories _categories;
 
         public CategoriesRepository(string programPath)
         {
@@ -35,32 +35,24 @@ namespace Tasks_Planner.Repos.Categories
 
         public bool Create(Category item)
         {
-            if (_categories?.CategoriesList != null)
+            if (!_categories.CategoriesList.Contains(item))
             {
-                if (!_categories.CategoriesList.Contains(item))
-                {
-                    _categories.CategoriesList?.Add(item);
-                    Save();
-                    return true;
-                }
-                else
-                    return false;
+                _categories.CategoriesList?.Add(item);
+                Save();
+                return true;
             }
-            else throw new ArgumentException(Messages.Error);
+            else
+                return false;
         }
 
         public void Delete(int id)
         {
-            if (_categories != null)
+            if (Categories.IdCounter == _categories.CategoriesList[id].Id)
             {
-                if (Categories.IdCounter == _categories.CategoriesList[id].Id)
-                {
-                    Categories.IdCounter--;
-                }
-                _categories.CategoriesList?.RemoveAt(id);
-                Save();
+                Categories.IdCounter--;
             }
-            else throw new ArgumentException(Messages.Error);
+            _categories.CategoriesList?.RemoveAt(id);
+            Save();
         }
 
         public void Dispose()
@@ -70,37 +62,25 @@ namespace Tasks_Planner.Repos.Categories
 
         public Category GetByIndex(int id)
         {
-            if (_categories?.CategoriesList != null)
-            {
-                return _categories.CategoriesList[id];
-            }
-            else throw new ArgumentException(Messages.Error);
+            return _categories.CategoriesList[id];
         }
 
         public IEnumerable<Category> GetCollection()
         {
-            if (_categories?.CategoriesList != null)
-            {
-                return _categories.CategoriesList;
-            }
-            else throw new ArgumentException(Messages.Error);
+            return _categories.CategoriesList;
         }
 
         public void Save()
         {
-            JSerializer<Categories?>.Serialize(_categories, _filePath);
+            JSerializer<Categories>.Serialize(_categories, _filePath);
         }
 
         public bool Update(Category item)
         {
-            if (_categories?.CategoriesList != null)
-            {
-                int id = _categories.CategoriesList.ToList().FindIndex(category => category.Id == item.Id);
-                _categories.CategoriesList[id] = item;
-                Save();
-                return true;
-            }
-            else throw new ArgumentException(Messages.Error);
+            int id = _categories.CategoriesList.ToList().FindIndex(category => category.Id == item.Id);
+            _categories.CategoriesList[id] = item;
+            Save();
+            return true;
         }
     }
 }

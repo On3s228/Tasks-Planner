@@ -25,7 +25,7 @@ namespace Tasks_Planner.Forms.TasksCreating
             descriptionBox.TextChanged += NameBox_Leave;
         }
 
-        private void NameBox_Leave(object? sender, EventArgs e)
+        private void NameBox_Leave(object sender, EventArgs e)
         {
             //todo: объединить MyRichTextBox и MyTextBox в один интерфейс для более удобного кода ивентов
             if (sender is ICustomTextBox myBox)

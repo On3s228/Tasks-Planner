@@ -34,7 +34,7 @@ namespace Tasks_Planner.Forms.CategoriesAdding
 
         }
 
-        private void nameBox_Leave(object? sender, EventArgs e)
+        private void nameBox_Leave(object sender, EventArgs e)
         {
             nameBox.BorderColor = string.IsNullOrWhiteSpace(nameBox.Text) ? Color.Red : Color.Transparent;
         }

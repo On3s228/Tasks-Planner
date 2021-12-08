@@ -9,8 +9,8 @@ namespace Tasks_Planner.Tools
 {
     public class Events
     {
-        public static MainPresenter? MainPresenter { get; set; }
-        public static CategoriesPresenter? CategoriesPresenter { get; set; }
+        public static MainPresenter MainPresenter { get; set; }
+        public static CategoriesPresenter CategoriesPresenter { get; set; }
         public static void TasksListChanged()
         {
             if (MainPresenter != null)

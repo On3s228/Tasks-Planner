@@ -11,47 +11,28 @@ namespace Tasks_Planner.Repos.Tasks
 {
     public class UserTasks
     {
-        public ObservableCollection<UserTask>? TasksList { get; set; }
+        public ObservableCollection<UserTask> TasksList { get; set; }
         [JsonProperty]
         public static int IdCounter { get; set; }
         public UserTasks() { }
     }
-    public class UserTask : IEquatable<UserTask?>, IDisposable
+    public class UserTask : IEquatable<UserTask>, IDisposable
     {
 
         private int period;
         private DateTime taskDate;
 
-        public int Period
+        [JsonIgnore]
+        private System.Windows.Forms.Timer PeriodicTimer { get; set; } //in miliseconds
+        [JsonIgnore]
+        private System.Windows.Forms.Timer DefaultTimer { get; set; }
+        public DateTime LastTick { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime TaskDate
         {
-            get => period;
-            set
-            {
-                if (value > 0)
-                {
-                    period = value;
-                    PeriodicTimer = new System.Windows.Forms.Timer();
-                    //because setter gets value in seconds, but Timer.Interval needs miliseconds
-                    PeriodicTimer.Interval = value * 1000;
-                    PeriodicTimer.Tick += (sender, args) =>
-                    {
-                        Notifier.GetNotify?.Invoke(this);
-                        LastTick = DateTime.Now;
-                    };
-                    PeriodicTimer.Start();
-                }
-                else
-                {
-                    if (PeriodicTimer != null)
-                    {
-                        PeriodicTimer.Dispose();
-                    }
-                }
-            }
-        }
-        public DateTime TaskDate 
-        { 
-            get => taskDate; 
+            get => taskDate;
             set
             {
                 taskDate = value;
@@ -72,25 +53,45 @@ namespace Tasks_Planner.Repos.Tasks
                 }
             }
         }
-        [JsonIgnore]
-        private System.Windows.Forms.Timer PeriodicTimer { get; set; } //in miliseconds
-        [JsonIgnore]
-        private System.Windows.Forms.Timer DefaultTimer { get; set; }
-        public DateTime LastTick { get; set; }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int Period
+        {
+            get => period;
+            set
+            {
+                if (value > 0)
+                {
+                    period = value;
+                    PeriodicTimer = new System.Windows.Forms.Timer();
+                    //because setter gets value in seconds, but Timer.Interval needs miliseconds
+                    PeriodicTimer.Interval = value * 1000;
+                    PeriodicTimer.Tick += (sender, args) =>
+                    {
+                        Notifier.GetNotify?.Invoke(this);
+                        LastTick = DateTime.Now;
+                    };
+                    PeriodicTimer.Start();
+
+                }
+                else
+                {
+                    if (PeriodicTimer != null)
+                    {
+                        PeriodicTimer.Dispose();
+                    }
+                }
+            }
+        }
         public List<int> CategoriesID { get; set; }
         public bool IsHandled { get; set; }
 
         public UserTask() { }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             return Equals(obj as UserTask);
         }
 
-        public bool Equals(UserTask? other)
+        public bool Equals(UserTask other)
         {
             return other != null &&
                 other.Id != Id &&
@@ -131,14 +132,15 @@ namespace Tasks_Planner.Repos.Tasks
             }
         }
 
-        public static bool operator ==(UserTask? left, UserTask? right)
+        public static bool operator ==(UserTask left, UserTask right)
         {
             return EqualityComparer<UserTask>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(UserTask? left, UserTask? right)
+        public static bool operator !=(UserTask left, UserTask right)
         {
             return !(left == right);
         }
+        
     }
 }

@@ -10,8 +10,8 @@ namespace Tasks_Planner.Repos
 {
     public class Repositories
     {
-        public IRepository<Category>? CategoriesRepository { get; private set; }
-        public IRepository<UserTask>? TasksRepository { get; private set; }
+        public IRepository<Category> CategoriesRepository { get; private set; }
+        public IRepository<UserTask> TasksRepository { get; private set; }
         public Repositories(string appPath)
         {
             CategoriesRepository = new CategoriesRepository(appPath);

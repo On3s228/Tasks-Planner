@@ -8,7 +8,7 @@ namespace Tasks_Planner.Tools
 {
     public static class Periodicities
     {
-        public static List<string>? PeriodsStrings { get; private set; } = new List<string>
+        public static List<string> PeriodsStrings { get; private set; } = new List<string>
             {
                 "раз в 1 час",
                 "раз в 2 часа",

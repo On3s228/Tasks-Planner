@@ -98,12 +98,12 @@ namespace Tasks_Planner
 
         }
 
-        private void CategoryNameBox_Leave(object? sender, EventArgs e)
+        private void CategoryNameBox_Leave(object sender, EventArgs e)
         {
             CategoriesPresenter.OnNameFieldLeave();
         }
 
-        private void NotifyIcon1_MouseDoubleClick(object? sender, MouseEventArgs e)
+        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
             WindowState = FormWindowState.Normal;

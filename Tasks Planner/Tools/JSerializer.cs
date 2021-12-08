@@ -19,12 +19,12 @@ namespace Tasks_Planner
                 serializer.Serialize(writer, item);
             }
         }
-        public static T? Deserialize(string filePath)
+        public static T Deserialize(string filePath)
         {
             using (StreamReader sr = new StreamReader(filePath))
             using (JsonReader reader = new JsonTextReader(sr))
             {
-                T? result = serializer.Deserialize<T>(reader);
+                T result = serializer.Deserialize<T>(reader);
                 return result;
             }
         }

@@ -11,24 +11,24 @@ namespace Tasks_Planner.Repos.Categories
 {
     public class Categories
     {
-        public ObservableCollection<Category>? CategoriesList { get; set; }
+        public ObservableCollection<Category> CategoriesList { get; set; }
         [JsonProperty]
         public static int IdCounter { get; set; }
         public Categories() { }
     }
-    public class Category : IEquatable<Category?>
+    public class Category : IEquatable<Category>
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Category() { }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             return Equals(obj as Category);
         }
 
-        public bool Equals(Category? other)
+        public bool Equals(Category other)
         {
             return other != null &&
                    Name == other.Name;
@@ -39,12 +39,12 @@ namespace Tasks_Planner.Repos.Categories
             return HashCode.Combine(Name, Description);
         }
 
-        public static bool operator ==(Category? left, Category? right)
+        public static bool operator ==(Category left, Category right)
         {
             return EqualityComparer<Category>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(Category? left, Category? right)
+        public static bool operator !=(Category left, Category right)
         {
             return !(left == right);
         }

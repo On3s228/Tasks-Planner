@@ -13,7 +13,7 @@ namespace Tasks_Planner.Repos.Tasks
     public class TasksRepository : IRepository<UserTask>
     {
         private readonly string _filePath;
-        private readonly UserTasks? _tasks;
+        private readonly UserTasks _tasks;
         private readonly IRepository<Category> _categories;
 
         public TasksRepository(string programPath, IRepository<Category> categoriesRepository)
@@ -37,26 +37,20 @@ namespace Tasks_Planner.Repos.Tasks
 
         public bool Create(UserTask item)
         {
-            if (_tasks?.TasksList != null)
+            if (!_tasks.TasksList.Contains(item))
             {
-                if (!_tasks.TasksList.Contains(item))
-                {
-                    _tasks.TasksList?.Add(item);
-                    Save();
-                    return true;
-                } else 
-                    return false;
-
-            } else throw new ArgumentException(Messages.Error);
+                _tasks.TasksList.Add(item);
+                Save();
+                return true;
+            }
+            else
+                return false;
         }
 
         public void Delete(int id)
         {
-            if (_tasks != null)
-            {
-                _tasks.TasksList?.RemoveAt(id);
-                Save();
-            }
+            _tasks.TasksList.RemoveAt(id);
+            Save();
         }
 
         public void Dispose()
@@ -66,42 +60,31 @@ namespace Tasks_Planner.Repos.Tasks
 
         public UserTask GetByIndex(int id)
         {
-            if (_tasks != null && _tasks.TasksList != null)
-            {
-                return _tasks.TasksList[id];
-            }
-            else throw new ArgumentException(Messages.Error);
+            return _tasks.TasksList[id];
         }
 
         public IEnumerable<UserTask> GetCollection()
         {
-            if (_tasks != null && _tasks.TasksList != null)
-            {
-                return _tasks.TasksList; 
-            } else throw new ArgumentException(Messages.Error);
+            return _tasks.TasksList;
         }
 
         public void Save()
         {
-            JSerializer<UserTasks?>.Serialize(_tasks, _filePath);
+            JSerializer<UserTasks>.Serialize(_tasks, _filePath);
         }
 
         public bool Update(UserTask item)
         {
-            if (_tasks != null && _tasks.TasksList != null)
+            if (!_tasks.TasksList.Contains(item))
             {
-                if (!_tasks.TasksList.Contains(item))
-                {
-                    int id = _tasks.TasksList.ToList().FindIndex(task => task.Id == item.Id);
-                    _tasks.TasksList[id].Dispose();
-                    _tasks.TasksList[id] = item;
-                    Save();
-                    return true;
-                }
-                else
-                    return false;
+                int id = _tasks.TasksList.ToList().FindIndex(task => task.Id == item.Id);
+                _tasks.TasksList[id].Dispose();
+                _tasks.TasksList[id] = item;
+                Save();
+                return true;
             }
-            else throw new ArgumentException();
+            else
+                return false;
         }
     }
 }
