@@ -40,6 +40,11 @@ namespace Tasks_Planner.Presenters
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();
         }
+        public void Save()
+        {
+            _categories.Save();
+            _tasks.Save();
+        }
         public void NewCategoryAdding()
         {
             var form = new CategoryAdding();

@@ -93,8 +93,8 @@ namespace Tasks_Planner.Repos.Tasks
                 if (!_tasks.TasksList.Contains(item))
                 {
                     int id = _tasks.TasksList.ToList().FindIndex(task => task.Id == item.Id);
+                    _tasks.TasksList[id].Dispose();
                     _tasks.TasksList[id] = item;
-                    //GC.Collect();
                     Save();
                     return true;
                 }

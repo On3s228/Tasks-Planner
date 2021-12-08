@@ -162,6 +162,11 @@ namespace Tasks_Planner
         {
             CategoriesPresenter.Delete();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Presenter.Save();
+        }
     }
 
 }

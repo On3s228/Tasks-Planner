@@ -16,7 +16,7 @@ namespace Tasks_Planner.Repos.Tasks
         public static int IdCounter { get; set; }
         public UserTasks() { }
     }
-    public class UserTask : IEquatable<UserTask?>
+    public class UserTask : IEquatable<UserTask?>, IDisposable
     {
 
         private int period;
@@ -84,11 +84,6 @@ namespace Tasks_Planner.Repos.Tasks
         public bool IsHandled { get; set; }
 
         public UserTask() { }
-        ~UserTask()
-        {
-            PeriodicTimer.Dispose();
-            DefaultTimer.Dispose();
-        }
 
         public override bool Equals(object? obj)
         {
@@ -105,6 +100,35 @@ namespace Tasks_Planner.Repos.Tasks
         public override int GetHashCode()
         {
             return HashCode.Combine(Name, Description, TaskDate);
+        }
+
+        private bool disposed = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    Period = 0;
+                    PeriodicTimer = null;
+                    DefaultTimer.Dispose();
+                    DefaultTimer = null;
+                    Id = 0;
+                    Name = null;
+                    Description = null;
+                    TaskDate = DateTime.MinValue;
+                    LastTick = DateTime.MinValue;
+                    CategoriesID = null;
+                    IsHandled = false;
+                }
+                disposed = true;
+            }
         }
 
         public static bool operator ==(UserTask? left, UserTask? right)
