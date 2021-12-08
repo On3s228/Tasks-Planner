@@ -86,13 +86,15 @@ namespace Tasks_Planner.Repos.Tasks
             JSerializer<UserTasks?>.Serialize(_tasks, _filePath);
         }
 
-        public bool Update(int id, UserTask item)
+        public bool Update(UserTask item)
         {
             if (_tasks != null && _tasks.TasksList != null)
             {
                 if (!_tasks.TasksList.Contains(item))
                 {
+                    int id = _tasks.TasksList.ToList().FindIndex(task => task.Id == item.Id);
                     _tasks.TasksList[id] = item;
+                    //GC.Collect();
                     Save();
                     return true;
                 }

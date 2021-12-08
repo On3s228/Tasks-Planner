@@ -84,6 +84,11 @@ namespace Tasks_Planner.Repos.Tasks
         public bool IsHandled { get; set; }
 
         public UserTask() { }
+        ~UserTask()
+        {
+            PeriodicTimer.Dispose();
+            DefaultTimer.Dispose();
+        }
 
         public override bool Equals(object? obj)
         {
@@ -93,7 +98,8 @@ namespace Tasks_Planner.Repos.Tasks
         public bool Equals(UserTask? other)
         {
             return other != null &&
-                   (Name == other.Name || Description == other.Description);
+                other.Id != Id &&
+                (other.Name == Name || other.Description == Description);
         }
 
         public override int GetHashCode()

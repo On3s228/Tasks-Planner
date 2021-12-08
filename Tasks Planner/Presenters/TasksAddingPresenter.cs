@@ -123,9 +123,8 @@ namespace Tasks_Planner.Presenters
                 {
                     task.Id = _view.Edit.Id;
                     UserTasks.IdCounter--;
-                    List<UserTask> tasks = _tasks.GetList().ToList();
-                    int index = tasks.IndexOf(_view.Edit);
-                    if (_tasks.Update(index, task))
+
+                    if (_tasks.Update(task))
                     {
                         Notifier.StringNotify?.Invoke(Messages.Saved);
                     }

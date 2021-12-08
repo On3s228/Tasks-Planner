@@ -63,7 +63,7 @@ namespace Tasks_Planner.Presenters
                 Name = _view.CategoryName.Text,
                 Description = _view.Description.Text
             };
-            _categories.Update(_view.SelectedCategory, c);
+            _categories.Update(c);
         }
         private bool IsValid()
         {

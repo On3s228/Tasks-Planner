@@ -87,10 +87,11 @@ namespace Tasks_Planner.Repos.Categories
             JSerializer<Categories?>.Serialize(_categories, _filePath);
         }
 
-        public bool Update(int id, Category item)
+        public bool Update(Category item)
         {
             if (_categories?.CategoriesList != null)
             {
+                int id = _categories.CategoriesList.ToList().FindIndex(category => category.Id == item.Id);
                 _categories.CategoriesList[id] = item;
                 Save();
                 return true;
