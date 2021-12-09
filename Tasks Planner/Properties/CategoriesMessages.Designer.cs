@@ -22,24 +22,24 @@ namespace Tasks_Planner.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Messages {
+    internal class CategoriesMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Messages() {
+        internal CategoriesMessages() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.CategoriesMessages", typeof(CategoriesMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Tasks_Planner.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,38 +61,56 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Внимание!.
+        ///   Looks up a localized string similar to Категория добавлена!.
         /// </summary>
-        public static string Attention {
+        internal static string CategoryAdded {
             get {
-                return ResourceManager.GetString("Attention", resourceCulture);
+                return ResourceManager.GetString("CategoryAdded", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редактировать.
+        ///   Looks up a localized string similar to Категория успешно удалена..
         /// </summary>
-        public static string Edit {
+        internal static string CategoryDeleted {
             get {
-                return ResourceManager.GetString("Edit", resourceCulture);
+                return ResourceManager.GetString("CategoryDeleted", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить.
+        ///   Looks up a localized string similar to Категория с таким именем уже существует..
         /// </summary>
-        public static string Save {
+        internal static string CategoryExists {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("CategoryExists", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успешно сохранено..
+        ///   Looks up a localized string similar to Категория не выбрана :/.
         /// </summary>
-        public static string Saved {
+        internal static string CategoryNotSelected {
             get {
-                return ResourceManager.GetString("Saved", resourceCulture);
+                return ResourceManager.GetString("CategoryNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категория привязана к напоминаниям. Либо удалите все напоминания, которые привязаны к данной категории, либо отвяжите данную категорию от всех напоминаний посредством редактирования..
+        /// </summary>
+        internal static string CategoryUsed {
+            get {
+                return ResourceManager.GetString("CategoryUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Некорректное имя, заполните поле в верном формате!.
+        /// </summary>
+        internal static string InvalidName {
+            get {
+                return ResourceManager.GetString("InvalidName", resourceCulture);
             }
         }
     }

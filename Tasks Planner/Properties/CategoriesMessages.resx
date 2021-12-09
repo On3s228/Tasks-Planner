@@ -117,16 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Attention" xml:space="preserve">
-    <value>Внимание!</value>
+  <data name="CategoryAdded" xml:space="preserve">
+    <value>Категория добавлена!</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Редактировать</value>
+  <data name="CategoryDeleted" xml:space="preserve">
+    <value>Категория успешно удалена.</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="CategoryExists" xml:space="preserve">
+    <value>Категория с таким именем уже существует.</value>
   </data>
-  <data name="Saved" xml:space="preserve">
-    <value>Успешно сохранено.</value>
+  <data name="CategoryNotSelected" xml:space="preserve">
+    <value>Категория не выбрана :/</value>
+  </data>
+  <data name="CategoryUsed" xml:space="preserve">
+    <value>Категория привязана к напоминаниям. Либо удалите все напоминания, которые привязаны к данной категории, либо отвяжите данную категорию от всех напоминаний посредством редактирования.</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Некорректное имя, заполните поле в верном формате!</value>
   </data>
 </root>

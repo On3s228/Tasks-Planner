@@ -28,8 +28,8 @@ namespace Tasks_Planner.Presenters
         }
         private void ClearFields()
         {
-            _view.NameField.Text = Messages.Empty;
-            _view.DescriptionField.Text = Messages.Empty;
+            _view.NameField.Text = DefaultValues.Empty;
+            _view.DescriptionField.Text = DefaultValues.Empty;
         }
         public void AddCategory()
         {
@@ -45,15 +45,15 @@ namespace Tasks_Planner.Presenters
                 {
                     Events.CategoriesListChanged();
                     ClearFields();
-                    Notifier.StringNotify?.Invoke(Messages.CategoryAdded);
+                    Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryAdded);
                 } else
                 {
-                    Notifier.StringNotify?.Invoke(Messages.CategoryExists);
+                    Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryExists);
                     Categories.IdCounter--;
                 }
                 
             }
-            else Notifier.StringNotify?.Invoke(Messages.InvalidName);
+            else Notifier.ShowNotify?.Invoke(CategoriesMessages.InvalidName);
         }
     }
 }

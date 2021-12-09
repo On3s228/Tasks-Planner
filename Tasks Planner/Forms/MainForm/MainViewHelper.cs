@@ -21,15 +21,17 @@ namespace Tasks_Planner.Presenters
         {
             if (userTask is UserTask t)
             {
-                if (_mainForm.IsVisible)
+                string notifyContent = $"Уведомление!\n\nНазвание напоминания: {t.Name}\nОписание: {t.Description}\nВремя напоминания: {t.TaskDate}";
+                if (!_mainForm.Icon.Visible)
                 {
                     SystemSounds.Hand.Play();
-                    MessageBox.Show(t.Description, t.Name, MessageBoxButtons.OK);
+                    
+                    MessageBox.Show(notifyContent, "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     SystemSounds.Hand.Play();
-                    _mainForm.Icon.ShowBalloonTip(10000, t.Name, t.Description, ToolTipIcon.Warning);
+                    _mainForm.Icon.ShowBalloonTip(20000, "Уведомление", notifyContent, ToolTipIcon.Warning);
                 }
             }
         }

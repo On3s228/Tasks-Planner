@@ -22,24 +22,24 @@ namespace Tasks_Planner.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Messages {
+    internal class DefaultValues {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Messages() {
+        internal DefaultValues() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.DefaultValues", typeof(DefaultValues).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Tasks_Planner.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,38 +61,65 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Внимание!.
+        ///   Looks up a localized string similar to Важные дела..
         /// </summary>
-        public static string Attention {
+        internal static string DefaultCategoryName {
             get {
-                return ResourceManager.GetString("Attention", resourceCulture);
+                return ResourceManager.GetString("DefaultCategoryName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редактировать.
+        ///   Looks up a localized string similar to Описание периодического напоминания..
         /// </summary>
-        public static string Edit {
+        internal static string DefaultPeriodicDesc {
             get {
-                return ResourceManager.GetString("Edit", resourceCulture);
+                return ResourceManager.GetString("DefaultPeriodicDesc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить.
+        ///   Looks up a localized string similar to Стандартное описание напоминания..
         /// </summary>
-        public static string Save {
+        internal static string DefaultTaskDesc {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("DefaultTaskDesc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успешно сохранено..
+        ///   Looks up a localized string similar to Напоминание..
         /// </summary>
-        public static string Saved {
+        internal static string DefaultTaskName {
             get {
-                return ResourceManager.GetString("Saved", resourceCulture);
+                return ResourceManager.GetString("DefaultTaskName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Empty {
+            get {
+                return ResourceManager.GetString("Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавление напоминания.
+        /// </summary>
+        internal static string TaskAddingForm {
+            get {
+                return ResourceManager.GetString("TaskAddingForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование напоминания.
+        /// </summary>
+        internal static string TaskEditForm {
+            get {
+                return ResourceManager.GetString("TaskEditForm", resourceCulture);
             }
         }
     }

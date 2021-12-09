@@ -36,7 +36,7 @@ namespace Tasks_Planner.Presenters
         public void NewTasksAdding()
         {
             var form = new TaskCreating();
-            form.Text = Messages.TaskAddingForm;
+            form.Text = DefaultValues.TaskAddingForm;
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();
         }
@@ -104,8 +104,8 @@ namespace Tasks_Planner.Presenters
             }
             else
             {
-                _view.NameField = Messages.Empty;
-                _view.DescriptionField = Messages.Empty;
+                _view.NameField = DefaultValues.Empty;
+                _view.DescriptionField = DefaultValues.Empty;
                 _view.Date = DateTime.MinValue;
                 _view.IsPeriodic = false;
                 _view.PeriodicityCombo.SelectedIndex = -1;
@@ -119,7 +119,7 @@ namespace Tasks_Planner.Presenters
         public void Edit()
         {
             var form = new TaskCreating();
-            form.Text = Messages.TaskEditForm;
+            form.Text = DefaultValues.TaskEditForm;
             form.Edit = _tasks.GetByIndex(_view.SelectedTask);
             var presenter = new TasksAddingPresenter(form, _tasks, _categories);
             form.ShowDialog();

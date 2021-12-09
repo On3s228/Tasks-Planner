@@ -36,23 +36,23 @@ namespace Tasks_Planner.Repos.Tasks
             set
             {
                 taskDate = value;
-                if (value > DateTime.Now)
-                {
-                    DefaultTimer = new System.Windows.Forms.Timer();
-                    DefaultTimer.Interval = 60000;
-                    DefaultTimer.Tick += (sender, args) =>
-                    {
-                        if (DateTime.Now >= taskDate)
-                        {
-                            Notifier.GetNotify?.Invoke(this);
-                            IsHandled = true;
-                            DefaultTimer.Dispose();
-                        }
-                    };
-                    DefaultTimer.Enabled = true;
-                }
+                DefaultTimer = new System.Windows.Forms.Timer();
+                DefaultTimer.Interval = 60000;
+                DefaultTimer.Tick += DefaultTimer_Tick;
+                DefaultTimer.Enabled = true;
             }
         }
+
+        private void DefaultTimer_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now >= taskDate && !IsHandled)
+            {
+                Notifier.TaskNotify?.Invoke(this);
+                IsHandled = true;
+                DefaultTimer.Dispose();
+            }
+        }
+
         public int Period
         {
             get => period;
@@ -61,14 +61,14 @@ namespace Tasks_Planner.Repos.Tasks
                 if (value > 0)
                 {
                     period = value;
+                    if (LastTick == DateTime.MinValue)
+                    {
+                        LastTick = DateTime.Now;
+                    }
                     PeriodicTimer = new System.Windows.Forms.Timer();
                     //because setter gets value in seconds, but Timer.Interval needs miliseconds
                     PeriodicTimer.Interval = value * 1000;
-                    PeriodicTimer.Tick += (sender, args) =>
-                    {
-                        Notifier.GetNotify?.Invoke(this);
-                        LastTick = DateTime.Now;
-                    };
+                    PeriodicTimer.Tick += PeriodicTimer_Tick;
                     PeriodicTimer.Start();
 
                 }
@@ -81,6 +81,13 @@ namespace Tasks_Planner.Repos.Tasks
                 }
             }
         }
+
+        private void PeriodicTimer_Tick(object sender, EventArgs e)
+        {
+            Notifier.TaskNotify?.Invoke(this);
+            LastTick = DateTime.Now;
+        }
+
         public List<int> CategoriesID { get; set; }
         public bool IsHandled { get; set; }
 
@@ -104,10 +111,11 @@ namespace Tasks_Planner.Repos.Tasks
         }
 
         private bool disposed = false;
+
         public void Dispose()
         {
             Dispose(true);
-            
+
             GC.SuppressFinalize(this);
         }
         protected virtual void Dispose(bool disposing)
@@ -141,6 +149,6 @@ namespace Tasks_Planner.Repos.Tasks
         {
             return !(left == right);
         }
-        
+
     }
 }

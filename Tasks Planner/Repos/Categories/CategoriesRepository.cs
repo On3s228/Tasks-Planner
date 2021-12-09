@@ -37,7 +37,7 @@ namespace Tasks_Planner.Repos.Categories
         {
             if (!_categories.CategoriesList.Contains(item))
             {
-                _categories.CategoriesList?.Add(item);
+                _categories.CategoriesList.Add(item);
                 Save();
                 return true;
             }
@@ -51,7 +51,7 @@ namespace Tasks_Planner.Repos.Categories
             {
                 Categories.IdCounter--;
             }
-            _categories.CategoriesList?.RemoveAt(id);
+            _categories.CategoriesList.RemoveAt(id);
             Save();
         }
 

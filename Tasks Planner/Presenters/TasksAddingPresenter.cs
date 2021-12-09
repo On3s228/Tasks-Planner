@@ -76,8 +76,8 @@ namespace Tasks_Planner.Presenters
         }
         private void ClearFields()
         {
-            _view.NameField.Text = Messages.Empty;
-            _view.DescriptionField.Text = Messages.Empty;
+            _view.NameField.Text = DefaultValues.Empty;
+            _view.DescriptionField.Text = DefaultValues.Empty;
             _view.IsPeriodic = default;
             _view.CheckedCategories.ClearSelected();
 
@@ -111,11 +111,11 @@ namespace Tasks_Planner.Presenters
                     if (_tasks.Create(task))
                     {
                         ClearFields();
-                        Notifier.StringNotify?.Invoke(Messages.TaskAdded);
+                        Notifier.ShowNotify?.Invoke(TasksMessages.TaskAdded);
                     }
                     else
                     {
-                        Notifier.StringNotify?.Invoke(Messages.TaskExists);
+                        Notifier.ShowNotify?.Invoke(TasksMessages.TaskExists);
                         UserTasks.IdCounter--;
                     }
                 }
@@ -126,13 +126,13 @@ namespace Tasks_Planner.Presenters
 
                     if (_tasks.Update(task))
                     {
-                        Notifier.StringNotify?.Invoke(Messages.Saved);
+                        Notifier.ShowNotify?.Invoke(Messages.Saved);
                     }
-                    else Notifier.StringNotify?.Invoke(Messages.TaskNotUnique);
+                    else Notifier.ShowNotify?.Invoke(TasksMessages.TaskNotUnique);
                     
                 }
             }
-            else Notifier.GetNotify?.Invoke(Messages.InvalidTaskData);
+            else Notifier.ShowNotify?.Invoke(TasksMessages.InvalidTaskData);
         }
 
     }

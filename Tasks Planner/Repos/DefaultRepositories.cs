@@ -22,8 +22,8 @@ namespace Tasks_Planner
             Category c = new Category
             {
                 Id = ++Categories.IdCounter,
-                Name = Messages.DefaultCategoryName,
-                Description = Messages.Empty,
+                Name = DefaultValues.DefaultCategoryName,
+                Description = DefaultValues.Empty,
             };
             categories.CategoriesList.Add(c);
 
@@ -39,8 +39,8 @@ namespace Tasks_Planner
             UserTask t = new UserTask
             {
                 Id = ++UserTasks.IdCounter,
-                Name = Messages.DefaultTaskName + " 1",
-                Description = Messages.DefaultPeriodicDesc,
+                Name = DefaultValues.DefaultTaskName + " 1",
+                Description = DefaultValues.DefaultPeriodicDesc,
                 TaskDate = DateTime.Now.AddMinutes(40),
                 Period = 30000,
                 CategoriesID = new List<int>()
@@ -48,8 +48,8 @@ namespace Tasks_Planner
             UserTask t1 = new UserTask
             {
                 Id = ++UserTasks.IdCounter,
-                Name = Messages.DefaultTaskName + " 2",
-                Description = Messages.DefaultTaskDesc,
+                Name = DefaultValues.DefaultTaskName + " 2",
+                Description = DefaultValues.DefaultTaskDesc,
                 TaskDate = DateTime.Now.AddMinutes(50),
                 CategoriesID = new List<int>()
             };

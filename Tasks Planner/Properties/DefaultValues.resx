@@ -117,16 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Attention" xml:space="preserve">
-    <value>Внимание!</value>
+  <data name="DefaultCategoryName" xml:space="preserve">
+    <value>Важные дела.</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Редактировать</value>
+  <data name="DefaultPeriodicDesc" xml:space="preserve">
+    <value>Описание периодического напоминания.</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="DefaultTaskDesc" xml:space="preserve">
+    <value>Стандартное описание напоминания.</value>
   </data>
-  <data name="Saved" xml:space="preserve">
-    <value>Успешно сохранено.</value>
+  <data name="DefaultTaskName" xml:space="preserve">
+    <value>Напоминание.</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TaskAddingForm" xml:space="preserve">
+    <value>Добавление напоминания</value>
+  </data>
+  <data name="TaskEditForm" xml:space="preserve">
+    <value>Редактирование напоминания</value>
   </data>
 </root>

@@ -22,24 +22,24 @@ namespace Tasks_Planner.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Messages {
+    internal class TasksMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Messages() {
+        internal TasksMessages() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tasks_Planner.Properties.TasksMessages", typeof(TasksMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Tasks_Planner.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,38 +61,38 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Внимание!.
+        ///   Looks up a localized string similar to Некорректные данные. Пожалуйста, проверьте поля! Особенно обратите внимание на поле с датой! Минимальная дата должна быть на 30 минут больше текущей!.
         /// </summary>
-        public static string Attention {
+        internal static string InvalidTaskData {
             get {
-                return ResourceManager.GetString("Attention", resourceCulture);
+                return ResourceManager.GetString("InvalidTaskData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редактировать.
+        ///   Looks up a localized string similar to Напоминание добавлено..
         /// </summary>
-        public static string Edit {
+        internal static string TaskAdded {
             get {
-                return ResourceManager.GetString("Edit", resourceCulture);
+                return ResourceManager.GetString("TaskAdded", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить.
+        ///   Looks up a localized string similar to Напоминание уже существует..
         /// </summary>
-        public static string Save {
+        internal static string TaskExists {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("TaskExists", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успешно сохранено..
+        ///   Looks up a localized string similar to Напоминание с такими названием/описанием уже существует..
         /// </summary>
-        public static string Saved {
+        internal static string TaskNotUnique {
             get {
-                return ResourceManager.GetString("Saved", resourceCulture);
+                return ResourceManager.GetString("TaskNotUnique", resourceCulture);
             }
         }
     }

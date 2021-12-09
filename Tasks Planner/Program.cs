@@ -16,7 +16,7 @@ namespace Tasks_Planner
         [STAThread]
         static void Main()
         {
-            Notifier.StringNotify += delegate (object ex)
+            Notifier.ShowNotify += delegate (object ex)
             {
                 if (ex is string s)
                 {
@@ -26,7 +26,7 @@ namespace Tasks_Planner
             ApplicationConfiguration.Initialize();
             MainForm mainForm = new MainForm();
             MainViewHelper mainViewHelper = new MainViewHelper(mainForm);
-            Notifier.GetNotify += mainViewHelper.Notify;
+            Notifier.TaskNotify += mainViewHelper.Notify;
             Repositories repos = new Repositories(Application.StartupPath);
             var presenter = new MainPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
             var categoriesPresenter = new CategoriesPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);

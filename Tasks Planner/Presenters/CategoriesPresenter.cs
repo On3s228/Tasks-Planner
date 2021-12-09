@@ -50,8 +50,8 @@ namespace Tasks_Planner.Presenters
             }
             else
             {
-                _view.CategoryName.Text = Messages.Empty;
-                _view.Description.Text = Messages.Empty;
+                _view.CategoryName.Text = DefaultValues.Empty;
+                _view.Description.Text = DefaultValues.Empty;
             }
         }
         private void Save()
@@ -92,10 +92,10 @@ namespace Tasks_Planner.Presenters
                     Save();
                     UpdateCategoriesList();
                 }
-                else Notifier.StringNotify?.Invoke(Messages.InvalidName);
+                else Notifier.ShowNotify?.Invoke(CategoriesMessages.InvalidName);
 
             }
-            else Notifier.StringNotify?.Invoke(Messages.CategoryNotSelected);
+            else Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryNotSelected);
         }
         public void Delete()
         {
@@ -105,9 +105,9 @@ namespace Tasks_Planner.Presenters
             if (!tasks.Any())
             {
                 _categories.Delete(_view.SelectedCategory);
-                Notifier.StringNotify?.Invoke(Messages.CategoryDeleted);
+                Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryDeleted);
             }
-            else Notifier.StringNotify?.Invoke(Messages.CategoryUsed);
+            else Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryUsed);
         }
         public void OnNameFieldLeave()
         {
