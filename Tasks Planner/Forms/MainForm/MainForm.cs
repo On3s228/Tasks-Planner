@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
 using Tasks_Planner.Presenters;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos;
 using Tasks_Planner.Repos.Tasks;
 
@@ -165,7 +166,15 @@ namespace Tasks_Planner
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Presenter.Save();
+            DialogResult result = MessageBox.Show(Messages.AreYouSure, Messages.Attention, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Presenter.Save();
+            } else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void MainForm_Shown(object sender, EventArgs e)

@@ -61,6 +61,17 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы действительно хотите закрыть приложение?
+        ///
+        ///Пока приложение закрыто, уведомления не будут приходить..
+        /// </summary>
+        public static string AreYouSure {
+            get {
+                return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Внимание!.
         /// </summary>
         public static string Attention {
