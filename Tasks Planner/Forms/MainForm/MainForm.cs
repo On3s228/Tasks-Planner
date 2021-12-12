@@ -167,6 +167,11 @@ namespace Tasks_Planner
         {
             Presenter.Save();
         }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            Presenter.HandleMissed();
+        }
     }
 
 }

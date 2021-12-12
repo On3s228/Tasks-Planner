@@ -70,6 +70,33 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пропущенных напоминаний не обнаружено!.
+        /// </summary>
+        internal static string MissedNotFound {
+            get {
+                return ResourceManager.GetString("MissedNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пропущенные периодичные напоминания!.
+        /// </summary>
+        internal static string MissedPeriodic {
+            get {
+                return ResourceManager.GetString("MissedPeriodic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пропущенные напоминания!.
+        /// </summary>
+        internal static string MissedTasks {
+            get {
+                return ResourceManager.GetString("MissedTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Напоминание добавлено..
         /// </summary>
         internal static string TaskAdded {

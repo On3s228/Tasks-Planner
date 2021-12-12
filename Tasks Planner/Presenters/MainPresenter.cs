@@ -115,6 +115,12 @@ namespace Tasks_Planner.Presenters
                 }
             }
         }
+        public void HandleMissed()
+        {
+            MissedTaskHandler missedTaskHandler = new MissedTaskHandler(_tasks);
+            missedTaskHandler.Handle();
+            missedTaskHandler.Show();
+        }
 
         public void Edit()
         {

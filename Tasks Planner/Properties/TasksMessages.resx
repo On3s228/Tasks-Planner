@@ -120,6 +120,15 @@
   <data name="InvalidTaskData" xml:space="preserve">
     <value>Некорректные данные. Пожалуйста, проверьте поля! Особенно обратите внимание на поле с датой! Минимальная дата должна быть на 30 минут больше текущей!</value>
   </data>
+  <data name="MissedNotFound" xml:space="preserve">
+    <value>Пропущенных напоминаний не обнаружено!</value>
+  </data>
+  <data name="MissedPeriodic" xml:space="preserve">
+    <value>Пропущенные периодичные напоминания!</value>
+  </data>
+  <data name="MissedTasks" xml:space="preserve">
+    <value>Пропущенные напоминания!</value>
+  </data>
   <data name="TaskAdded" xml:space="preserve">
     <value>Напоминание добавлено.</value>
   </data>
