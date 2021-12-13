@@ -1,9 +1,6 @@
-using System.Collections.ObjectModel;
-using Tasks_Planner.Presenters;
-using Tasks_Planner.Properties;
-using Tasks_Planner.Repos;
-using Tasks_Planner.Repos.Categories;
-using Tasks_Planner.Repos.Tasks;
+
+
+using Serilog;
 using Tasks_Planner.Tools;
 
 namespace Tasks_Planner
@@ -16,22 +13,14 @@ namespace Tasks_Planner
         [STAThread]
         static void Main()
         {
-            Notifier.ShowNotify += delegate (object ex)
-            {
-                if (ex is string s)
-                {
-                    MessageBox.Show(s, Messages.Attention, MessageBoxButtons.OK);
-                }
-            };
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day, rollOnFileSizeLimit: true)
+                .CreateLogger();
+            JSerializer<Dictionary<string, int>>.Serialize(Periodicities.GetPeriodsDictionary(), "dic.json");
             ApplicationConfiguration.Initialize();
-            MainForm mainForm = new MainForm();
-            MainViewHelper mainViewHelper = new MainViewHelper(mainForm);
-            Notifier.TaskNotify += mainViewHelper.Notify;
-            Repositories repos = new Repositories(Application.StartupPath);
-            var presenter = new MainPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
-            var categoriesPresenter = new CategoriesPresenter(mainForm, repos.CategoriesRepository, repos.TasksRepository);
-            Events.MainPresenter = presenter;
-            Events.CategoriesPresenter = categoriesPresenter;
+            MainForm mainForm = Initializer.InitializeMain();
             Application.Run(mainForm);
         }
     }
