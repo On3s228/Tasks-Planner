@@ -12,7 +12,7 @@ namespace Tasks_Planner
         /// </summary>
         [STAThread]
         static void Main()
-        {            
+        {
             ApplicationConfiguration.Initialize();
             MainForm mainForm = Initializer.InitializeMain();
             Application.Run(mainForm);
