@@ -19,6 +19,8 @@ namespace Tasks_Planner.Forms.MainForm
         ComboBox PeriodicityCombo { get; set; }
         CheckedListBox Categories { get; set; }
         bool IsVisible { get; set; }
+        bool IsEditButtonEnabled { get; set; }
+        bool IsDeleteButtonEnabled { get; set; }
         MainPresenter Presenter { set; }
     }
 }

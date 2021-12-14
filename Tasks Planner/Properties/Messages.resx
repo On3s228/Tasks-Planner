@@ -122,6 +122,9 @@
 
 Пока приложение закрыто, уведомления не будут приходить.</value>
   </data>
+  <data name="AreYouSureWantDelete" xml:space="preserve">
+    <value>Вы действительно хотите удалить данный элемент? Данное действие невозможно будет отменить!</value>
+  </data>
   <data name="Attention" xml:space="preserve">
     <value>Внимание!</value>
   </data>
@@ -132,6 +135,9 @@
     <value>Сохранить</value>
   </data>
   <data name="Saved" xml:space="preserve">
+    <value>Успешно сохранено.</value>
+  </data>
+  <data name="SuccesfullySaved" xml:space="preserve">
     <value>Успешно сохранено.</value>
   </data>
 </root>

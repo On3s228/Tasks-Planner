@@ -14,6 +14,7 @@ namespace Tasks_Planner.Forms.MainForm
         MyTextBox CategoryName { get; set; }
         RichTextBox Description { get; set; }
         Button EditButton { get; set; }
+        bool IsCategoryDeleteEnabled { get; set; }
         CategoriesPresenter CategoriesPresenter { set; }
     }
 }

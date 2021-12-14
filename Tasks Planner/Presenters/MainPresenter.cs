@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
@@ -55,11 +54,13 @@ namespace Tasks_Planner.Presenters
 
         public void UpdateCheckedListBox()
         {
+            _view.Categories.Items.Clear();
             var categories = (from category in _categories.GetCollection() select category.Name).ToList();
             foreach (string category in categories)
             {
                 _view.Categories.Items.Add(category, false);
             }
+            UpdateTaskView();
         }
         public void UpdateTasksList()
         {
@@ -78,6 +79,7 @@ namespace Tasks_Planner.Presenters
         {
             if (_view.TasksView.SelectedIndices.Count > 0)
             {
+
                 UserTask task = _tasks.GetByIndex(_view.SelectedTask);
                 _view.NameField = task.Name;
                 _view.DescriptionField = task.Description;
@@ -102,9 +104,13 @@ namespace Tasks_Planner.Presenters
                         _view.Categories.SetItemChecked(index, true);
                     }
                 }
+                _view.IsDeleteButtonEnabled = true;
+                _view.IsEditButtonEnabled = true;
             }
             else
             {
+                _view.IsDeleteButtonEnabled = false;
+                _view.IsEditButtonEnabled = false;
                 _view.NameField = DefaultValues.Empty;
                 _view.DescriptionField = DefaultValues.Empty;
                 _view.Date = DateTime.MinValue;
@@ -134,7 +140,8 @@ namespace Tasks_Planner.Presenters
 
         public void Delete()
         {
-            if (_view.SelectedTask >= 0)
+            DialogResult result = MessageBox.Show(Messages.AreYouSureWantDelete, Messages.Attention, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (_view.SelectedTask >= 0 && result == DialogResult.Yes)
             {
                 _tasks.Delete(_view.SelectedTask);
             }

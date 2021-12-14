@@ -72,6 +72,15 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы действительно хотите удалить данный элемент? Данное действие невозможно будет отменить!.
+        /// </summary>
+        public static string AreYouSureWantDelete {
+            get {
+                return ResourceManager.GetString("AreYouSureWantDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Внимание!.
         /// </summary>
         public static string Attention {
@@ -104,6 +113,15 @@ namespace Tasks_Planner.Properties {
         public static string Saved {
             get {
                 return ResourceManager.GetString("Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Успешно сохранено..
+        /// </summary>
+        public static string SuccesfullySaved {
+            get {
+                return ResourceManager.GetString("SuccesfullySaved", resourceCulture);
             }
         }
     }

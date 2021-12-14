@@ -29,7 +29,7 @@ namespace Tasks_Planner.Presenters
         }
         public void UpdateCategoriesList()
         {
-            List<Category> categories = _categories.GetCollection().ToList(); ;
+            List<Category> categories = _categories.GetCollection().ToList();
             int SelectedIndex = _view.SelectedCategory >= 0 ? _view.SelectedCategory : 0;
             _view.CategoriesList.Items.Clear();
             foreach (Category category in categories)
@@ -47,11 +47,15 @@ namespace Tasks_Planner.Presenters
                 Category c = _categories.GetByIndex(_view.SelectedCategory);
                 _view.CategoryName.Text = c.Name;
                 _view.Description.Text = c.Description;
+                _view.IsCategoryDeleteEnabled = true;
+                _view.EditButton.Enabled = true;
             }
             else
             {
                 _view.CategoryName.Text = DefaultValues.Empty;
                 _view.Description.Text = DefaultValues.Empty;
+                _view.IsCategoryDeleteEnabled = false;
+                _view.EditButton.Enabled = false;
             }
         }
         private void Save()
@@ -79,7 +83,7 @@ namespace Tasks_Planner.Presenters
         }
         public void Edit()
         {
-            if (_view.SelectedCategory != -1)
+            if (_view.SelectedCategory >= 0)
             {
                 IsEditMode = !IsEditMode;
                 if (IsValid())
@@ -91,6 +95,8 @@ namespace Tasks_Planner.Presenters
                 {
                     Save();
                     UpdateCategoriesList();
+                    UpdateCategoryView();
+                    Notifier.ShowNotify?.Invoke(Messages.SuccesfullySaved);
                 }
                 else Notifier.ShowNotify?.Invoke(CategoriesMessages.InvalidName);
 
@@ -99,15 +105,20 @@ namespace Tasks_Planner.Presenters
         }
         public void Delete()
         {
-            Category c = _categories.GetByIndex(_view.SelectedCategory);
-            List<UserTask> tasks = _tasks.GetCollection().ToList();
-            tasks = tasks.FindAll(task => task.CategoriesID.Contains(c.Id));
-            if (!tasks.Any())
+            DialogResult result = MessageBox.Show(Messages.AreYouSureWantDelete, Messages.Attention, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (_view.SelectedCategory >= 0 && result == DialogResult.Yes)
             {
-                _categories.Delete(_view.SelectedCategory);
-                Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryDeleted);
+                Category c = _categories.GetByIndex(_view.SelectedCategory);
+                List<UserTask> tasks = _tasks.GetCollection().ToList();
+                tasks = tasks.FindAll(task => task.CategoriesID.Contains(c.Id));
+                if (!tasks.Any())
+                {
+                    _categories.Delete(_view.SelectedCategory);
+                    UpdateCategoryView();
+                    Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryDeleted);
+                }
+                else Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryUsed);
             }
-            else Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryUsed);
         }
         public void OnNameFieldLeave()
         {

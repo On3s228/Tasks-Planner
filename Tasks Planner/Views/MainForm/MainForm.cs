@@ -1,8 +1,6 @@
 using Newtonsoft.Json;
+using System;
 using System.Media;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
 using System.Windows.Forms;
 using Tasks_Planner.Forms.CategoriesAdding;
 using Tasks_Planner.Forms.MainForm;
@@ -28,10 +26,13 @@ namespace Tasks_Planner
             }
             set
             {
-                if (tasksView.SelectedIndices.Count > 0)
+                if (tasksView.Items.Count > value)
                 {
                     tasksView.SelectedIndices.Clear();
-                    tasksView.SelectedIndices.Add(value);
+                    tasksView.Items[value].Selected = true; 
+                } else
+                {
+                    tasksView.SelectedIndices.Clear();
                 }
             }
         }
@@ -59,6 +60,8 @@ namespace Tasks_Planner
         public CheckedListBox Categories { get => categoriesChecks; set => categoriesChecks = value; }
         public MainPresenter Presenter { private get; set; }
         public bool IsVisible { get => Visible; set => Visible = value; }
+        public bool IsEditButtonEnabled { get => taskEditButton.Enabled; set => taskEditButton.Enabled = value; }
+        public bool IsDeleteButtonEnabled { get => taskDeleteButton.Enabled; set => taskDeleteButton.Enabled = value; }
         #endregion
         #region ICategoriesView
         public int SelectedCategory
@@ -73,10 +76,13 @@ namespace Tasks_Planner
             }
             set
             {
-                if (categoriesListView.SelectedIndices.Count > 0)
+                if (categoriesListView.Items.Count > value)
                 {
                     categoriesListView.SelectedIndices.Clear();
-                    categoriesListView.SelectedIndices.Add(value);
+                    categoriesListView.Items[value].Selected = true; 
+                } else
+                {
+                    categoriesListView.SelectedIndices.Clear();
                 }
             }
         }
@@ -85,6 +91,8 @@ namespace Tasks_Planner
         public RichTextBox Description { get => categoryDescRich; set => categoryDescRich = value; }
         public CategoriesPresenter CategoriesPresenter { private get; set; }
         public Button EditButton { get => editButton; set => editButton = value; }
+        public bool IsCategoryDeleteEnabled { get => deleteCategoryButton.Enabled; set => deleteCategoryButton.Enabled = value; }
+
         #endregion
 
         public MainForm()
@@ -115,7 +123,7 @@ namespace Tasks_Planner
             {
                 notifyIcon1.Visible = true;
                 this.Hide();
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
                 
             }
         }

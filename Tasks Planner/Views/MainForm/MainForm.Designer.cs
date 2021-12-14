@@ -142,7 +142,7 @@
             this.categoriesAddingButton.Name = "categoriesAddingButton";
             this.categoriesAddingButton.Size = new System.Drawing.Size(121, 29);
             this.categoriesAddingButton.TabIndex = 9;
-            this.categoriesAddingButton.Text = "доб. категории";
+            this.categoriesAddingButton.Text = "создать";
             this.categoriesAddingButton.UseVisualStyleBackColor = true;
             this.categoriesAddingButton.Click += new System.EventHandler(this.categoriesAddingButton_Click);
             // 
@@ -183,6 +183,7 @@
             // 
             // taskDeleteButton
             // 
+            this.taskDeleteButton.Enabled = false;
             this.taskDeleteButton.Location = new System.Drawing.Point(17, 277);
             this.taskDeleteButton.Name = "taskDeleteButton";
             this.taskDeleteButton.Size = new System.Drawing.Size(94, 29);
@@ -193,6 +194,7 @@
             // 
             // taskEditButton
             // 
+            this.taskEditButton.Enabled = false;
             this.taskEditButton.Location = new System.Drawing.Point(548, 352);
             this.taskEditButton.Name = "taskEditButton";
             this.taskEditButton.Size = new System.Drawing.Size(124, 29);
@@ -297,6 +299,7 @@
             // 
             // deleteCategoryButton
             // 
+            this.deleteCategoryButton.Enabled = false;
             this.deleteCategoryButton.Location = new System.Drawing.Point(161, 355);
             this.deleteCategoryButton.Name = "deleteCategoryButton";
             this.deleteCategoryButton.Size = new System.Drawing.Size(94, 29);
@@ -307,6 +310,7 @@
             // 
             // editButton
             // 
+            this.editButton.Enabled = false;
             this.editButton.Location = new System.Drawing.Point(458, 260);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(119, 29);
