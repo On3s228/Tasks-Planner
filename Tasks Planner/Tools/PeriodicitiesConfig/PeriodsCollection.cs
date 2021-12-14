@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tasks_Planner.Tools.PeriodicitiesConfig
 {
+    [ConfigurationCollection(typeof(PeriodElement), AddItemName = "Period")]
     public class PeriodsCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
