@@ -122,14 +122,8 @@ namespace Tasks_Planner
             if (WindowState == FormWindowState.Minimized)
             {
                 notifyIcon1.Visible = true;
-                this.Hide();
-                //Thread.Sleep(2000);
-                
+                Hide();               
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
         }
 
         private void tasksView_SelectedIndexChanged(object sender, EventArgs e)

@@ -219,7 +219,6 @@
             this.Controls.Add(this.descriptionBox);
             this.Name = "TaskCreating";
             this.Text = "TaskCreating";
-            this.Load += new System.EventHandler(this.TaskCreating_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

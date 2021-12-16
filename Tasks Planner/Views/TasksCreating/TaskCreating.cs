@@ -44,10 +44,6 @@ namespace Tasks_Planner.Forms.TasksCreating
         public bool IsPeriodic { get => repeatableCheck.Checked; set => repeatableCheck.Checked = value; }
         public UserTask Edit { get; set; }
 
-        private void TaskCreating_Load(object sender, EventArgs e)
-        {
-        }
-
         private void repeatableCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (repeatableCheck.Checked)

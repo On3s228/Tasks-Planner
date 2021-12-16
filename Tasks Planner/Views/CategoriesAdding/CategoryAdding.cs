@@ -20,18 +20,7 @@ namespace Tasks_Planner.Forms.CategoriesAdding
         public CategoryAdding()
         {
             InitializeComponent();
-            //ToolTip t = new ToolTip();
             nameBox.TextChanged += nameBox_Leave;
-            //t.SetToolTip(nameBox, "Поле для ввода названия создаваемой категории.\n\nДанное поле обязательно для заполнения.");
-            //t.SetToolTip(descriptionRich, "Поле для ввода описания создаваемой категории.\n\nНеобязательное поле.");
-            //t.SetToolTip(addButton, "Добавление категории.");
-            //t.SetToolTip(label3, "Поле обязательно для заполнения.");
-            //t.SetToolTip(label1, "Поле обязательно для заполнения.");
-        }
-
-        private void CategoryAdding_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void nameBox_Leave(object sender, EventArgs e)

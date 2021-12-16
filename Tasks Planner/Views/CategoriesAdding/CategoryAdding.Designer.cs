@@ -116,7 +116,6 @@
             this.Controls.Add(this.label1);
             this.Name = "CategoryAdding";
             this.Text = "Добавление категории";
-            this.Load += new System.EventHandler(this.CategoryAdding_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
