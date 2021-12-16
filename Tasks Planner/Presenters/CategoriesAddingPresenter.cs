@@ -43,8 +43,9 @@ namespace Tasks_Planner.Presenters
                 };
                 if (_categories.Create(c))
                 {
-                    Events.CategoriesListChanged();
-                    ClearFields();
+                    //Events.CategoriesListChanged();
+                    //ClearFields();
+                    _view.Close();
                     Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryAdded);
                 } else
                 {

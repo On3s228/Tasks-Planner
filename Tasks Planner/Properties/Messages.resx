@@ -128,6 +128,9 @@
   <data name="Attention" xml:space="preserve">
     <value>Внимание!</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Вы действительно хотите отменить все изменения?</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Редактировать</value>
   </data>

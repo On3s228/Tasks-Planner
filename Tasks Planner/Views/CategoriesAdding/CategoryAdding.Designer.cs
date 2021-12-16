@@ -34,6 +34,7 @@
             this.descriptionRich = new System.Windows.Forms.RichTextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +74,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(163, 251);
+            this.addButton.Location = new System.Drawing.Point(117, 245);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(94, 29);
             this.addButton.TabIndex = 4;
@@ -91,11 +92,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "*";
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(217, 245);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(94, 29);
+            this.cancelButton.TabIndex = 6;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // CategoryAdding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 312);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.descriptionRich);
@@ -118,5 +130,6 @@
         private RichTextBox descriptionRich;
         private Button addButton;
         private Label label3;
+        private Button cancelButton;
     }
 }

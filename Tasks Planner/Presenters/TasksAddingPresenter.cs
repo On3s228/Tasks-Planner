@@ -110,7 +110,8 @@ namespace Tasks_Planner.Presenters
                 {
                     if (_tasks.Create(task))
                     {
-                        ClearFields();
+                        //ClearFields();
+                        _view.Close();
                         Notifier.ShowNotify?.Invoke(TasksMessages.TaskAdded);
                     }
                     else
@@ -126,6 +127,7 @@ namespace Tasks_Planner.Presenters
 
                     if (_tasks.Update(task))
                     {
+                        _view.Close();
                         Notifier.ShowNotify?.Invoke(Messages.Saved);
                     }
                     else Notifier.ShowNotify?.Invoke(TasksMessages.TaskNotUnique);

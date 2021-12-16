@@ -11,6 +11,7 @@ namespace Tasks_Planner.Forms.CategoriesAdding
     {
         MyTextBox NameField { get; set; }
         RichTextBox DescriptionField { get; set; }
+        void Close();
         CategoriesAddingPresenter Presenter { set; }
     }
 }

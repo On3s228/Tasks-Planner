@@ -17,6 +17,7 @@ namespace Tasks_Planner.Forms.TasksCreating
         bool IsPeriodic { get; set; }
         ComboBox Periodicity { get; set; }
         CheckedListBox CheckedCategories { get; set; }
+        void Close();
         TasksAddingPresenter Presenter { set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tasks_Planner.CustomControls;
 using Tasks_Planner.Presenters;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Forms.TasksCreating
@@ -66,6 +67,11 @@ namespace Tasks_Planner.Forms.TasksCreating
         private void saveButton_Click(object sender, EventArgs e)
         {
             Presenter.Add();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Tools.Events.Cancel(this);
         }
     }
 }

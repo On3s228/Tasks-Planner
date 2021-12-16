@@ -20,13 +20,13 @@ namespace Tasks_Planner.Forms.CategoriesAdding
         public CategoryAdding()
         {
             InitializeComponent();
-            ToolTip t = new ToolTip();
+            //ToolTip t = new ToolTip();
             nameBox.TextChanged += nameBox_Leave;
-            t.SetToolTip(nameBox, "Поле для ввода названия создаваемой категории.\n\nДанное поле обязательно для заполнения.");
-            t.SetToolTip(descriptionRich, "Поле для ввода описания создаваемой категории.\n\nНеобязательное поле.");
-            t.SetToolTip(addButton, "Добавление категории.");
-            t.SetToolTip(label3, "Поле обязательно для заполнения.");
-            t.SetToolTip(label1, "Поле обязательно для заполнения.");
+            //t.SetToolTip(nameBox, "Поле для ввода названия создаваемой категории.\n\nДанное поле обязательно для заполнения.");
+            //t.SetToolTip(descriptionRich, "Поле для ввода описания создаваемой категории.\n\nНеобязательное поле.");
+            //t.SetToolTip(addButton, "Добавление категории.");
+            //t.SetToolTip(label3, "Поле обязательно для заполнения.");
+            //t.SetToolTip(label1, "Поле обязательно для заполнения.");
         }
 
         private void CategoryAdding_Load(object sender, EventArgs e)
@@ -42,6 +42,11 @@ namespace Tasks_Planner.Forms.CategoriesAdding
         private void addButton_Click(object sender, EventArgs e)
         {
             Presenter.AddCategory();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Tools.Events.Cancel(this);
         }
     }
 }

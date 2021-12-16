@@ -43,6 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // descriptionBox
@@ -139,7 +140,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(154, 431);
+            this.saveButton.Location = new System.Drawing.Point(106, 431);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(94, 29);
             this.saveButton.TabIndex = 12;
@@ -185,11 +186,22 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "*";
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(206, 431);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(94, 29);
+            this.cancelButton.TabIndex = 17;
+            this.cancelButton.Text = "Отменить";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // TaskCreating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 485);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -229,5 +241,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Button cancelButton;
     }
 }
