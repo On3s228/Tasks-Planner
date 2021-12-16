@@ -78,9 +78,13 @@ namespace Tasks_Planner.Repos.Categories
         public bool Update(Category item)
         {
             int id = _categories.CategoriesList.ToList().FindIndex(category => category.Id == item.Id);
-            _categories.CategoriesList[id] = item;
-            Save();
-            return true;
+            if (!_categories.CategoriesList.Contains(item))
+            {
+                _categories.CategoriesList[id] = item;
+                Save();
+                return true;
+            }
+            else return false;
         }
     }
 }

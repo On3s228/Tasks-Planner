@@ -106,11 +106,11 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Некорректное имя, заполните поле в верном формате!.
+        ///   Looks up a localized string similar to Проверьте поле имени. Либо Вы некорректно заполнили данное поле, либо категория с таким названием уже существует..
         /// </summary>
-        internal static string InvalidName {
+        internal static string Invalid {
             get {
-                return ResourceManager.GetString("InvalidName", resourceCulture);
+                return ResourceManager.GetString("Invalid", resourceCulture);
             }
         }
     }

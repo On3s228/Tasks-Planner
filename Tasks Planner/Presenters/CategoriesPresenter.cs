@@ -16,7 +16,17 @@ namespace Tasks_Planner.Presenters
         private readonly ICategoriesView _view;
         private readonly IRepository<Category> _categories;
         private readonly IRepository<UserTask> _tasks;
-        private bool IsEditMode = false;
+        private bool isEditMode;
+
+        private bool IsEditMode
+        {
+            get => isEditMode;
+            set
+            {
+                ChangeFieldsState(!value);
+                isEditMode = value;
+            }
+        }
 
         public CategoriesPresenter(ICategoriesView view, IRepository<Category> categories, IRepository<UserTask> tasks)
         {
@@ -58,7 +68,7 @@ namespace Tasks_Planner.Presenters
                 _view.EditButton.Enabled = false;
             }
         }
-        private void Save()
+        private bool Save()
         {
             ListViewItem i = _view.CategoriesList.SelectedItems[0];
             Category c = new Category
@@ -67,7 +77,7 @@ namespace Tasks_Planner.Presenters
                 Name = _view.CategoryName.Text,
                 Description = _view.Description.Text
             };
-            _categories.Update(c);
+            return _categories.Update(c);
         }
         private bool IsValid()
         {
@@ -85,20 +95,18 @@ namespace Tasks_Planner.Presenters
         {
             if (_view.SelectedCategory >= 0)
             {
-                IsEditMode = !IsEditMode;
-                if (IsValid())
-                    ChangeFieldsState(!IsEditMode);
-
-                if (IsEditMode) return;
-
-                if (IsValid())
+                if (!IsEditMode)
                 {
-                    Save();
-                    UpdateCategoriesList();
-                    UpdateCategoryView();
-                    Notifier.ShowNotify?.Invoke(Messages.SuccesfullySaved);
+                    IsEditMode = !IsEditMode;
+                    return;
                 }
-                else Notifier.ShowNotify?.Invoke(CategoriesMessages.InvalidName);
+
+                if (IsValid() && Save())
+                {
+                    IsEditMode = !IsEditMode;
+                    Notifier.ShowNotify?.Invoke(Messages.Saved);
+                }
+                else Notifier.ShowNotify?.Invoke(CategoriesMessages.Invalid);
 
             }
             else Notifier.ShowNotify?.Invoke(CategoriesMessages.CategoryNotSelected);

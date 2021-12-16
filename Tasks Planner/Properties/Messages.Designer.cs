@@ -124,14 +124,5 @@ namespace Tasks_Planner.Properties {
                 return ResourceManager.GetString("Saved", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Успешно сохранено..
-        /// </summary>
-        public static string SuccesfullySaved {
-            get {
-                return ResourceManager.GetString("SuccesfullySaved", resourceCulture);
-            }
-        }
     }
 }

@@ -30,7 +30,7 @@ namespace Tasks_Planner.Repos.Categories
 
         public bool Equals(Category other)
         {
-            return other != null &&
+            return other != null && other.Id != Id &&
                    Name == other.Name;
         }
 

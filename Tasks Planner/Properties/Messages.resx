@@ -140,7 +140,4 @@
   <data name="Saved" xml:space="preserve">
     <value>Успешно сохранено.</value>
   </data>
-  <data name="SuccesfullySaved" xml:space="preserve">
-    <value>Успешно сохранено.</value>
-  </data>
 </root>
