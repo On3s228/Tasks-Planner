@@ -10,7 +10,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="Tools\PeriodicitiesConfig\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Tools\PeriodicitiesConfig\**" />
+    <None Remove="Models\**" />
+    <None Remove="Tools\PeriodicitiesConfig\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tools\JSerializer.cs" />
+    <Compile Remove="Tools\Notifier.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Tools\PeriodicitiesConfig\PeriodElement.cs" />
+    <Compile Include="Tools\PeriodicitiesConfig\Periodicities.cs" />
+    <Compile Include="Tools\PeriodicitiesConfig\PeriodsCollection.cs" />
+    <Compile Include="Tools\PeriodicitiesConfig\PeriodsConfigSection.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
 
   <ItemGroup>
