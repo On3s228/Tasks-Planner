@@ -16,6 +16,7 @@ namespace Tasks_Planner
     {
         public static void InitializePeriods()
         {
+            //aaaaaaaa
             PeriodsConfigSection section = (PeriodsConfigSection) ConfigurationManager.GetSection("PeriodsList");
             Periodicities.PeriodsStrings = new List<string>();
             Periodicities.PeriodsValues = new List<int>();
