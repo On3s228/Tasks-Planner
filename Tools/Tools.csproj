@@ -8,12 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="PeriodicitiesConfig\**" />
-    <EmbeddedResource Remove="PeriodicitiesConfig\**" />
-    <None Remove="PeriodicitiesConfig\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 

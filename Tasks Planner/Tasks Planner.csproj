@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\**" />
+    <Compile Remove="Properties\**" />
     <Compile Remove="Tools\PeriodicitiesConfig\**" />
-    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Properties\**" />
     <EmbeddedResource Remove="Tools\PeriodicitiesConfig\**" />
-    <None Remove="Models\**" />
+    <None Remove="Properties\**" />
     <None Remove="Tools\PeriodicitiesConfig\**" />
   </ItemGroup>
 
@@ -24,10 +24,58 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Properties\CategoriesMessages.Designer.cs">
+      <DependentUpon>CategoriesMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\DefaultValues.Designer.cs">
+      <DependentUpon>DefaultValues.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\Errors.Designer.cs">
+      <DependentUpon>Errors.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\Messages.Designer.cs">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\TasksMessages.Designer.cs">
+      <DependentUpon>TasksMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Tools\PeriodicitiesConfig\PeriodElement.cs" />
     <Compile Include="Tools\PeriodicitiesConfig\Periodicities.cs" />
     <Compile Include="Tools\PeriodicitiesConfig\PeriodsCollection.cs" />
     <Compile Include="Tools\PeriodicitiesConfig\PeriodsConfigSection.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\CategoriesMessages.resx">
+      <LastGenOutput>CategoriesMessages.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\DefaultValues.resx">
+      <LastGenOutput>DefaultValues.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Errors.resx">
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Messages.resx">
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\TasksMessages.resx">
+      <LastGenOutput>TasksMessages.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,59 +84,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\Tools\Tools.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\CategoriesMessages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CategoriesMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\DefaultValues.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DefaultValues.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\Errors.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Errors.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\Messages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\TasksMessages.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TasksMessages.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\CategoriesMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CategoriesMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\DefaultValues.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DefaultValues.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Errors.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Messages.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\TasksMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>TasksMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
