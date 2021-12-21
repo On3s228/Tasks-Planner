@@ -74,14 +74,6 @@ namespace Tasks_Planner.Presenters
             }
 
         }
-        private void ClearFields()
-        {
-            _view.NameField.Text = DefaultValues.Empty;
-            _view.DescriptionField.Text = DefaultValues.Empty;
-            _view.IsPeriodic = default;
-            _view.CheckedCategories.ClearSelected();
-
-        }
         public void Add()
         {
             if (IsValid())

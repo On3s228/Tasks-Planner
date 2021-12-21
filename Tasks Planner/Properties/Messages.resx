@@ -134,6 +134,18 @@
   <data name="Edit" xml:space="preserve">
     <value>Редактировать</value>
   </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Уведомление!</value>
+  </data>
+  <data name="NotifyDescription" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="NotifyName" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="NotifyTime" xml:space="preserve">
+    <value>Дата:</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>

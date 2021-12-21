@@ -65,7 +65,8 @@ namespace Tasks_Planner.Tools
                     {
                         counter++;
                         task.LastTick = DateTime.Now;
-                        _result += $"Название: {task.Name}\nОписание: {task.Description}\nДата: {task.TaskDate}\n\n";
+                        _result += $"{Messages.NotifyName} {task.Name}\n" +
+                            $"{Messages.NotifyDescription} {task.Description}\n{Messages.NotifyTime}: {task.TaskDate}\n\n";
                     }
                 }
             }

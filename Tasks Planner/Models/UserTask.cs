@@ -22,11 +22,6 @@ namespace Tasks_Planner.Repos.Tasks
         private int period;
         private DateTime taskDate;
 
-        [JsonIgnore]
-        private System.Windows.Forms.Timer PeriodicTimer { get; set; } //in miliseconds
-        [JsonIgnore]
-        private System.Windows.Forms.Timer DefaultTimer { get; set; }
-        public DateTime LastTick { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -42,17 +37,6 @@ namespace Tasks_Planner.Repos.Tasks
                 DefaultTimer.Enabled = true;
             }
         }
-
-        private void DefaultTimer_Tick(object sender, EventArgs e)
-        {
-            if (DateTime.Now >= taskDate && !IsHandled)
-            {
-                Notifier.TaskNotify?.Invoke(this);
-                IsHandled = true;
-                DefaultTimer.Dispose();
-            }
-        }
-
         public int Period
         {
             get => period;
@@ -81,15 +65,31 @@ namespace Tasks_Planner.Repos.Tasks
                 }
             }
         }
+        public DateTime LastTick { get; set; }
+        public List<int> CategoriesID { get; set; }
+        public bool IsHandled { get; set; }
+
+        [JsonIgnore]
+        private System.Windows.Forms.Timer PeriodicTimer { get; set; } //in miliseconds
+        [JsonIgnore]
+        private System.Windows.Forms.Timer DefaultTimer { get; set; }
+
+        private void DefaultTimer_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now >= taskDate && !IsHandled)
+            {
+                Notifier.TaskNotify?.Invoke(this);
+                IsHandled = true;
+                DefaultTimer.Dispose();
+            }
+        }
+
 
         private void PeriodicTimer_Tick(object sender, EventArgs e)
         {
             Notifier.TaskNotify?.Invoke(this);
             LastTick = DateTime.Now;
         }
-
-        public List<int> CategoriesID { get; set; }
-        public bool IsHandled { get; set; }
 
         public UserTask() { }
 

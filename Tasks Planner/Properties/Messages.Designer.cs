@@ -108,6 +108,42 @@ namespace Tasks_Planner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Уведомление!.
+        /// </summary>
+        public static string Notification {
+            get {
+                return ResourceManager.GetString("Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Описание:.
+        /// </summary>
+        public static string NotifyDescription {
+            get {
+                return ResourceManager.GetString("NotifyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Название:.
+        /// </summary>
+        public static string NotifyName {
+            get {
+                return ResourceManager.GetString("NotifyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дата:.
+        /// </summary>
+        public static string NotifyTime {
+            get {
+                return ResourceManager.GetString("NotifyTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сохранить.
         /// </summary>
         public static string Save {

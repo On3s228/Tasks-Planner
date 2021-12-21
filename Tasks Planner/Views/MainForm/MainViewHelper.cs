@@ -5,6 +5,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using Tasks_Planner.Forms.MainForm;
+using Tasks_Planner.Properties;
 using Tasks_Planner.Repos.Tasks;
 
 namespace Tasks_Planner.Presenters
@@ -21,17 +22,17 @@ namespace Tasks_Planner.Presenters
         {
             if (userTask is UserTask t)
             {
-                string notifyContent = $"Уведомление!\n\nНазвание напоминания: {t.Name}\nОписание: {t.Description}\nВремя напоминания: {t.TaskDate}";
+                string notifyContent = $"{Messages.Notification}\n\n{Messages.NotifyName} {t.Name}\n" +
+                    $"{Messages.NotifyDescription} {t.Description}\n{Messages.NotifyTime} {t.TaskDate}";
                 if (!_mainForm.Icon.Visible)
                 {
                     SystemSounds.Hand.Play();
-                    
-                    MessageBox.Show(notifyContent, "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(notifyContent, Messages.Notification, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     SystemSounds.Hand.Play();
-                    _mainForm.Icon.ShowBalloonTip(20000, "Уведомление", notifyContent, ToolTipIcon.Warning);
+                    _mainForm.Icon.ShowBalloonTip(20000, Messages.Notification, notifyContent, ToolTipIcon.Warning);
                 }
             }
         }
