@@ -217,7 +217,9 @@
             this.Controls.Add(this.repeatableCheck);
             this.Controls.Add(this.dateField);
             this.Controls.Add(this.descriptionBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TaskCreating";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TaskCreating";
             this.ResumeLayout(false);
             this.PerformLayout();

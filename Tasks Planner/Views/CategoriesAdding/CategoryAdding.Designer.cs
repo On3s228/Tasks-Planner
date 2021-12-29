@@ -114,7 +114,9 @@
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CategoryAdding";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление категории";
             this.ResumeLayout(false);
             this.PerformLayout();

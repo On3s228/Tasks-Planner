@@ -76,6 +76,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy, HH:mm:ss";
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -86,6 +87,7 @@
             // 
             // nameBox
             // 
+            this.nameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nameBox.Location = new System.Drawing.Point(494, 9);
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
@@ -94,6 +96,7 @@
             // 
             // descriptionRichBox
             // 
+            this.descriptionRichBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.descriptionRichBox.Location = new System.Drawing.Point(494, 42);
             this.descriptionRichBox.Name = "descriptionRichBox";
             this.descriptionRichBox.ReadOnly = true;
@@ -103,6 +106,7 @@
             // 
             // tasksView
             // 
+            this.tasksView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tasksView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.nameColumn});
@@ -128,6 +132,7 @@
             // 
             // taskAddButton
             // 
+            this.taskAddButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.taskAddButton.Location = new System.Drawing.Point(17, 242);
             this.taskAddButton.Name = "taskAddButton";
             this.taskAddButton.Size = new System.Drawing.Size(170, 29);
@@ -150,14 +155,16 @@
             // 
             this.tabControl1.Controls.Add(this.tasksPage);
             this.tabControl1.Controls.Add(this.categoriesPage);
-            this.tabControl1.Location = new System.Drawing.Point(2, 3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(795, 447);
+            this.tabControl1.Size = new System.Drawing.Size(800, 450);
             this.tabControl1.TabIndex = 10;
             // 
             // tasksPage
             // 
+            this.tasksPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.tasksPage.Controls.Add(this.taskDeleteButton);
             this.tasksPage.Controls.Add(this.taskEditButton);
             this.tasksPage.Controls.Add(this.label6);
@@ -176,13 +183,13 @@
             this.tasksPage.Location = new System.Drawing.Point(4, 29);
             this.tasksPage.Name = "tasksPage";
             this.tasksPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tasksPage.Size = new System.Drawing.Size(787, 414);
+            this.tasksPage.Size = new System.Drawing.Size(792, 417);
             this.tasksPage.TabIndex = 0;
             this.tasksPage.Text = "Напоминания";
-            this.tasksPage.UseVisualStyleBackColor = true;
             // 
             // taskDeleteButton
             // 
+            this.taskDeleteButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.taskDeleteButton.Enabled = false;
             this.taskDeleteButton.Location = new System.Drawing.Point(17, 277);
             this.taskDeleteButton.Name = "taskDeleteButton";
@@ -194,6 +201,7 @@
             // 
             // taskEditButton
             // 
+            this.taskEditButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.taskEditButton.Enabled = false;
             this.taskEditButton.Location = new System.Drawing.Point(548, 352);
             this.taskEditButton.Name = "taskEditButton";
@@ -205,6 +213,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(358, 132);
             this.label6.Name = "label6";
@@ -214,6 +223,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(358, 49);
             this.label7.Name = "label7";
@@ -223,6 +233,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(358, 12);
             this.label8.Name = "label8";
@@ -232,6 +243,7 @@
             // 
             // categoriesChecks
             // 
+            this.categoriesChecks.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoriesChecks.FormattingEnabled = true;
             this.categoriesChecks.Location = new System.Drawing.Point(494, 232);
             this.categoriesChecks.Name = "categoriesChecks";
@@ -241,6 +253,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(353, 232);
             this.label5.Name = "label5";
@@ -250,6 +263,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(353, 196);
             this.label4.Name = "label4";
@@ -259,6 +273,7 @@
             // 
             // periodicityCombo
             // 
+            this.periodicityCombo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.periodicityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.periodicityCombo.Enabled = false;
             this.periodicityCombo.FormattingEnabled = true;
@@ -269,6 +284,7 @@
             // 
             // repeatableCheck
             // 
+            this.repeatableCheck.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.repeatableCheck.AutoSize = true;
             this.repeatableCheck.Enabled = false;
             this.repeatableCheck.Location = new System.Drawing.Point(494, 163);
@@ -292,7 +308,7 @@
             this.categoriesPage.Location = new System.Drawing.Point(4, 29);
             this.categoriesPage.Name = "categoriesPage";
             this.categoriesPage.Padding = new System.Windows.Forms.Padding(3);
-            this.categoriesPage.Size = new System.Drawing.Size(787, 414);
+            this.categoriesPage.Size = new System.Drawing.Size(792, 417);
             this.categoriesPage.TabIndex = 1;
             this.categoriesPage.Text = "Категории";
             this.categoriesPage.UseVisualStyleBackColor = true;
@@ -396,8 +412,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Планировщик";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
